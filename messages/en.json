@@ -1,0 +1,440 @@
+{
+  "site": {
+    "name": "HIZIR Software",
+    "tagline": "Software that accelerates the digital transformation of businesses."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "mainNav": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "languageSwitcher": "Language switcher"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "HIZIR Software",
+      "title": "Modern software. Measured design. Lasting trust.",
+      "subtitle": "We build corporate websites and digital solutions for businesses — and our own technology products.",
+      "primaryCta": "Start a project",
+      "secondaryCta": "See services"
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "Digital solutions that grow your business",
+      "subtitle": "From idea to launch, delivered end-to-end by one team.",
+      "cta": "See all services"
+    },
+    "about": {
+      "eyebrow": "About us",
+      "title": "One engineering foundation, a distinct identity for every project",
+      "body": "HIZIR Software builds corporate websites and digital products on a solid technical foundation. Design is rethought for every client; infrastructure, performance, and code quality never are.",
+      "cta": "Get to know us"
+    },
+    "cta": {
+      "title": "Ready to talk about your project?",
+      "subtitle": "Share your idea and let's map out the right scope and roadmap together.",
+      "primaryCta": "Get in touch",
+      "secondaryCta": "Explore services"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Services",
+      "title": "Digital solutions shaped around what you need",
+      "subtitle": "From a corporate website to your own product, every project starts with the right architecture and measured design."
+    },
+    "viewDetails": "View details",
+    "items": [
+      {
+        "id": "corporate-web",
+        "title": "Corporate Websites",
+        "description": "Fast, SEO-friendly corporate websites that represent your brand the right way.",
+        "bullets": [
+          "Project-specific design system",
+          "Multilingual infrastructure (TR/EN)",
+          "SEO and performance built in"
+        ]
+      },
+      {
+        "id": "product-dev",
+        "title": "Digital Product Development",
+        "description": "End-to-end product development for SaaS, web apps, and internal tools.",
+        "bullets": [
+          "From MVP to scale",
+          "Sustainable codebase",
+          "Solid data and architecture foundation"
+        ]
+      },
+      {
+        "id": "ecommerce",
+        "title": "E-Commerce Solutions",
+        "description": "Sales-ready, fast, and secure e-commerce infrastructure.",
+        "bullets": [
+          "Payment and inventory integrations",
+          "Mobile-first experience",
+          "Built for high traffic"
+        ]
+      },
+      {
+        "id": "brand-design",
+        "title": "Brand & Design Systems",
+        "description": "A consistent, scalable design language, unique to every project.",
+        "bullets": [
+          "Token-based design system",
+          "Component library",
+          "Accessibility standards"
+        ]
+      },
+      {
+        "id": "growth",
+        "title": "Maintenance, Performance & SEO",
+        "description": "We stay with you after launch: monitoring, maintenance, and continuous improvement.",
+        "bullets": [
+          "Performance monitoring",
+          "Regular security and dependency updates",
+          "Search engine visibility"
+        ]
+      },
+      {
+        "id": "consulting",
+        "title": "Consulting & Technical Strategy",
+        "description": "Consulting for the right technology choices and a clear technical roadmap.",
+        "bullets": [
+          "Architecture review",
+          "Technology selection",
+          "Team and process consulting"
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Let's find the right service for your project",
+      "subtitle": "Tell us what you need and we'll scope it together.",
+      "primaryCta": "Get in touch"
+    }
+  },
+  "serviceDetails": {
+    "kurumsal-web-siteleri": {
+      "hero": {
+        "eyebrow": "Corporate Websites",
+        "title": "Corporate Websites That Represent Your Brand Right",
+        "subtitle": "Fast, SEO-friendly, and built to grow — the digital face of your business.",
+        "primaryCta": "Get a Quote",
+        "secondaryCta": "See Packages"
+      },
+      "audience": {
+        "eyebrow": "Who Is It For?",
+        "title": "Who is this service for?",
+        "subtitle": "For every business that wants to build its digital presence on a solid foundation.",
+        "items": [
+          {
+            "id": "new-business",
+            "title": "Newly founded businesses",
+            "description": "New businesses that want to build their digital presence on a solid foundation."
+          },
+          {
+            "id": "growing-business",
+            "title": "Growing businesses",
+            "description": "Businesses looking to modernize their existing site and boost performance."
+          },
+          {
+            "id": "corporate-brand",
+            "title": "Corporate brands",
+            "description": "Companies that want to carry their brand identity into a strong, consistent web experience."
+          },
+          {
+            "id": "global-reach",
+            "title": "Businesses going global",
+            "description": "Businesses that need a multilingual foundation to reach international customers."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Scope",
+        "title": "What do we offer as part of this service?",
+        "subtitle": "Everything you need, from idea to launch.",
+        "items": [
+          {
+            "id": "custom-design",
+            "title": "Distinctive Design System",
+            "description": "A design language unique to your brand, never a template feel."
+          },
+          {
+            "id": "seo-foundation",
+            "title": "SEO Foundation",
+            "description": "Technical infrastructure designed from day one for search visibility."
+          },
+          {
+            "id": "performance",
+            "title": "Performance-First Development",
+            "description": "Fast-loading pages built to Core Web Vitals standards."
+          },
+          {
+            "id": "multilingual-infra",
+            "title": "Multilingual Infrastructure",
+            "description": "A structure ready to launch in multiple languages, such as TR/EN."
+          },
+          {
+            "id": "mobile-first",
+            "title": "Mobile-First Experience",
+            "description": "A touch-friendly interface that looks flawless on every device."
+          },
+          {
+            "id": "content-guidance",
+            "title": "Content Management Guidance",
+            "description": "A recommended setup so you can easily update your own content."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Packages",
+        "title": "A starting point that fits your needs",
+        "subtitle": "The packages below are an example structure; we'll define pricing together based on your needs.",
+        "priceLabel": "Custom quote",
+        "ctaLabel": "Get a Quote",
+        "tiers": [
+          {
+            "id": "starter",
+            "name": "Starter",
+            "description": "A single-page or small corporate site, ready to launch fast.",
+            "features": [
+              "Design system setup",
+              "Mobile-friendly development",
+              "Basic SEO setup",
+              "Single-language support"
+            ]
+          },
+          {
+            "id": "growth",
+            "name": "Growth",
+            "description": "A multi-page corporate website built to grow.",
+            "features": [
+              "Everything in Starter",
+              "Multilingual infrastructure (TR/EN)",
+              "Advanced SEO and performance optimization",
+              "Contact form and integrations"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "enterprise",
+            "name": "Enterprise",
+            "description": "For large-scale organizations with specific requirements.",
+            "features": [
+              "Everything in Growth",
+              "Custom integrations",
+              "Content management guidance",
+              "Priority support"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Let's Bring Your Project to Life",
+        "subtitle": "Tell us what you need and we'll prepare a tailored quote.",
+        "primaryCta": "Get a Quote"
+      },
+      "websiteBuilder": {
+        "badge": "Coming Soon",
+        "title": "Design Your Own Site Yourself",
+        "description": "With Website Builder, you'll be able to create a site unique to your brand yourself, with a drag-and-drop interface — no coding required. Currently in development.",
+        "cta": "Get Notified"
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "Frequently asked questions",
+        "items": [
+          {
+            "id": "timeline",
+            "question": "How long does it take to launch a corporate website?",
+            "answer": "It depends on scope. A small corporate site can usually go live within a few weeks; for multilingual and larger projects, we set a clear timeline together during the discovery call."
+          },
+          {
+            "id": "pricing",
+            "question": "Why aren't prices listed on the site?",
+            "answer": "Every project has a different scope, so a standard price list would be misleading. After a short discovery call, we prepare a clear, itemized quote tailored to your needs."
+          },
+          {
+            "id": "content",
+            "question": "Who prepares the copy and visuals?",
+            "answer": "You are the primary source of content; we guide the structure, hierarchy, and SEO. Content production support can be added to the scope separately if needed."
+          },
+          {
+            "id": "after-launch",
+            "question": "What happens after the site goes live?",
+            "answer": "The site and its code belong to you. If you'd like, our maintenance, performance & SEO package covers updates, monitoring, and continuous improvement."
+          },
+          {
+            "id": "revisions",
+            "question": "Can we make revisions during the design process?",
+            "answer": "Yes. The process moves through staged approvals; we don't start development before the design is settled, so revisions happen at the right stage."
+          }
+        ]
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "How We Work",
+    "title": "A clear process, a predictable delivery",
+    "subtitle": "Every project follows the same discipline, but arrives at a distinct result.",
+    "steps": [
+      {
+        "id": "discover",
+        "title": "Discover",
+        "description": "We work together to understand your business, goals, and users."
+      },
+      {
+        "id": "design",
+        "title": "Design",
+        "description": "We build a design system unique to your brand and shape the experience together."
+      },
+      {
+        "id": "build",
+        "title": "Build",
+        "description": "We build on a solid architecture with clean, sustainable code."
+      },
+      {
+        "id": "launch",
+        "title": "Launch & Grow",
+        "description": "We launch, monitor performance, and keep improving together."
+      }
+    ]
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About us",
+      "title": "Distinctive design, built with engineering discipline",
+      "subtitle": "HIZIR Software builds corporate websites and digital solutions for businesses — and its own technology products."
+    },
+    "story": {
+      "eyebrow": "Our story",
+      "title": "We started with one question",
+      "body": "Not every agency project needs to be built from scratch — but not every client deserves the same design either. HIZIR Software was founded to bring these two truths together in one system: a shared, solid engineering foundation, with a distinct design identity for every project. Every step we take today is built on that same foundation."
+    },
+    "mission": {
+      "title": "Our mission",
+      "body": "Our goal isn't to sell every client the same design. It's to build a distinct identity and experience for every project, on top of one shared and solid engineering foundation. We pair a modern, minimal, premium design approach with a priority on SEO, performance, and long-term sustainability."
+    },
+    "vision": {
+      "title": "Our vision",
+      "body": "We work toward a standard where thoughtfully designed, sustainable digital products — built to international standards — are within reach for businesses of any size."
+    },
+    "values": {
+      "eyebrow": "Our values",
+      "title": "The principles behind how we work",
+      "items": [
+        {
+          "id": "shared-foundation",
+          "title": "Shared infrastructure, distinct design",
+          "description": "Every project is built on a solid, proven technical foundation with its own unique identity."
+        },
+        {
+          "id": "performance",
+          "title": "Performance and SEO first",
+          "description": "Speed and search visibility aren't an afterthought — they're part of the design from day one."
+        },
+        {
+          "id": "multilingual",
+          "title": "Infrastructure built to grow",
+          "description": "A multilingual, scalable architecture that doesn't need a rewrite as your business grows."
+        },
+        {
+          "id": "sustainability",
+          "title": "Long-term sustainability",
+          "description": "Code is written with maintenance, growth, and future change in mind — not just today."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Interested in working together?",
+      "subtitle": "Tell us about your project and let's find the right approach for it.",
+      "primaryCta": "Get in touch"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Let's talk about your project",
+      "subtitle": "Give us a short overview of your idea and we'll get back to you."
+    },
+    "form": {
+      "nameLabel": "Full name",
+      "namePlaceholder": "Your full name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@company.com",
+      "companyLabel": "Company (optional)",
+      "companyPlaceholder": "Your company name",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us briefly about your project...",
+      "submit": "Send",
+      "sending": "Sending...",
+      "success": "Your message has been received. We'll get back to you soon.",
+      "error": "Your message couldn't be sent. Please try again later.",
+      "requiredError": "Please fill in your name, email, and message.",
+      "privacyNotice": "By submitting this form, you agree to the processing of your data under our <link>Privacy Policy</link>."
+    },
+    "info": {
+      "title": "Reach us directly",
+      "emailLabel": "Email",
+      "note": "You can also write to us directly instead of using the form.",
+      "processTitle": "What happens next",
+      "processBody": "We read your message and share the right next step with you by email."
+    },
+    "map": {
+      "title": "Where we work",
+      "body": "We don't have a fixed office address — our team works fully remote. The fastest way to reach us is by email or the form above."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "quickLinksTitle": "Quick Links",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "writeToUs": "Write to us",
+    "privacy": "Privacy Policy"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for may have been moved or may never have existed.",
+    "backHome": "Back to home"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: July 6, 2026",
+    "intro": "This policy explains which personal data HIZIR Software processes through this website, for what purpose, and how. Your personal data is processed in accordance with the Turkish Personal Data Protection Law (KVKK, Law No. 6698).",
+    "sections": [
+      {
+        "id": "collected",
+        "heading": "What data do we collect?",
+        "body": "When you fill in the contact form, your full name, email address, (optional) company name, and message are transmitted to us. The site has no membership or account system; no personal data is requested outside the form."
+      },
+      {
+        "id": "purpose",
+        "heading": "What do we use the data for?",
+        "body": "Information submitted through the form is used solely to respond to your inquiry, contact you, and prepare a quote. No marketing messages are sent without your explicit consent; your data is not sold or shared with third parties for marketing."
+      },
+      {
+        "id": "processing",
+        "heading": "How is the data transmitted and stored?",
+        "body": "Form submissions reach us as email via an email delivery service and are kept for a reasonable period as part of our correspondence history. Your data is not retained longer unless legal obligations require it."
+      },
+      {
+        "id": "cookies",
+        "heading": "Cookies and analytics",
+        "body": "This site does not use tracking cookies. If visit statistics are collected, a cookieless analytics tool that does not gather personal data is preferred."
+      },
+      {
+        "id": "rights",
+        "heading": "Your rights under KVKK",
+        "body": "Under Article 11 of KVKK, you have the right to learn whether your personal data is processed, to request information about it, and to request correction or deletion of your data."
+      },
+      {
+        "id": "contact",
+        "heading": "Contact",
+        "body": "For all privacy-related questions and requests, you can reach us at iletisim@hizirsoftware.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+# Bağımlılıklar
+/node_modules
+/.pnp
+.pnp.*
+
+# Test
+/coverage
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+
+# Üretim
+/build
+
+# Ortam değişkenleri (gizli!)
+.env
+.env*.local
+
+# Hata ayıklama
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# İşletim sistemi / editör
+.DS_Store
+*.pem
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Vercel / TypeScript
+.vercel
+*.tsbuildinfo

@@ -1,0 +1,440 @@
+{
+  "site": {
+    "name": "HIZIR Software",
+    "tagline": "İşletmelerin dijital dönüşümünü hızlandıran yazılım çözümleri."
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "mainNav": "Ana navigasyon",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "languageSwitcher": "Dil seçimi"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "HIZIR Software",
+      "title": "Modern yazılım. Ölçülü tasarım. Kalıcı güven.",
+      "subtitle": "İşletmeler için kurumsal web siteleri, dijital çözümler ve kendi teknoloji ürünlerimizi geliştiriyoruz.",
+      "primaryCta": "Projeni konuşalım",
+      "secondaryCta": "Hizmetleri gör"
+    },
+    "services": {
+      "eyebrow": "Hizmetler",
+      "title": "İşinizi büyüten dijital çözümler",
+      "subtitle": "Fikirden yayına, tek bir ekiple uçtan uca üretim.",
+      "cta": "Tüm hizmetleri gör"
+    },
+    "about": {
+      "eyebrow": "Hakkımızda",
+      "title": "Ortak bir mühendislik temeli, her projede özgün bir kimlik",
+      "body": "HIZIR Software, kurumsal web siteleri ve dijital ürünleri sağlam bir teknik temel üzerine inşa eder. Tasarım her müşteride yeniden düşünülür; altyapı, performans ve kod kalitesi hiçbir zaman taviz görmez.",
+      "cta": "Bizi tanıyın"
+    },
+    "cta": {
+      "title": "Projenizi konuşmaya hazır mısınız?",
+      "subtitle": "Fikrinizi paylaşın, birlikte doğru kapsamı ve yol haritasını çıkaralım.",
+      "primaryCta": "İletişime geç",
+      "secondaryCta": "Hizmetleri incele"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Hizmetler",
+      "title": "İhtiyacınıza göre şekillenen dijital çözümler",
+      "subtitle": "Kurumsal web sitesinden kendi ürününüze; her proje, doğru mimari ve ölçülü tasarımla başlar."
+    },
+    "viewDetails": "Detayları incele",
+    "items": [
+      {
+        "id": "corporate-web",
+        "title": "Kurumsal Web Siteleri",
+        "description": "Hızlı, SEO uyumlu ve marka kimliğinizi doğru yansıtan kurumsal web siteleri.",
+        "bullets": [
+          "Projeye özgü tasarım sistemi",
+          "Çok dilli altyapı (TR/EN)",
+          "SEO ve performans odaklı temel"
+        ]
+      },
+      {
+        "id": "product-dev",
+        "title": "Dijital Ürün Geliştirme",
+        "description": "SaaS, web uygulaması ve iç araçlar için uçtan uca ürün geliştirme.",
+        "bullets": [
+          "MVP'den ölçeklenebilir ürüne",
+          "Sürdürülebilir kod tabanı",
+          "Sağlam veri ve mimari temeli"
+        ]
+      },
+      {
+        "id": "ecommerce",
+        "title": "E-Ticaret Çözümleri",
+        "description": "Satışa hazır, hızlı ve güvenli e-ticaret altyapıları.",
+        "bullets": [
+          "Ödeme ve stok entegrasyonları",
+          "Mobil öncelikli deneyim",
+          "Yüksek trafiğe hazır performans"
+        ]
+      },
+      {
+        "id": "brand-design",
+        "title": "Marka & Tasarım Sistemi",
+        "description": "Her projeye özgü, tutarlı ve ölçeklenebilir bir tasarım dili.",
+        "bullets": [
+          "Token tabanlı tasarım sistemi",
+          "Bileşen kütüphanesi",
+          "Erişilebilirlik standartları"
+        ]
+      },
+      {
+        "id": "growth",
+        "title": "Bakım, Performans & SEO",
+        "description": "Yayına aldıktan sonra da yanınızdayız: izleme, bakım ve sürekli iyileştirme.",
+        "bullets": [
+          "Performans izleme",
+          "Düzenli güvenlik ve bağımlılık güncellemeleri",
+          "Arama motoru görünürlüğü"
+        ]
+      },
+      {
+        "id": "consulting",
+        "title": "Danışmanlık & Teknik Strateji",
+        "description": "Doğru teknoloji seçimleri ve net bir teknik yol haritası için danışmanlık.",
+        "bullets": [
+          "Mimari değerlendirme",
+          "Teknoloji seçimi",
+          "Ekip ve süreç danışmanlığı"
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Projeniz için en doğru hizmeti birlikte bulalım",
+      "subtitle": "İhtiyacınızı anlatın, size uygun kapsamı çıkaralım.",
+      "primaryCta": "İletişime geç"
+    }
+  },
+  "serviceDetails": {
+    "kurumsal-web-siteleri": {
+      "hero": {
+        "eyebrow": "Kurumsal Web Siteleri",
+        "title": "Markanızı Doğru Yansıtan Kurumsal Web Siteleri",
+        "subtitle": "Hızlı, SEO uyumlu ve büyümeye hazır; işletmenizin dijital yüzü.",
+        "primaryCta": "Teklif Al",
+        "secondaryCta": "Paketleri Gör"
+      },
+      "audience": {
+        "eyebrow": "Kimler İçin?",
+        "title": "Bu hizmet kimler için?",
+        "subtitle": "Dijital varlığını sağlam bir temel üzerine kurmak isteyen her işletme için.",
+        "items": [
+          {
+            "id": "new-business",
+            "title": "Yeni kurulan işletmeler",
+            "description": "Dijital varlığını sağlam bir temelle kurmak isteyen yeni işletmeler."
+          },
+          {
+            "id": "growing-business",
+            "title": "Büyüyen işletmeler",
+            "description": "Mevcut sitesini modernize edip performansını artırmak isteyenler."
+          },
+          {
+            "id": "corporate-brand",
+            "title": "Kurumsal markalar",
+            "description": "Marka kimliğini güçlü ve tutarlı bir web deneyimine taşımak isteyen kurumlar."
+          },
+          {
+            "id": "global-reach",
+            "title": "Uluslararası açılım hedefleyenler",
+            "description": "Yurt dışı müşterilere ulaşmak için çok dilli bir altyapı gereken işletmeler."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Kapsam",
+        "title": "Bu hizmet kapsamında neler sunuyoruz?",
+        "subtitle": "Fikirden yayına kadar ihtiyacınız olan her şey.",
+        "items": [
+          {
+            "id": "custom-design",
+            "title": "Özgün Tasarım Sistemi",
+            "description": "Markanıza özel, şablon hissi vermeyen bir tasarım dili."
+          },
+          {
+            "id": "seo-foundation",
+            "title": "SEO Temeli",
+            "description": "Arama motorlarında görünürlüğü baştan tasarlanmış teknik altyapı."
+          },
+          {
+            "id": "performance",
+            "title": "Performans Odaklı Geliştirme",
+            "description": "Hızlı yüklenen, Core Web Vitals standartlarına uygun sayfalar."
+          },
+          {
+            "id": "multilingual-infra",
+            "title": "Çok Dilli Altyapı",
+            "description": "TR/EN gibi birden fazla dilde yayına hazır yapı."
+          },
+          {
+            "id": "mobile-first",
+            "title": "Mobil Öncelikli Deneyim",
+            "description": "Her cihazda kusursuz görünen, dokunmatik dostu arayüz."
+          },
+          {
+            "id": "content-guidance",
+            "title": "İçerik Yönetimi Danışmanlığı",
+            "description": "İçeriklerinizi kolayca güncelleyebileceğiniz bir yapı önerisi."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Paketler",
+        "title": "İhtiyacınıza uygun bir başlangıç noktası",
+        "subtitle": "Aşağıdaki paketler örnek bir yapıdır; fiyatlandırmayı ihtiyacınıza göre birlikte belirleriz.",
+        "priceLabel": "Teklif üzerine",
+        "ctaLabel": "Teklif Al",
+        "tiers": [
+          {
+            "id": "starter",
+            "name": "Başlangıç",
+            "description": "Tek sayfa veya az sayfalı, hızlı yayına hazır kurumsal site.",
+            "features": [
+              "Tasarım sistemi kurulumu",
+              "Mobil uyumlu geliştirme",
+              "Temel SEO ayarları",
+              "Tek dil desteği"
+            ]
+          },
+          {
+            "id": "growth",
+            "name": "Büyüme",
+            "description": "Çok sayfalı, büyümeye hazır kurumsal web sitesi.",
+            "features": [
+              "Başlangıç paketindeki her şey",
+              "Çok dilli altyapı (TR/EN)",
+              "Gelişmiş SEO ve performans optimizasyonu",
+              "İletişim formu ve entegrasyonlar"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "enterprise",
+            "name": "Kurumsal",
+            "description": "Büyük ölçekli, özel gereksinimleri olan kurumlar için.",
+            "features": [
+              "Büyüme paketindeki her şey",
+              "Özel entegrasyonlar",
+              "İçerik yönetimi danışmanlığı",
+              "Öncelikli destek"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Projenizi Hayata Geçirelim",
+        "subtitle": "İhtiyacınızı anlatın, size özel bir teklif hazırlayalım.",
+        "primaryCta": "Teklif Al"
+      },
+      "websiteBuilder": {
+        "badge": "Yakında",
+        "title": "Kendi Sitenizi Kendiniz Tasarlayın",
+        "description": "Website Builder ile markanıza özel bir web sitesini kod yazmadan, sürükle-bırak bir arayüzle kendiniz oluşturabileceksiniz. Şu anda geliştirme aşamasında.",
+        "cta": "Haberdar Ol"
+      },
+      "faq": {
+        "eyebrow": "SSS",
+        "title": "Sık sorulan sorular",
+        "items": [
+          {
+            "id": "timeline",
+            "question": "Bir kurumsal web sitesi ne kadar sürede yayına alınır?",
+            "answer": "Süre kapsama göre değişir. Az sayfalı bir kurumsal site genellikle birkaç hafta içinde yayına alınabilir; çok dilli ve kapsamlı projelerde net takvimi keşif görüşmesinde birlikte belirleriz."
+          },
+          {
+            "id": "pricing",
+            "question": "Neden sitede fiyat yazmıyor?",
+            "answer": "Her projenin kapsamı farklı olduğu için standart bir fiyat listesi yanıltıcı olur. Kısa bir keşif görüşmesinin ardından ihtiyacınıza özel, kalem kalem net bir teklif hazırlıyoruz."
+          },
+          {
+            "id": "content",
+            "question": "Metin ve görselleri kim hazırlıyor?",
+            "answer": "İçeriklerin ana kaynağı sizsiniz; biz yapı, hiyerarşi ve SEO açısından yönlendiririz. İhtiyaç halinde içerik hazırlama desteği kapsama ayrıca eklenebilir."
+          },
+          {
+            "id": "after-launch",
+            "question": "Site yayına alındıktan sonra ne oluyor?",
+            "answer": "Site ve kodu size aittir. Dilerseniz bakım, performans ve SEO paketimizle güncellemeleri, izlemeyi ve sürekli iyileştirmeyi biz üstleniriz."
+          },
+          {
+            "id": "revisions",
+            "question": "Tasarım sürecinde revizyon yapabiliyor muyuz?",
+            "answer": "Evet. Süreç aşamalı onaylarla ilerler; tasarım netleşmeden geliştirmeye geçmeyiz, böylece revizyonlar en doğru aşamada yapılır."
+          }
+        ]
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "Nasıl Çalışıyoruz",
+    "title": "Net bir süreç, öngörülebilir bir teslimat",
+    "subtitle": "Her proje aynı disiplinle, ama her seferinde özgün bir sonuçla ilerler.",
+    "steps": [
+      {
+        "id": "discover",
+        "title": "Keşif",
+        "description": "İşinizi, hedeflerinizi ve kullanıcılarınızı anlamak için birlikte çalışırız."
+      },
+      {
+        "id": "design",
+        "title": "Tasarım",
+        "description": "Markanıza özgü bir tasarım sistemi kurar, deneyimi birlikte netleştiririz."
+      },
+      {
+        "id": "build",
+        "title": "Geliştirme",
+        "description": "Sağlam bir mimari üzerinde, temiz ve sürdürülebilir kodla inşa ederiz."
+      },
+      {
+        "id": "launch",
+        "title": "Yayın & Büyüme",
+        "description": "Yayına alır, performansı izler ve birlikte iyileştirmeye devam ederiz."
+      }
+    ]
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Hakkımızda",
+      "title": "Mühendislik disipliniyle inşa edilen, özgün tasarım",
+      "subtitle": "HIZIR Software, işletmeler için kurumsal web siteleri ve dijital çözümler geliştirir; aynı zamanda kendi teknoloji ürünlerini inşa eder."
+    },
+    "story": {
+      "eyebrow": "Hikayemiz",
+      "title": "Tek bir soruyla başladık",
+      "body": "Her ajans projesinin sıfırdan inşa edilmesi gerekmiyor; ama her müşterinin de aynı tasarımı hak etmediğini biliyorduk. HIZIR Software, bu iki gerçeği bir araya getirecek bir sistem arayışıyla kuruldu: ortak ve sağlam bir mühendislik temeli, üzerine her projeye özgü bir tasarım kimliği. Bugün attığımız her adım bu temelin üzerine inşa ediliyor."
+    },
+    "mission": {
+      "title": "Misyonumuz",
+      "body": "Amacımız, her müşteriye aynı tasarımı satmak değil. Ortak ve sağlam bir mühendislik temeli üzerinde, her projeye özgü bir kimlik ve deneyim kurmak. Modern, minimal ve premium bir tasarım anlayışını; SEO, performans ve uzun vadeli sürdürülebilirlik önceliğiyle birleştiriyoruz."
+    },
+    "vision": {
+      "title": "Vizyonumuz",
+      "body": "Uluslararası standartlarda tasarlanmış, ölçülü ve sürdürülebilir dijital ürünlerin; işletme büyüklüğü fark etmeksizin her şirketin erişebileceği bir standart haline gelmesi için çalışıyoruz."
+    },
+    "values": {
+      "eyebrow": "Değerlerimiz",
+      "title": "Nasıl çalıştığımızı belirleyen ilkeler",
+      "items": [
+        {
+          "id": "shared-foundation",
+          "title": "Ortak altyapı, özgün tasarım",
+          "description": "Her proje sağlam ve test edilmiş bir teknik temel üzerine, kendine özgü bir kimlikle inşa edilir."
+        },
+        {
+          "id": "performance",
+          "title": "Performans ve SEO önceliği",
+          "description": "Hız ve arama motoru görünürlüğü, sonradan eklenen bir özellik değil, en baştan tasarımın bir parçasıdır."
+        },
+        {
+          "id": "multilingual",
+          "title": "Büyümeye hazır altyapı",
+          "description": "Çok dilli ve ölçeklenebilir mimari, işletmeniz büyüdükçe yeniden yazım gerektirmez."
+        },
+        {
+          "id": "sustainability",
+          "title": "Uzun vadeli sürdürülebilirlik",
+          "description": "Kod, yalnızca bugünü değil; bakımı, büyümeyi ve gelecekteki değişimi de düşünerek yazılır."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Birlikte çalışmaya ne dersiniz?",
+      "subtitle": "Projenizi anlatın, size en uygun yaklaşımı birlikte belirleyelim.",
+      "primaryCta": "İletişime geç"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "İletişim",
+      "title": "Projenizi konuşalım",
+      "subtitle": "Fikrinizi kısaca anlatın; size dönüş yapalım."
+    },
+    "form": {
+      "nameLabel": "Ad Soyad",
+      "namePlaceholder": "Adınız Soyadınız",
+      "emailLabel": "E-posta",
+      "emailPlaceholder": "ornek@sirket.com",
+      "companyLabel": "Şirket (opsiyonel)",
+      "companyPlaceholder": "Şirket adınız",
+      "messageLabel": "Mesajınız",
+      "messagePlaceholder": "Projenizden kısaca bahsedin...",
+      "submit": "Gönder",
+      "sending": "Gönderiliyor...",
+      "success": "Mesajınız alındı. En kısa sürede size dönüş yapacağız.",
+      "error": "Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.",
+      "requiredError": "Lütfen ad, e-posta ve mesaj alanlarını doldurun.",
+      "privacyNotice": "Bu formu göndererek verilerinizin <link>Gizlilik Politikası</link> kapsamında işlenmesini kabul etmiş olursunuz."
+    },
+    "info": {
+      "title": "Doğrudan ulaşın",
+      "emailLabel": "E-posta",
+      "note": "Formu doldurmak yerine doğrudan da yazabilirsiniz.",
+      "processTitle": "Sırada ne var",
+      "processBody": "Mesajınızı okuruz ve ihtiyacınıza uygun bir sonraki adımı e-posta ile paylaşırız."
+    },
+    "map": {
+      "title": "Nerede çalışıyoruz",
+      "body": "Sabit bir ofis adresimiz yok; ekibimiz tamamen uzaktan çalışıyor. En hızlı ulaşım yolu e-posta veya yukarıdaki form."
+    }
+  },
+  "footer": {
+    "rights": "Tüm hakları saklıdır.",
+    "quickLinksTitle": "Hızlı Bağlantılar",
+    "servicesTitle": "Hizmetler",
+    "contactTitle": "İletişim",
+    "writeToUs": "Bize yazın",
+    "privacy": "Gizlilik Politikası"
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "description": "Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.",
+    "backHome": "Ana sayfaya dön"
+  },
+  "privacy": {
+    "title": "Gizlilik Politikası",
+    "lastUpdated": "Son güncelleme: 6 Temmuz 2026",
+    "intro": "Bu politika, HIZIR Software'in bu web sitesi üzerinden hangi kişisel verileri, hangi amaçla ve nasıl işlediğini açıklar. Kişisel verileriniz, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında işlenir.",
+    "sections": [
+      {
+        "id": "collected",
+        "heading": "Hangi verileri topluyoruz?",
+        "body": "İletişim formunu doldurduğunuzda ad soyad, e-posta adresi, (isteğe bağlı) şirket adı ve mesajınız tarafımıza iletilir. Sitede üyelik veya hesap sistemi bulunmaz; formun dışında sizden kişisel veri talep edilmez."
+      },
+      {
+        "id": "purpose",
+        "heading": "Verileri hangi amaçla kullanıyoruz?",
+        "body": "Form üzerinden ilettiğiniz bilgiler yalnızca talebinizi yanıtlamak, sizinle iletişime geçmek ve teklif hazırlamak amacıyla kullanılır. Açık rızanız olmadan pazarlama iletisi gönderilmez; verileriniz üçüncü taraflara satılmaz veya pazarlama amacıyla paylaşılmaz."
+      },
+      {
+        "id": "processing",
+        "heading": "Veriler nasıl iletiliyor ve saklanıyor?",
+        "body": "Form gönderimleri, e-posta iletim altyapısı aracılığıyla tarafımıza e-posta olarak ulaştırılır ve yazışma geçmişi kapsamında makul bir süre saklanır. Yasal yükümlülükler gerektirmedikçe verileriniz daha uzun süre tutulmaz."
+      },
+      {
+        "id": "cookies",
+        "heading": "Çerezler ve analitik",
+        "body": "Bu site takip çerezi kullanmaz. Ziyaret istatistikleri için kullanılması halinde, kişisel veri toplamayan çerezsiz bir analitik aracı tercih edilir."
+      },
+      {
+        "id": "rights",
+        "heading": "KVKK kapsamındaki haklarınız",
+        "body": "KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, verilerinizin düzeltilmesini veya silinmesini isteme haklarına sahipsiniz."
+      },
+      {
+        "id": "contact",
+        "heading": "İletişim",
+        "body": "Gizlilikle ilgili tüm soru ve talepleriniz için iletisim@hizirsoftware.com adresinden bize ulaşabilirsiniz."
+      }
+    ]
+  }
+}
