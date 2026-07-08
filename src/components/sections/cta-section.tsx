@@ -9,6 +9,7 @@ export function CtaSection({
   primaryHref = "/iletisim",
   secondaryCta,
   secondaryHref = "/hizmetler",
+  compact = false,
 }: {
   title: string;
   subtitle: string;
@@ -16,7 +17,40 @@ export function CtaSection({
   primaryHref?: string;
   secondaryCta?: string;
   secondaryHref?: string;
+  /** Daha alçak, tek satıra yakın sürüm — fiyat vitrini asıl odakken kullanılır. */
+  compact?: boolean;
 }) {
+  if (compact) {
+    return (
+      <Reveal
+        variants={scaleIn}
+        className="relative overflow-hidden rounded-2xl border border-border bg-foreground px-8 py-10 sm:px-12"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-20"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 0%, var(--color-accent), transparent 60%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left">
+          <div>
+            <h2 className="text-balance text-xl font-semibold tracking-tight text-background sm:text-2xl">
+              {title}
+            </h2>
+            <p className="mt-1.5 max-w-xl text-balance text-sm text-background/70">
+              {subtitle}
+            </p>
+          </div>
+          <ButtonLink href={primaryHref} className="shrink-0">
+            {primaryCta}
+          </ButtonLink>
+        </div>
+      </Reveal>
+    );
+  }
+
   return (
     <Reveal
       variants={scaleIn}

@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { PageTransition } from "@/components/motion/page-transition";
+import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 
 /**
  * (marketing) route group layout'u.
@@ -13,6 +15,8 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const t = useTranslations("whatsapp");
+
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
@@ -20,6 +24,7 @@ export default function MarketingLayout({
         <PageTransition>{children}</PageTransition>
       </main>
       <SiteFooter />
+      <WhatsAppFloat message={t("defaultMessage")} />
     </div>
   );
 }

@@ -73,6 +73,8 @@ function ContactInfoSection() {
     <ContactInfo
       title={t("title")}
       email={siteConfig.contactEmail}
+      phone={siteConfig.phone}
+      whatsappHref={`https://wa.me/${siteConfig.whatsappNumber}`}
       note={t("note")}
       processTitle={t("processTitle")}
       processBody={t("processBody")}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Github, Linkedin, Twitter, type LucideIcon } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Twitter, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -32,16 +32,21 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <FooterLinkGroup title={t("footer.quickLinksTitle")}>
-            {siteConfig.navItems.map((item) => (
-              <FooterLink key={item.key} href={item.href}>
-                {t(`nav.${item.key}`)}
-              </FooterLink>
-            ))}
+          {/* Ürünler — fiyat vitrinindeki dört paket */}
+          <FooterLinkGroup title={t("footer.productsTitle")}>
+            {(t.raw("home.pricing.products") as { id: string; name: string }[]).map(
+              (product) => (
+                <FooterLink key={product.id} href="/#fiyatlandirma">
+                  {product.name}
+                </FooterLink>
+              )
+            )}
           </FooterLinkGroup>
 
-          <FooterLinkGroup title={t("footer.servicesTitle")}>
-            {services.slice(0, 5).map((service) => {
+          {/* Şirket — hizmetler + iletişim */}
+          <FooterLinkGroup title={t("footer.companyTitle")}>
+            <FooterLink href="/hizmetler">{t("nav.services")}</FooterLink>
+            {services.slice(0, 3).map((service) => {
               const slug = getServiceSlug(service.id);
               const href =
                 slug && isServiceDetailSlug(slug)
@@ -53,14 +58,23 @@ export function SiteFooter() {
                 </FooterLink>
               );
             })}
+            <FooterLink href="/iletisim">{t("footer.writeToUs")}</FooterLink>
           </FooterLinkGroup>
 
-          <FooterLinkGroup title={t("footer.contactTitle")}>
+          {/* Yasal + iletişim */}
+          <FooterLinkGroup title={t("footer.legalTitle")}>
+            <FooterLink href="/gizlilik">{t("footer.privacy")}</FooterLink>
+            <FooterLink href="/kullanim-kosullari">
+              {t("footer.terms")}
+            </FooterLink>
             <FooterLink href={`mailto:${siteConfig.contactEmail}`}>
               <Mail className="h-3.5 w-3.5" aria-hidden="true" />
               {siteConfig.contactEmail}
             </FooterLink>
-            <FooterLink href="/iletisim">{t("footer.writeToUs")}</FooterLink>
+            <FooterLink href={`https://wa.me/${siteConfig.whatsappNumber}`}>
+              <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+              {siteConfig.phone}
+            </FooterLink>
           </FooterLinkGroup>
         </div>
 
@@ -68,12 +82,6 @@ export function SiteFooter() {
           <p className="text-sm text-muted-foreground">
             © {year} {t("site.name")}. {t("footer.rights")}
           </p>
-          <Link
-            href="/gizlilik"
-            className="text-sm text-muted-foreground transition-colors duration-fast hover:text-accent"
-          >
-            {t("footer.privacy")}
-          </Link>
           {siteConfig.socialLinks.length > 0 ? (
             <div className="flex items-center gap-2">
               {siteConfig.socialLinks.map((social) => {
@@ -139,8 +147,14 @@ function FooterLink({
 
   return (
     <li>
-      {href.startsWith("mailto:") ? (
-        <a href={href} className={className}>
+      {href.startsWith("mailto:") || href.startsWith("http") ? (
+        <a
+          href={href}
+          className={className}
+          {...(href.startsWith("http")
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
           {content}
         </a>
       ) : (

@@ -48,6 +48,11 @@ export type ServiceDetailContent = {
     description: string;
     cta: string;
   };
+  faq: {
+    eyebrow: string;
+    title: string;
+    items: { id: string; question: string; answer: string }[];
+  };
 };
 
 export type { FeatureItem, ProcessStep, PackageTier };

@@ -6,6 +6,7 @@
   "nav": {
     "home": "Ana Sayfa",
     "services": "Hizmetler",
+    "pricing": "Fiyatlandırma",
     "about": "Hakkımızda",
     "contact": "İletişim",
     "mainNav": "Ana navigasyon",
@@ -16,10 +17,107 @@
   "home": {
     "hero": {
       "eyebrow": "HIZIR Software",
-      "title": "Modern yazılım. Ölçülü tasarım. Kalıcı güven.",
-      "subtitle": "İşletmeler için kurumsal web siteleri, dijital çözümler ve kendi teknoloji ürünlerimizi geliştiriyoruz.",
+      "title": "İşletmenizin dijital yüzünü tek pakette kuruyoruz",
+      "subtitle": "QR menüden web sitesine, kasadan mutfağa — restoranınız ve işletmeniz için modern, hızlı ve yönetimi kolay çözümler.",
       "primaryCta": "Projeni konuşalım",
-      "secondaryCta": "Hizmetleri gör"
+      "secondaryCta": "Fiyatları gör"
+    },
+    "pricing": {
+      "eyebrow": "Fiyatlandırma",
+      "title": "Net fiyat, aynı gün kurulum",
+      "subtitle": "İşletmeniz için hazır çözümler; sürpriz maliyet yok, sözleşme zorunluluğu yok.",
+      "whatsappCta": "WhatsApp'tan Başlayın",
+      "whatsappMessage": "Merhaba, {product} paketi hakkında bilgi almak istiyorum.",
+      "note": "Tüm paketlerde kurulum ücretsizdir. Özel ihtiyaçlar için WhatsApp üzerinden yazabilir veya iletişim sayfasından bize ulaşabilirsiniz.",
+      "products": [
+        {
+          "id": "qr-menu",
+          "name": "QR Menü",
+          "price": "₺300",
+          "period": "/ay",
+          "description": "Restoranınız için dijital menü — baskı maliyeti yok.",
+          "features": [
+            "Markanıza uygun şık tasarım",
+            "Saniyeler içinde fiyat/ürün güncelleme",
+            "Alerjen ve içerik bilgisi",
+            "Çok dilli menü desteği",
+            "Kendi QR tasarımınız",
+            "Aynı gün kurulum"
+          ]
+        },
+        {
+          "id": "web-site",
+          "name": "Web Sitesi",
+          "price": "₺450",
+          "period": "/ay",
+          "description": "İşletmenize özel, hızlı ve SEO uyumlu web sitesi.",
+          "features": [
+            "İşletmenize özel alan adı (.com)",
+            "Google SEO altyapısı",
+            "Kurumsal tanıtım sayfaları",
+            "Google Haritalar ve yol tarifi",
+            "Fotoğraf galerisi",
+            "Sosyal medya bağlantıları"
+          ]
+        },
+        {
+          "id": "pos",
+          "name": "POS Sistemi",
+          "price": "₺675",
+          "period": "/ay",
+          "description": "Kasadan mutfağa siparişin tüm akışı tek sistemde.",
+          "features": [
+            "Masa ve tezgah sipariş yönetimi",
+            "Hesap bölme senaryoları",
+            "Otomatik fiş yazdırma",
+            "Gün sonu Z-raporu",
+            "Yetki bazlı personel yönetimi",
+            "Çevrimdışı da çalışır"
+          ]
+        },
+        {
+          "id": "complete",
+          "name": "Kapsamlı İşletme",
+          "price": "₺900",
+          "period": "/ay",
+          "description": "QR Menü + Web Sitesi + POS ve fazlası, tek pakette.",
+          "highlighted": true,
+          "features": [
+            "Tüm paketler dahil",
+            "Tablet garson paneli",
+            "Mutfak ekranı (KDS)",
+            "Kurye paneli ve sipariş takibi",
+            "Stok takibi ve uyarıları",
+            "Sınırsız masa ve personel"
+          ]
+        }
+      ]
+    },
+    "works": {
+      "eyebrow": "Örnek Çalışmalar",
+      "title": "Ürünlerimiz iş başında",
+      "subtitle": "Aşağıdaki demolar, teslim ettiğimiz işlerin birebir yapısını yansıtır — sizin markanızla, sizin renklerinizle kurulur.",
+      "demoBadge": "Demo",
+      "items": [
+        {
+          "id": "web-site",
+          "tag": "Web Sitesi",
+          "title": "Lezzet Durağı",
+          "description": "Ocakbaşı restoranı için rezervasyon odaklı tanıtım sitesi: menü vitrini, konum ve çalışma saatleri tek ekranda."
+        },
+        {
+          "id": "qr-menu",
+          "tag": "QR Menü",
+          "title": "Fincan Kahve",
+          "description": "Butik kafe için dijital menü: kategoriler, ürün açıklamaları ve alerjen bilgisi — fiyat güncellemesi saniyeler içinde."
+        },
+        {
+          "id": "pos",
+          "tag": "Kapsamlı İşletme",
+          "title": "Saray Pide",
+          "description": "Pide salonu için işletme paneli: masa ve paket siparişleri, günlük ciro ve mutfak akışı tek panelde."
+        }
+      ]
     },
     "services": {
       "eyebrow": "Hizmetler",
@@ -273,7 +371,805 @@
           }
         ]
       }
+    },
+    "dijital-urun-gelistirme": {
+      "hero": {
+        "eyebrow": "Dijital Ürün Geliştirme",
+        "title": "Fikirden Ölçeklenebilir Ürüne, Uçtan Uca Geliştirme",
+        "subtitle": "SaaS, web uygulaması ve iç araçlar; sağlam mimari ve sürdürülebilir kodla hayata geçer.",
+        "primaryCta": "Teklif Al",
+        "secondaryCta": "Paketleri Gör"
+      },
+      "audience": {
+        "eyebrow": "Kimler İçin?",
+        "title": "Bu hizmet kimler için?",
+        "subtitle": "Bir ürün fikrini gerçeğe dönüştürmek isteyen herkes için.",
+        "items": [
+          {
+            "id": "startup",
+            "title": "Girişimler",
+            "description": "Fikrini hızla pazara sürmek, yatırımcıya gösterilecek bir MVP çıkarmak isteyen girişimler."
+          },
+          {
+            "id": "internal-tools",
+            "title": "İç araç ihtiyacı olan şirketler",
+            "description": "Excel ve e-postayla dönen süreçlerini özel bir iç araçla hızlandırmak isteyen işletmeler."
+          },
+          {
+            "id": "saas-idea",
+            "title": "SaaS fikri olanlar",
+            "description": "Abonelik tabanlı bir yazılım ürünü kurmak isteyen ama teknik ekibi olmayan ekipler."
+          },
+          {
+            "id": "enterprise-digital",
+            "title": "Dijitalleşen kurumlar",
+            "description": "Mevcut iş süreçlerini modern bir web uygulamasına taşımak isteyen kurumsal yapılar."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Kapsam",
+        "title": "Bu hizmet kapsamında neler sunuyoruz?",
+        "subtitle": "MVP'den ölçeklenebilir ürüne kadar tüm yolculuk.",
+        "items": [
+          {
+            "id": "mvp",
+            "title": "MVP Geliştirme",
+            "description": "En kritik özelliklere odaklanan, hızla yayına alınabilir ilk sürüm."
+          },
+          {
+            "id": "architecture",
+            "title": "Ölçeklenebilir Mimari",
+            "description": "Kullanıcı sayısı arttıkça yeniden yazım gerektirmeyen sağlam teknik temel."
+          },
+          {
+            "id": "product-ux",
+            "title": "Ürün Arayüzü & Deneyimi",
+            "description": "Kullanıcıların severek kullandığı, sade ve işlevsel arayüz tasarımı."
+          },
+          {
+            "id": "integrations",
+            "title": "API & Entegrasyonlar",
+            "description": "Ödeme, e-posta, CRM gibi dış servislerle sorunsuz bağlantı."
+          },
+          {
+            "id": "data-foundation",
+            "title": "Veri Altyapısı",
+            "description": "Doğru kurgulanmış veritabanı ve veri modeli; raporlamaya ve büyümeye hazır."
+          },
+          {
+            "id": "iteration",
+            "title": "Sürekli İyileştirme",
+            "description": "Yayın sonrası kullanıcı geri bildirimiyle ürünü birlikte olgunlaştırırız."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Paketler",
+        "title": "İhtiyacınıza uygun bir başlangıç noktası",
+        "subtitle": "Aşağıdaki paketler örnek bir yapıdır; kapsamı ve fiyatı ihtiyacınıza göre birlikte belirleriz.",
+        "priceLabel": "Teklif üzerine",
+        "ctaLabel": "Teklif Al",
+        "tiers": [
+          {
+            "id": "mvp",
+            "name": "MVP",
+            "description": "Fikrinizi en hızlı şekilde test etmeniz için çekirdek ürün.",
+            "features": [
+              "Keşif ve kapsam ataması",
+              "Çekirdek özellik seti",
+              "Temel kullanıcı yönetimi",
+              "Yayına alma ve kurulum"
+            ]
+          },
+          {
+            "id": "product",
+            "name": "Ürün",
+            "description": "Gerçek kullanıcılara açılmaya hazır, tam kapsamlı ürün.",
+            "features": [
+              "MVP paketindeki her şey",
+              "Ödeme ve abonelik altyapısı",
+              "Yönetim paneli",
+              "Dış servis entegrasyonları"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "scale",
+            "name": "Ölçek",
+            "description": "Büyüyen kullanıcı tabanı ve kurumsal gereksinimler için.",
+            "features": [
+              "Ürün paketindeki her şey",
+              "Performans ve ölçekleme çalışmaları",
+              "Gelişmiş raporlama",
+              "Öncelikli destek ve bakım"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ürün Fikrinizi Konuşalım",
+        "subtitle": "Fikrinizi anlatın; kapsamı, yol haritasını ve ilk sürümü birlikte planlayalım.",
+        "primaryCta": "Teklif Al"
+      },
+      "websiteBuilder": {
+        "badge": "Yakında",
+        "title": "Kendi Sitenizi Kendiniz Tasarlayın",
+        "description": "Website Builder ile markanıza özel bir web sitesini kod yazmadan, sürükle-bırak bir arayüzle kendiniz oluşturabileceksiniz. Şu anda geliştirme aşamasında.",
+        "cta": "Haberdar Ol"
+      },
+      "faq": {
+        "eyebrow": "SSS",
+        "title": "Sık sorulan sorular",
+        "items": [
+          {
+            "id": "timeline",
+            "question": "Bir MVP ne kadar sürede hazır olur?",
+            "answer": "Kapsama bağlı olarak değişir; odaklı bir MVP genellikle birkaç ay içinde yayına alınabilir. Keşif görüşmesinde net bir takvim çıkarırız."
+          },
+          {
+            "id": "ownership",
+            "question": "Kod ve ürün kime ait oluyor?",
+            "answer": "Tamamı size. Kod tabanı, tasarım ve tüm hesaplar sizin adınıza kurulur; dilediğiniz zaman başka bir ekiple devam edebilirsiniz."
+          },
+          {
+            "id": "tech-stack",
+            "question": "Hangi teknolojileri kullanıyorsunuz?",
+            "answer": "Modern, yaygın ve uzun ömürlü teknolojiler tercih ediyoruz (TypeScript, Next.js, PostgreSQL gibi). Amaç, yıllar sonra da kolayca geliştirici bulabileceğiniz bir teknoloji yığını."
+          },
+          {
+            "id": "after-mvp",
+            "question": "MVP sonrası süreç nasıl ilerliyor?",
+            "answer": "Kullanıcı geri bildirimlerini birlikte değerlendirir, öncelikli özellikleri planlar ve düzenli sürümlerle ürünü olgunlaştırırız."
+          },
+          {
+            "id": "existing-code",
+            "question": "Yarım kalmış bir projemiz var; devralabilir misiniz?",
+            "answer": "Evet. Önce mevcut kodu inceleyip durum tespiti yaparız; devam etmek mi yoksa yeniden başlamak mı daha ekonomik, açıkça söyleriz."
+          }
+        ]
+      }
+    },
+    "e-ticaret-cozumleri": {
+      "hero": {
+        "eyebrow": "E-Ticaret Çözümleri",
+        "title": "Satışa Hazır, Hızlı ve Güvenli E-Ticaret",
+        "subtitle": "Ödeme, stok ve kargo entegrasyonlarıyla; mobil öncelikli, dönüşüm odaklı online mağazalar.",
+        "primaryCta": "Teklif Al",
+        "secondaryCta": "Paketleri Gör"
+      },
+      "audience": {
+        "eyebrow": "Kimler İçin?",
+        "title": "Bu hizmet kimler için?",
+        "subtitle": "Online satışa başlamak veya mevcut mağazasını büyütmek isteyen her işletme için.",
+        "items": [
+          {
+            "id": "retail-to-online",
+            "title": "Online'a açılan mağazalar",
+            "description": "Fiziksel mağazasını internete taşımak isteyen perakende işletmeleri."
+          },
+          {
+            "id": "d2c-brands",
+            "title": "D2C markalar",
+            "description": "Pazaryerlerine bağımlılığı azaltıp kendi kanalından satmak isteyen markalar."
+          },
+          {
+            "id": "b2b-wholesale",
+            "title": "B2B & toptan satış",
+            "description": "Bayilerine özel fiyat ve sipariş süreçleri gereken toptancılar."
+          },
+          {
+            "id": "replatform",
+            "title": "Altyapı değiştirmek isteyenler",
+            "description": "Mevcut e-ticaret altyapısı yavaş kalan, komisyonlardan yorulan işletmeler."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Kapsam",
+        "title": "Bu hizmet kapsamında neler sunuyoruz?",
+        "subtitle": "Vitrin tasarımından kargo entegrasyonuna, satışın her adımı.",
+        "items": [
+          {
+            "id": "storefront",
+            "title": "Özgün Mağaza Tasarımı",
+            "description": "Markanıza özel, şablon hissi vermeyen ve satışa odaklı vitrin."
+          },
+          {
+            "id": "payments",
+            "title": "Ödeme Altyapısı",
+            "description": "Kredi kartı, havale ve alternatif ödeme yöntemleriyle güvenli tahsilat."
+          },
+          {
+            "id": "inventory",
+            "title": "Stok & Ürün Yönetimi",
+            "description": "Varyantlı ürünler, stok takibi ve toplu ürün yönetimi."
+          },
+          {
+            "id": "shipping",
+            "title": "Kargo Entegrasyonları",
+            "description": "Anlaşmalı kargo firmalarıyla otomatik etiket ve takip süreçleri."
+          },
+          {
+            "id": "mobile-commerce",
+            "title": "Mobil Öncelikli Deneyim",
+            "description": "Alışverişin çoğunun geçtiği mobilde kusursuz ve hızlı deneyim."
+          },
+          {
+            "id": "analytics",
+            "title": "Dönüşüm & Raporlama",
+            "description": "Satış hunisi, terk edilen sepet ve kampanya performansı ölçümü."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Paketler",
+        "title": "İhtiyacınıza uygun bir başlangıç noktası",
+        "subtitle": "Aşağıdaki paketler örnek bir yapıdır; kapsamı ve fiyatı ihtiyacınıza göre birlikte belirleriz.",
+        "priceLabel": "Teklif üzerine",
+        "ctaLabel": "Teklif Al",
+        "tiers": [
+          {
+            "id": "starter",
+            "name": "Başlangıç",
+            "description": "Sınırlı ürün sayısıyla hızla satışa başlamak için.",
+            "features": [
+              "Mağaza tasarımı ve kurulumu",
+              "Ödeme altyapısı",
+              "Temel kargo entegrasyonu",
+              "Mobil uyumlu vitrin"
+            ]
+          },
+          {
+            "id": "growth",
+            "name": "Büyüme",
+            "description": "Büyüyen katalog ve kampanyalar için tam donanımlı mağaza.",
+            "features": [
+              "Başlangıç paketindeki her şey",
+              "Gelişmiş stok ve varyant yönetimi",
+              "Kampanya ve kupon altyapısı",
+              "Dönüşüm raporlaması"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "enterprise",
+            "name": "Kurumsal",
+            "description": "Yüksek hacim ve özel süreçleri olan işletmeler için.",
+            "features": [
+              "Büyüme paketindeki her şey",
+              "ERP / muhasebe entegrasyonları",
+              "B2B fiyatlandırma senaryoları",
+              "Öncelikli destek"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Online Satışa Başlayalım",
+        "subtitle": "Ürünlerinizi anlatın; size uygun e-ticaret kurgusunu birlikte çıkaralım.",
+        "primaryCta": "Teklif Al"
+      },
+      "websiteBuilder": {
+        "badge": "Yakında",
+        "title": "Kendi Sitenizi Kendiniz Tasarlayın",
+        "description": "Website Builder ile markanıza özel bir web sitesini kod yazmadan, sürükle-bırak bir arayüzle kendiniz oluşturabileceksiniz. Şu anda geliştirme aşamasında.",
+        "cta": "Haberdar Ol"
+      },
+      "faq": {
+        "eyebrow": "SSS",
+        "title": "Sık sorulan sorular",
+        "items": [
+          {
+            "id": "platform",
+            "question": "Hazır platform mu, özel geliştirme mi yapıyorsunuz?",
+            "answer": "İhtiyaca göre ikisi de mümkün. Küçük kataloglarda hazır altyapılar hızlı sonuç verir; özel süreçler ve yüksek hacim için özel geliştirme öneririz. Keşifte birlikte karar veririz."
+          },
+          {
+            "id": "commissions",
+            "question": "Satışlardan komisyon alıyor musunuz?",
+            "answer": "Hayır. Proje bedeli dışında satışlarınızdan komisyon almayız; mağaza ve kazancı tamamen size aittir."
+          },
+          {
+            "id": "migration",
+            "question": "Mevcut mağazamızdaki ürünler taşınabilir mi?",
+            "answer": "Evet. Ürünler, kategoriler, müşteriler ve mümkünse sipariş geçmişi planlı bir şekilde yeni altyapıya taşınır; SEO kaybı olmaması için yönlendirmeler kurulur."
+          },
+          {
+            "id": "payments-setup",
+            "question": "Ödeme altyapısı için ne gerekiyor?",
+            "answer": "Sanal POS başvurularında evrak ve süreç yönetiminde size yol gösteririz; teknik entegrasyonun tamamını biz üstleniriz."
+          },
+          {
+            "id": "after-launch",
+            "question": "Mağaza açıldıktan sonra destek veriyor musunuz?",
+            "answer": "Evet. Bakım, performans ve SEO paketimizle güncellemeleri, izlemeyi ve kampanya dönemlerine hazırlığı biz üstlenebiliriz."
+          }
+        ]
+      }
+    },
+    "marka-tasarim-sistemi": {
+      "hero": {
+        "eyebrow": "Marka & Tasarım Sistemi",
+        "title": "Her Kanalda Tutarlı, Ölçeklenebilir Bir Tasarım Dili",
+        "subtitle": "Token tabanlı tasarım sistemi ve bileşen kütüphanesiyle markanız her yerde aynı konuşur.",
+        "primaryCta": "Teklif Al",
+        "secondaryCta": "Paketleri Gör"
+      },
+      "audience": {
+        "eyebrow": "Kimler İçin?",
+        "title": "Bu hizmet kimler için?",
+        "subtitle": "Markasını sistemli ve tutarlı bir görsel dile kavuşturmak isteyenler için.",
+        "items": [
+          {
+            "id": "new-brand",
+            "title": "Yeni markalar",
+            "description": "Kimliğini ilk günden doğru ve sistemli kurmak isteyen yeni girişimler."
+          },
+          {
+            "id": "rebrand",
+            "title": "Yenilenen markalar",
+            "description": "Dağınık görsel dilini toparlayıp modern bir kimliğe geçmek isteyenler."
+          },
+          {
+            "id": "product-teams",
+            "title": "Ürün ekipleri",
+            "description": "Tasarımcı ve geliştirici arasında ortak bir dil kurmak isteyen ekipler."
+          },
+          {
+            "id": "multi-product",
+            "title": "Çok ürünlü yapılar",
+            "description": "Birden fazla ürün veya alt markayı tek sistemle yönetmek isteyen şirketler."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Kapsam",
+        "title": "Bu hizmet kapsamında neler sunuyoruz?",
+        "subtitle": "Renkten koda, markanızın tüm görsel altyapısı.",
+        "items": [
+          {
+            "id": "design-tokens",
+            "title": "Token Tabanlı Sistem",
+            "description": "Renk, tipografi, boşluk ve hareket; tek kaynaktan yönetilen tasarım kararları."
+          },
+          {
+            "id": "component-library",
+            "title": "Bileşen Kütüphanesi",
+            "description": "Buton, form, kart gibi tekrar eden parçaların hazır ve tutarlı seti."
+          },
+          {
+            "id": "typography-color",
+            "title": "Tipografi & Renk Sistemi",
+            "description": "Markanıza özel, okunabilirlik ve hiyerarşi gözetilmiş seçimler."
+          },
+          {
+            "id": "accessibility",
+            "title": "Erişilebilirlik Standartları",
+            "description": "Kontrast, klavye ve ekran okuyucu uyumu baştan sistemin içinde."
+          },
+          {
+            "id": "guidelines",
+            "title": "Kullanım Kılavuzu",
+            "description": "Sistemin nasıl kullanılacağını anlatan, ekiplerin başvuru dokümanı."
+          },
+          {
+            "id": "design-to-code",
+            "title": "Tasarımdan Koda Köprü",
+            "description": "Figma'daki sistemin koda birebir yansıması; tasarım-geliştirme kopukluğu biter."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Paketler",
+        "title": "İhtiyacınıza uygun bir başlangıç noktası",
+        "subtitle": "Aşağıdaki paketler örnek bir yapıdır; kapsamı ve fiyatı ihtiyacınıza göre birlikte belirleriz.",
+        "priceLabel": "Teklif üzerine",
+        "ctaLabel": "Teklif Al",
+        "tiers": [
+          {
+            "id": "identity",
+            "name": "Kimlik",
+            "description": "Marka kimliğinin temelleri: renk, tipografi, temel kurallar.",
+            "features": [
+              "Renk ve tipografi sistemi",
+              "Logo kullanım kuralları",
+              "Temel token seti",
+              "Mini kullanım kılavuzu"
+            ]
+          },
+          {
+            "id": "system",
+            "name": "Sistem",
+            "description": "Ürün ve web için tam kapsamlı tasarım sistemi.",
+            "features": [
+              "Kimlik paketindeki her şey",
+              "Bileşen kütüphanesi (Figma)",
+              "Erişilebilirlik standartları",
+              "Kapsamlı dokümantasyon"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "system-code",
+            "name": "Sistem + Kod",
+            "description": "Tasarım sisteminin koda dökülmüş, kullanıma hazır hali.",
+            "features": [
+              "Sistem paketindeki her şey",
+              "Kodlanmış bileşen kütüphanesi",
+              "Token'ların koda entegrasyonu",
+              "Geliştirici dokümantasyonu"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Markanıza Sistem Kazandıralım",
+        "subtitle": "Mevcut durumunuzu anlatın; ihtiyacınız olan sistemin kapsamını birlikte çıkaralım.",
+        "primaryCta": "Teklif Al"
+      },
+      "websiteBuilder": {
+        "badge": "Yakında",
+        "title": "Kendi Sitenizi Kendiniz Tasarlayın",
+        "description": "Website Builder ile markanıza özel bir web sitesini kod yazmadan, sürükle-bırak bir arayüzle kendiniz oluşturabileceksiniz. Şu anda geliştirme aşamasında.",
+        "cta": "Haberdar Ol"
+      },
+      "faq": {
+        "eyebrow": "SSS",
+        "title": "Sık sorulan sorular",
+        "items": [
+          {
+            "id": "logo",
+            "question": "Logo tasarımı da kapsama dahil mi?",
+            "answer": "Odak noktamız sistem tasarımıdır; mevcut logonuz üzerine inşa ederiz. Logo yenileme ihtiyacı varsa güvendiğimiz tasarımcılarla birlikte çalışır veya kapsama ekleriz."
+          },
+          {
+            "id": "existing-brand",
+            "question": "Mevcut marka kimliğimiz var; sıfırdan mı başlanır?",
+            "answer": "Hayır. Mevcut kimliğinizi denetler, işleyen parçaları korur ve eksikleri sistemleştiririz. Amaç devrim değil, düzen."
+          },
+          {
+            "id": "tools",
+            "question": "Hangi araçlarla çalışıyorsunuz?",
+            "answer": "Tasarımda Figma, kod tarafında modern web standartları (CSS değişkenleri, TypeScript bileşenleri). Sistemi hangi araçla sürdürecekseniz ona göre teslim ederiz."
+          },
+          {
+            "id": "team-handoff",
+            "question": "Sistemi kendi ekibimiz sürdürebilir mi?",
+            "answer": "Evet, zaten hedef bu. Dokümantasyon ve devir eğitimiyle ekibinizin sistemi bağımsızca kullanmasını ve büyütmesini sağlarız."
+          },
+          {
+            "id": "scope-time",
+            "question": "Bir tasarım sistemi ne kadar sürede kurulur?",
+            "answer": "Kapsama göre değişir; temel bir kimlik sistemi birkaç haftada, kodlu tam sistem birkaç ayda olgunlaşır. Keşifte net bir takvim veririz."
+          }
+        ]
+      }
+    },
+    "bakim-performans-seo": {
+      "hero": {
+        "eyebrow": "Bakım, Performans & SEO",
+        "title": "Siteniz Yayında; Biz Arkasındayız",
+        "subtitle": "İzleme, güvenlik güncellemeleri, hız optimizasyonu ve arama görünürlüğü — tek pakette.",
+        "primaryCta": "Teklif Al",
+        "secondaryCta": "Paketleri Gör"
+      },
+      "audience": {
+        "eyebrow": "Kimler İçin?",
+        "title": "Bu hizmet kimler için?",
+        "subtitle": "Yayındaki sitesinin sağlığını ve görünürlüğünü şansa bırakmak istemeyenler için.",
+        "items": [
+          {
+            "id": "live-sites",
+            "title": "Yayında sitesi olanlar",
+            "description": "Sitesi canlı olan ama düzenli bakım ve güncelleme yapılmayan işletmeler."
+          },
+          {
+            "id": "visibility",
+            "title": "Görünürlük isteyenler",
+            "description": "Google'da rakiplerinin gerisinde kalan, aramalarda bulunmak isteyenler."
+          },
+          {
+            "id": "slow-sites",
+            "title": "Yavaş siteler",
+            "description": "Açılış hızı müşteri kaçıran, mobilde zorlanan siteler."
+          },
+          {
+            "id": "security-first",
+            "title": "Güvenlik önceliği olanlar",
+            "description": "Güncellenmeyen altyapının risklerini almak istemeyen kurumlar."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Kapsam",
+        "title": "Bu hizmet kapsamında neler sunuyoruz?",
+        "subtitle": "Sitenizin sağlığı için sürekli ve planlı bakım.",
+        "items": [
+          {
+            "id": "performance-monitoring",
+            "title": "Performans İzleme",
+            "description": "Hız ve Core Web Vitals metriklerinin sürekli takibi, sorunlara erken müdahale."
+          },
+          {
+            "id": "seo-improvement",
+            "title": "SEO İyileştirme",
+            "description": "Teknik SEO denetimi, içerik önerileri ve arama görünürlüğünün artırılması."
+          },
+          {
+            "id": "security-updates",
+            "title": "Güvenlik & Güncellemeler",
+            "description": "Bağımlılıkların ve altyapının düzenli, planlı güncellenmesi."
+          },
+          {
+            "id": "content-updates",
+            "title": "İçerik Güncellemeleri",
+            "description": "Metin, görsel ve kampanya değişikliklerinin hızlıca yayına alınması."
+          },
+          {
+            "id": "reporting",
+            "title": "Aylık Raporlama",
+            "description": "Trafik, hız ve arama performansının anlaşılır özet raporları."
+          },
+          {
+            "id": "infrastructure-care",
+            "title": "Altyapı Sağlığı",
+            "description": "Hosting, alan adı, SSL ve yedekleme süreçlerinin takibi."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Paketler",
+        "title": "İhtiyacınıza uygun bir başlangıç noktası",
+        "subtitle": "Aşağıdaki paketler örnek bir yapıdır; kapsamı ve fiyatı ihtiyacınıza göre birlikte belirleriz.",
+        "priceLabel": "Teklif üzerine",
+        "ctaLabel": "Teklif Al",
+        "tiers": [
+          {
+            "id": "care",
+            "name": "Bakım",
+            "description": "Sitenizin güvenli ve güncel kalması için temel paket.",
+            "features": [
+              "Düzenli güvenlik güncellemeleri",
+              "Çalışırlık (uptime) izleme",
+              "Aylık küçük içerik değişiklikleri",
+              "Yedekleme takibi"
+            ]
+          },
+          {
+            "id": "growth",
+            "name": "Büyüme",
+            "description": "Bakımın yanında hız ve arama görünürlüğüne aktif yatırım.",
+            "features": [
+              "Bakım paketindeki her şey",
+              "Performans optimizasyonu",
+              "Teknik SEO iyileştirmeleri",
+              "Aylık performans raporu"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "partner",
+            "name": "Partner",
+            "description": "Dijital varlığınızın sürekli iyileştirilmesi için tam ortaklık.",
+            "features": [
+              "Büyüme paketindeki her şey",
+              "Öncelikli müdahale süresi",
+              "İçerik ve kampanya desteği",
+              "Üç aylık strateji görüşmesi"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Sitenizi Emin Ellere Bırakın",
+        "subtitle": "Mevcut sitenizin adresini paylaşın; ücretsiz bir ön değerlendirmeyle dönelim.",
+        "primaryCta": "Teklif Al"
+      },
+      "websiteBuilder": {
+        "badge": "Yakında",
+        "title": "Kendi Sitenizi Kendiniz Tasarlayın",
+        "description": "Website Builder ile markanıza özel bir web sitesini kod yazmadan, sürükle-bırak bir arayüzle kendiniz oluşturabileceksiniz. Şu anda geliştirme aşamasında.",
+        "cta": "Haberdar Ol"
+      },
+      "faq": {
+        "eyebrow": "SSS",
+        "title": "Sık sorulan sorular",
+        "items": [
+          {
+            "id": "other-developer",
+            "question": "Sitemizi başka bir ekip yaptı; yine de bakımını üstlenir misiniz?",
+            "answer": "Evet. Önce teknik bir durum tespiti yapar, mevcut altyapının bakıma uygunluğunu değerlendirir ve net bir kapsam sunarız."
+          },
+          {
+            "id": "seo-guarantee",
+            "question": "SEO'da birinci sıra garantisi veriyor musunuz?",
+            "answer": "Hayır — kimse veremez ve veren varsa şüphelenin. Biz ölçülebilir teknik iyileştirmeler, doğru içerik yapısı ve düzenli raporlamayla sürdürülebilir bir yükseliş hedefleriz."
+          },
+          {
+            "id": "response-time",
+            "question": "Bir sorun olduğunda ne kadar sürede müdahale ediyorsunuz?",
+            "answer": "Pakete göre değişen net müdahale süreleri tanımlarız. Kritik kesintilere öncelikli olarak, planlı işlere ise aylık takvim içinde müdahale edilir."
+          },
+          {
+            "id": "contract",
+            "question": "Uzun süreli sözleşme zorunlu mu?",
+            "answer": "Aylık çalışırız; uzun taahhüt zorunluluğu yoktur. Memnuniyet devam ettiği sürece birlikte çalışmayı sürdürürüz."
+          },
+          {
+            "id": "whats-included",
+            "question": "Yeni özellik geliştirme bakım kapsamına giriyor mu?",
+            "answer": "Küçük değişiklikler kapsam içindedir; yeni sayfa veya özellik gibi büyük işler ayrıca planlanır ve fiyatlandırılır. Sınırı baştan netleştiririz."
+          }
+        ]
+      }
+    },
+    "danismanlik-teknik-strateji": {
+      "hero": {
+        "eyebrow": "Danışmanlık & Teknik Strateji",
+        "title": "Doğru Teknoloji Kararları, Net Bir Yol Haritası",
+        "subtitle": "Mimari değerlendirme, teknoloji seçimi ve süreç danışmanlığıyla pahalı yanlışları baştan önleyin.",
+        "primaryCta": "Teklif Al",
+        "secondaryCta": "Paketleri Gör"
+      },
+      "audience": {
+        "eyebrow": "Kimler İçin?",
+        "title": "Bu hizmet kimler için?",
+        "subtitle": "Teknoloji kararlarını sağlam bir zemine oturtmak isteyenler için.",
+        "items": [
+          {
+            "id": "pre-build",
+            "title": "Proje öncesi olanlar",
+            "description": "Geliştirmeye başlamadan doğru kapsamı ve teknolojiyi netleştirmek isteyenler."
+          },
+          {
+            "id": "tech-teams",
+            "title": "Teknik ekipler",
+            "description": "Dışarıdan deneyimli bir gözle mimarisini doğrulatmak isteyen ekipler."
+          },
+          {
+            "id": "legacy-systems",
+            "title": "Eski sistemi olanlar",
+            "description": "Yaşlanan altyapısını modernize etmek isteyen ama nereden başlayacağını bilemeyen kurumlar."
+          },
+          {
+            "id": "scaling",
+            "title": "Büyüyen işletmeler",
+            "description": "Büyümenin zorladığı sistemlerini ölçeğe hazırlamak isteyenler."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Kapsam",
+        "title": "Bu hizmet kapsamında neler sunuyoruz?",
+        "subtitle": "Karar anında yanınızda olan deneyimli bir teknik akıl.",
+        "items": [
+          {
+            "id": "architecture-review",
+            "title": "Mimari Değerlendirme",
+            "description": "Mevcut veya planlanan mimarinin güçlü ve riskli yönlerinin analizi."
+          },
+          {
+            "id": "tech-selection",
+            "title": "Teknoloji Seçimi",
+            "description": "İhtiyacınıza ve ekibinize uygun, uzun ömürlü teknoloji kararları."
+          },
+          {
+            "id": "roadmap",
+            "title": "Teknik Yol Haritası",
+            "description": "Öncelikleri netleştirilmiş, aşamalı ve gerçekçi bir uygulama planı."
+          },
+          {
+            "id": "team-process",
+            "title": "Ekip & Süreç Danışmanlığı",
+            "description": "İşe alım, ekip yapısı ve geliştirme süreçlerinde yönlendirme."
+          },
+          {
+            "id": "code-audit",
+            "title": "Kod Denetimi",
+            "description": "Mevcut kod tabanının kalite, güvenlik ve sürdürülebilirlik denetimi."
+          },
+          {
+            "id": "transformation",
+            "title": "Dijital Dönüşüm Desteği",
+            "description": "Manuel süreçlerin dijitalleştirilmesinde stratejik rehberlik."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Paketler",
+        "title": "İhtiyacınıza uygun bir başlangıç noktası",
+        "subtitle": "Aşağıdaki paketler örnek bir yapıdır; kapsamı ve fiyatı ihtiyacınıza göre birlikte belirleriz.",
+        "priceLabel": "Teklif üzerine",
+        "ctaLabel": "Teklif Al",
+        "tiers": [
+          {
+            "id": "assessment",
+            "name": "Değerlendirme",
+            "description": "Mevcut durumun fotoğrafını çeken tek seferlik denetim.",
+            "features": [
+              "Mimari ve kod incelemesi",
+              "Risk ve öncelik raporu",
+              "Sonuç sunumu",
+              "Soru-cevap oturumu"
+            ]
+          },
+          {
+            "id": "roadmap",
+            "name": "Yol Haritası",
+            "description": "Değerlendirme + uygulanabilir, aşamalı plan.",
+            "features": [
+              "Değerlendirme paketindeki her şey",
+              "Aşamalı teknik yol haritası",
+              "Teknoloji seçim raporu",
+              "Maliyet ve süre öngörüleri"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "advisor",
+            "name": "Sürekli Danışmanlık",
+            "description": "Karar anlarında yanınızda, aylık düzenli danışmanlık.",
+            "features": [
+              "Yol Haritası paketindeki her şey",
+              "Aylık düzenli görüşmeler",
+              "Yazılı görüş ve değerlendirmeler",
+              "Ekibinize öncelikli erişim"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Kararınızı Birlikte Netleştirelim",
+        "subtitle": "Durumunuzu anlatın; ilk görüşmede size dürüst bir yön önerelim.",
+        "primaryCta": "Teklif Al"
+      },
+      "websiteBuilder": {
+        "badge": "Yakında",
+        "title": "Kendi Sitenizi Kendiniz Tasarlayın",
+        "description": "Website Builder ile markanıza özel bir web sitesini kod yazmadan, sürükle-bırak bir arayüzle kendiniz oluşturabileceksiniz. Şu anda geliştirme aşamasında.",
+        "cta": "Haberdar Ol"
+      },
+      "faq": {
+        "eyebrow": "SSS",
+        "title": "Sık sorulan sorular",
+        "items": [
+          {
+            "id": "vendor-neutral",
+            "question": "Önerileriniz tarafsız mı; kendi hizmetinizi mi satıyorsunuz?",
+            "answer": "Danışmanlık raporlarımız tarafsızdır; uygulamayı bizim yapmamız şart değildir. Önerilerimizi kendi ekibiniz veya başka bir tedarikçiyle de hayata geçirebilirsiniz."
+          },
+          {
+            "id": "small-company",
+            "question": "Küçük bir işletmeyiz; danışmanlık bize ağır gelmez mi?",
+            "answer": "Tam tersine, en pahalı hatalar kaynağı kısıtlı işletmelerde yapılır. Kapsamı ihtiyacınıza göre küçültür, yalnızca işinize yarayacak kararlara odaklanırız."
+          },
+          {
+            "id": "output",
+            "question": "Danışmanlığın somut çıktısı ne olur?",
+            "answer": "Yazılı bir rapor: mevcut durum, riskler, önceliklendirilmiş öneriler ve uygulanabilir bir yol haritası. Sunumla birlikte teslim edilir."
+          },
+          {
+            "id": "nda",
+            "question": "Kod ve iş bilgilerimizin gizliliği nasıl korunuyor?",
+            "answer": "Çalışma öncesinde gizlilik sözleşmesi (NDA) imzalarız; erişimler yalnızca değerlendirme süresince ve asgari yetkiyle kullanılır."
+          },
+          {
+            "id": "remote",
+            "question": "Görüşmeler yüz yüze mi, online mı?",
+            "answer": "Ağırlıklı olarak online çalışırız; ihtiyaç halinde yerinde çalışma da planlanabilir. Uzaktan çalışma süreci hızlandırır ve maliyeti düşürür."
+          }
+        ]
+      }
     }
+  },
+  "whatsapp": {
+    "defaultMessage": "Merhaba, hizmetleriniz hakkında bilgi almak istiyorum."
+  },
+  "serviceDemo": {
+    "eyebrow": "Örnek Görünüm",
+    "title": "Teslim ettiğimiz iş nasıl görünür?",
+    "subtitle": "Aşağıdaki demolar örnek yapıdadır; sizin projeniz kendi markanız ve içeriğinizle tasarlanır."
   },
   "process": {
     "eyebrow": "Nasıl Çalışıyoruz",
@@ -390,10 +1286,51 @@
   "footer": {
     "rights": "Tüm hakları saklıdır.",
     "quickLinksTitle": "Hızlı Bağlantılar",
+    "productsTitle": "Ürünler",
+    "companyTitle": "Şirket",
+    "legalTitle": "Yasal",
     "servicesTitle": "Hizmetler",
     "contactTitle": "İletişim",
     "writeToUs": "Bize yazın",
-    "privacy": "Gizlilik Politikası"
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları"
+  },
+  "terms": {
+    "title": "Kullanım Koşulları",
+    "lastUpdated": "Son güncelleme: 7 Temmuz 2026",
+    "intro": "Bu koşullar, HIZIR Software web sitesinin ve sunduğumuz dijital ürün ve hizmetlerin (QR Menü, Web Sitesi, POS ve Kapsamlı İşletme paketleri dahil) kullanımını düzenler. Siteyi kullanarak veya hizmetlerimizden yararlanarak bu koşulları kabul etmiş sayılırsınız.",
+    "sections": [
+      {
+        "id": "services",
+        "heading": "Hizmetlerin kapsamı",
+        "body": "HIZIR Software; işletmelere yönelik QR menü, web sitesi, POS ve bütünleşik işletme çözümleri sunar. Sitede yer alan paket içerikleri ve fiyatlar bilgilendirme amaçlıdır; nihai kapsam ve ücretlendirme, tarafınızla yapılan yazılı teklif veya sözleşmeyle kesinleşir. Fiyat ve paket içeriklerinde değişiklik yapma hakkımız saklıdır; değişiklikler mevcut sözleşmeleri geriye dönük etkilemez."
+      },
+      {
+        "id": "payment",
+        "heading": "Ödeme ve abonelik",
+        "body": "Aylık paketler, ilgili dönem başında ücretlendirilir. Ödemesi yapılmayan hizmetler askıya alınabilir. Kurulum ücretsizdir; iptal halinde o döneme ait ödenmiş ücret iade edilmez, hizmet dönem sonuna kadar sürer. Abonelik iptali için WhatsApp veya e-posta üzerinden bize ulaşmanız yeterlidir."
+      },
+      {
+        "id": "content",
+        "heading": "İçerik ve sorumluluk",
+        "body": "Menü, görsel, fiyat ve tanıtım metni gibi işletmenize ait içeriklerin doğruluğu ve güncelliği size aittir. Hizmetlerimizi hukuka aykırı içerik yayımlamak için kullanamazsınız. HIZIR Software, sizin sağladığınız içeriklerden doğan hukuki taleplerden sorumlu tutulamaz."
+      },
+      {
+        "id": "ip",
+        "heading": "Fikri mülkiyet",
+        "body": "Proje tesliminde aksine yazılı anlaşma yoksa, size özel geliştirilen sitenin/ürünün kullanım hakkı size aittir; altyapı bileşenleri, şablon sistemleri ve platform kodu HIZIR Software'e aittir. Bu sitedeki marka, tasarım ve içerikler izinsiz kopyalanamaz."
+      },
+      {
+        "id": "availability",
+        "heading": "Hizmet sürekliliği",
+        "body": "Hizmetlerin kesintisiz sunulması için makul özeni gösteririz; ancak bakım, güncelleme veya üçüncü taraf altyapı kaynaklı kesintiler yaşanabilir. Planlı bakımlar mümkün olduğunda önceden duyurulur. Dolaylı zararlardan (kâr kaybı vb.) sorumluluğumuz, ilgili dönemde ödenen hizmet bedeliyle sınırlıdır."
+      },
+      {
+        "id": "changes",
+        "heading": "Koşullarda değişiklik",
+        "body": "Bu koşullar gerektiğinde güncellenebilir; güncel sürüm her zaman bu sayfada yayımlanır. Önemli değişiklikler, aktif müşterilere ayrıca bildirilir. Sorularınız için WhatsApp hattımızdan veya e-posta yoluyla bize ulaşabilirsiniz."
+      }
+    ]
   },
   "notFound": {
     "title": "Sayfa bulunamadı",
@@ -408,7 +1345,7 @@
       {
         "id": "collected",
         "heading": "Hangi verileri topluyoruz?",
-        "body": "İletişim formunu doldurduğunuzda ad soyad, e-posta adresi, (isteğe bağlı) şirket adı ve mesajınız tarafımıza iletilir. Sitede üyelik veya hesap sistemi bulunmaz; formun dışında sizden kişisel veri talep edilmez."
+        "body": "İletişim formunu doldurduğunuzda ad soyad, e-posta adresi, (isteğe bağlı) şirket adı ve mesajınız tarafımıza iletilir. Sitede ziyaretçilere açık üyelik veya hesap sistemi bulunmaz; formun dışında sizden kişisel veri talep edilmez."
       },
       {
         "id": "purpose",
@@ -418,7 +1355,7 @@
       {
         "id": "processing",
         "heading": "Veriler nasıl iletiliyor ve saklanıyor?",
-        "body": "Form gönderimleri, e-posta iletim altyapısı aracılığıyla tarafımıza e-posta olarak ulaştırılır ve yazışma geçmişi kapsamında makul bir süre saklanır. Yasal yükümlülükler gerektirmedikçe verileriniz daha uzun süre tutulmaz."
+        "body": "Form gönderimleri, talebinizin takip edilebilmesi için güvenli bir veritabanında saklanır ve ayrıca e-posta iletim altyapısı aracılığıyla tarafımıza e-posta olarak ulaştırılır. Kayıtlar, talebinizin sonuçlandırılması ve yazışma geçmişi kapsamında makul bir süre tutulur; yasal yükümlülükler gerektirmedikçe daha uzun süre saklanmaz. Silme talebiniz halinde kayıtlarınız veritabanından kaldırılır."
       },
       {
         "id": "cookies",

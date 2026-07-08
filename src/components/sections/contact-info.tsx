@@ -3,16 +3,21 @@
 import { Mail, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export function ContactInfo({
   title,
   email,
+  phone,
+  whatsappHref,
   note,
   processTitle,
   processBody,
 }: {
   title: string;
   email: string;
+  phone?: string;
+  whatsappHref?: string;
   note: string;
   processTitle: string;
   processBody: string;
@@ -45,6 +50,23 @@ export function ContactInfo({
             aria-hidden="true"
           />
         </a>
+        {phone && whatsappHref ? (
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-3 flex items-center gap-3 text-sm text-foreground transition-colors duration-fast hover:text-[#128C4B]"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#25D366]/10 text-[#128C4B]">
+              <WhatsAppIcon className="h-4 w-4" />
+            </span>
+            <span className="flex-1">{phone}</span>
+            <ArrowUpRight
+              className="h-4 w-4 shrink-0 opacity-0 transition-opacity duration-fast group-hover:opacity-100"
+              aria-hidden="true"
+            />
+          </a>
+        ) : null}
         <p className="mt-5 text-sm text-muted-foreground">{note}</p>
       </motion.div>
 

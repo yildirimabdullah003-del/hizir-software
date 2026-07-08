@@ -3,12 +3,14 @@ import { routing } from "@/i18n/routing";
 import { SERVICE_DETAIL_SLUGS } from "@/config/services";
 import { absoluteUrl, localeAlternates } from "@/lib/seo";
 
+// "/hakkimizda" bilinçli olarak listede değil: sayfa erişilebilir kalsa da
+// menüden rafa kaldırıldı, arama motorlarına öncelikli içerik olarak sunulmaz.
 const PATHS = [
   "",
   "/hizmetler",
-  "/hakkimizda",
   "/iletisim",
   "/gizlilik",
+  "/kullanim-kosullari",
   ...SERVICE_DETAIL_SLUGS.map((slug) => `/hizmetler/${slug}`),
 ];
 

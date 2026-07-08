@@ -6,6 +6,7 @@
   "nav": {
     "home": "Home",
     "services": "Services",
+    "pricing": "Pricing",
     "about": "About",
     "contact": "Contact",
     "mainNav": "Main navigation",
@@ -16,10 +17,107 @@
   "home": {
     "hero": {
       "eyebrow": "HIZIR Software",
-      "title": "Modern software. Measured design. Lasting trust.",
-      "subtitle": "We build corporate websites and digital solutions for businesses — and our own technology products.",
+      "title": "We build your business's digital presence in one package",
+      "subtitle": "From QR menu to website, from register to kitchen — modern, fast, easy-to-manage solutions for your restaurant and business.",
       "primaryCta": "Start a project",
-      "secondaryCta": "See services"
+      "secondaryCta": "See pricing"
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "title": "Clear pricing, same-day setup",
+      "subtitle": "Ready-made solutions for your business; no surprise costs, no contract lock-in.",
+      "whatsappCta": "Start on WhatsApp",
+      "whatsappMessage": "Hello, I'd like to get information about the {product} package.",
+      "note": "Setup is free on all packages. For custom needs, message us on WhatsApp or reach us via the contact page.",
+      "products": [
+        {
+          "id": "qr-menu",
+          "name": "QR Menu",
+          "price": "₺300",
+          "period": "/mo",
+          "description": "A digital menu for your restaurant — no printing costs.",
+          "features": [
+            "Elegant design matching your brand",
+            "Update prices/items in seconds",
+            "Allergen and ingredient info",
+            "Multilingual menu support",
+            "Your own QR design",
+            "Same-day setup"
+          ]
+        },
+        {
+          "id": "web-site",
+          "name": "Website",
+          "price": "₺450",
+          "period": "/mo",
+          "description": "A fast, SEO-friendly website built for your business.",
+          "features": [
+            "Your own domain (.com)",
+            "Google SEO foundation",
+            "Corporate presentation pages",
+            "Google Maps and directions",
+            "Photo gallery",
+            "Social media links"
+          ]
+        },
+        {
+          "id": "pos",
+          "name": "POS System",
+          "price": "₺675",
+          "period": "/mo",
+          "description": "The whole order flow, from register to kitchen, in one system.",
+          "features": [
+            "Table and counter order management",
+            "Bill splitting scenarios",
+            "Automatic receipt printing",
+            "End-of-day Z-report",
+            "Role-based staff management",
+            "Works offline too"
+          ]
+        },
+        {
+          "id": "complete",
+          "name": "Complete Business",
+          "price": "₺900",
+          "period": "/mo",
+          "description": "QR Menu + Website + POS and more, in one package.",
+          "highlighted": true,
+          "features": [
+            "All packages included",
+            "Tablet waiter panel",
+            "Kitchen display (KDS)",
+            "Courier panel and order tracking",
+            "Stock tracking and alerts",
+            "Unlimited tables and staff"
+          ]
+        }
+      ]
+    },
+    "works": {
+      "eyebrow": "Featured Work",
+      "title": "Our products in action",
+      "subtitle": "The demos below mirror the exact structure of what we deliver — built with your brand and your colors.",
+      "demoBadge": "Demo",
+      "items": [
+        {
+          "id": "web-site",
+          "tag": "Website",
+          "title": "Lezzet Durağı",
+          "description": "A reservation-focused site for a grill restaurant: menu showcase, location, and opening hours on one screen."
+        },
+        {
+          "id": "qr-menu",
+          "tag": "QR Menu",
+          "title": "Fincan Kahve",
+          "description": "A digital menu for a boutique café: categories, item descriptions, and allergen info — price updates in seconds."
+        },
+        {
+          "id": "pos",
+          "tag": "Complete Business",
+          "title": "Saray Pide",
+          "description": "A business panel for a pide house: table and takeaway orders, daily revenue, and kitchen flow in one panel."
+        }
+      ]
     },
     "services": {
       "eyebrow": "Services",
@@ -273,7 +371,805 @@
           }
         ]
       }
+    },
+    "dijital-urun-gelistirme": {
+      "hero": {
+        "eyebrow": "Digital Product Development",
+        "title": "From Idea to Scalable Product, End to End",
+        "subtitle": "SaaS, web apps, and internal tools — built on solid architecture and sustainable code.",
+        "primaryCta": "Get a Quote",
+        "secondaryCta": "See Packages"
+      },
+      "audience": {
+        "eyebrow": "Who Is It For?",
+        "title": "Who is this service for?",
+        "subtitle": "For anyone who wants to turn a product idea into reality.",
+        "items": [
+          {
+            "id": "startup",
+            "title": "Startups",
+            "description": "Startups that want to reach the market fast with an MVP worth showing to investors."
+          },
+          {
+            "id": "internal-tools",
+            "title": "Companies needing internal tools",
+            "description": "Businesses that want to replace spreadsheet-and-email workflows with a purpose-built tool."
+          },
+          {
+            "id": "saas-idea",
+            "title": "Teams with a SaaS idea",
+            "description": "Teams that want to build a subscription software product but lack a technical team."
+          },
+          {
+            "id": "enterprise-digital",
+            "title": "Digitalizing enterprises",
+            "description": "Organizations moving their existing business processes into a modern web application."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Scope",
+        "title": "What do we offer as part of this service?",
+        "subtitle": "The whole journey, from MVP to scalable product.",
+        "items": [
+          {
+            "id": "mvp",
+            "title": "MVP Development",
+            "description": "A first version focused on the most critical features, ready to launch fast."
+          },
+          {
+            "id": "architecture",
+            "title": "Scalable Architecture",
+            "description": "A solid technical foundation that won't need a rewrite as your user base grows."
+          },
+          {
+            "id": "product-ux",
+            "title": "Product UI & Experience",
+            "description": "A clean, functional interface your users will genuinely enjoy using."
+          },
+          {
+            "id": "integrations",
+            "title": "APIs & Integrations",
+            "description": "Seamless connections to external services like payments, email, and CRM."
+          },
+          {
+            "id": "data-foundation",
+            "title": "Data Foundation",
+            "description": "A well-designed database and data model, ready for reporting and growth."
+          },
+          {
+            "id": "iteration",
+            "title": "Continuous Improvement",
+            "description": "After launch, we mature the product together based on user feedback."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Packages",
+        "title": "A starting point that fits your needs",
+        "subtitle": "The packages below are an example structure; we'll define scope and pricing together.",
+        "priceLabel": "Custom quote",
+        "ctaLabel": "Get a Quote",
+        "tiers": [
+          {
+            "id": "mvp",
+            "name": "MVP",
+            "description": "The core product to test your idea as fast as possible.",
+            "features": [
+              "Discovery and scoping",
+              "Core feature set",
+              "Basic user management",
+              "Launch and setup"
+            ]
+          },
+          {
+            "id": "product",
+            "name": "Product",
+            "description": "A full-scope product ready to open to real users.",
+            "features": [
+              "Everything in MVP",
+              "Payments and subscription infrastructure",
+              "Admin panel",
+              "External service integrations"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "scale",
+            "name": "Scale",
+            "description": "For growing user bases and enterprise requirements.",
+            "features": [
+              "Everything in Product",
+              "Performance and scaling work",
+              "Advanced reporting",
+              "Priority support and maintenance"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Let's Talk About Your Product Idea",
+        "subtitle": "Tell us your idea; we'll plan the scope, roadmap, and first release together.",
+        "primaryCta": "Get a Quote"
+      },
+      "websiteBuilder": {
+        "badge": "Coming Soon",
+        "title": "Design Your Own Site Yourself",
+        "description": "With Website Builder, you'll be able to create a site unique to your brand yourself, with a drag-and-drop interface — no coding required. Currently in development.",
+        "cta": "Get Notified"
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "Frequently asked questions",
+        "items": [
+          {
+            "id": "timeline",
+            "question": "How long does an MVP take?",
+            "answer": "It depends on scope; a focused MVP can usually launch within a few months. We set a clear timeline during the discovery call."
+          },
+          {
+            "id": "ownership",
+            "question": "Who owns the code and the product?",
+            "answer": "You do, entirely. The codebase, design, and all accounts are set up in your name; you can continue with another team at any time."
+          },
+          {
+            "id": "tech-stack",
+            "question": "What technologies do you use?",
+            "answer": "We prefer modern, widely adopted, long-lived technologies (such as TypeScript, Next.js, and PostgreSQL) — a stack you can still easily hire developers for years from now."
+          },
+          {
+            "id": "after-mvp",
+            "question": "What happens after the MVP?",
+            "answer": "We review user feedback together, plan priority features, and mature the product through regular releases."
+          },
+          {
+            "id": "existing-code",
+            "question": "We have a half-finished project; can you take it over?",
+            "answer": "Yes. We first audit the existing code, then tell you honestly whether continuing or restarting is more economical."
+          }
+        ]
+      }
+    },
+    "e-ticaret-cozumleri": {
+      "hero": {
+        "eyebrow": "E-Commerce Solutions",
+        "title": "Fast, Secure E-Commerce, Ready to Sell",
+        "subtitle": "Mobile-first, conversion-focused online stores with payment, inventory, and shipping integrations.",
+        "primaryCta": "Get a Quote",
+        "secondaryCta": "See Packages"
+      },
+      "audience": {
+        "eyebrow": "Who Is It For?",
+        "title": "Who is this service for?",
+        "subtitle": "For every business starting to sell online or growing an existing store.",
+        "items": [
+          {
+            "id": "retail-to-online",
+            "title": "Retailers going online",
+            "description": "Retail businesses that want to bring their physical store to the web."
+          },
+          {
+            "id": "d2c-brands",
+            "title": "D2C brands",
+            "description": "Brands that want to reduce marketplace dependency and sell through their own channel."
+          },
+          {
+            "id": "b2b-wholesale",
+            "title": "B2B & wholesale",
+            "description": "Wholesalers that need dealer-specific pricing and ordering workflows."
+          },
+          {
+            "id": "replatform",
+            "title": "Businesses replatforming",
+            "description": "Businesses whose current e-commerce platform is slow or eating margins in fees."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Scope",
+        "title": "What do we offer as part of this service?",
+        "subtitle": "Every step of the sale, from storefront design to shipping integration.",
+        "items": [
+          {
+            "id": "storefront",
+            "title": "Distinctive Storefront Design",
+            "description": "A sales-focused storefront unique to your brand — never a template feel."
+          },
+          {
+            "id": "payments",
+            "title": "Payment Infrastructure",
+            "description": "Secure checkout with cards, bank transfer, and alternative payment methods."
+          },
+          {
+            "id": "inventory",
+            "title": "Inventory & Product Management",
+            "description": "Product variants, stock tracking, and bulk product management."
+          },
+          {
+            "id": "shipping",
+            "title": "Shipping Integrations",
+            "description": "Automated labels and tracking with your contracted carriers."
+          },
+          {
+            "id": "mobile-commerce",
+            "title": "Mobile-First Experience",
+            "description": "A flawless, fast experience on mobile, where most shopping happens."
+          },
+          {
+            "id": "analytics",
+            "title": "Conversion & Reporting",
+            "description": "Sales funnel, abandoned cart, and campaign performance measurement."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Packages",
+        "title": "A starting point that fits your needs",
+        "subtitle": "The packages below are an example structure; we'll define scope and pricing together.",
+        "priceLabel": "Custom quote",
+        "ctaLabel": "Get a Quote",
+        "tiers": [
+          {
+            "id": "starter",
+            "name": "Starter",
+            "description": "Start selling fast with a limited product catalog.",
+            "features": [
+              "Store design and setup",
+              "Payment infrastructure",
+              "Basic shipping integration",
+              "Mobile-friendly storefront"
+            ]
+          },
+          {
+            "id": "growth",
+            "name": "Growth",
+            "description": "A fully equipped store for a growing catalog and campaigns.",
+            "features": [
+              "Everything in Starter",
+              "Advanced inventory and variant management",
+              "Campaign and coupon infrastructure",
+              "Conversion reporting"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "enterprise",
+            "name": "Enterprise",
+            "description": "For high-volume businesses with custom workflows.",
+            "features": [
+              "Everything in Growth",
+              "ERP / accounting integrations",
+              "B2B pricing scenarios",
+              "Priority support"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Let's Start Selling Online",
+        "subtitle": "Tell us about your products; we'll shape the right e-commerce setup together.",
+        "primaryCta": "Get a Quote"
+      },
+      "websiteBuilder": {
+        "badge": "Coming Soon",
+        "title": "Design Your Own Site Yourself",
+        "description": "With Website Builder, you'll be able to create a site unique to your brand yourself, with a drag-and-drop interface — no coding required. Currently in development.",
+        "cta": "Get Notified"
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "Frequently asked questions",
+        "items": [
+          {
+            "id": "platform",
+            "question": "Do you use a ready-made platform or build custom?",
+            "answer": "Both are possible depending on need. Ready-made platforms deliver fast for small catalogs; for custom workflows and high volume we recommend custom development. We decide together during discovery."
+          },
+          {
+            "id": "commissions",
+            "question": "Do you take a commission on sales?",
+            "answer": "No. Beyond the project fee we take no commission on your sales; the store and its revenue are entirely yours."
+          },
+          {
+            "id": "migration",
+            "question": "Can products from our current store be migrated?",
+            "answer": "Yes. Products, categories, customers, and where possible order history are migrated in a planned way, with redirects set up to avoid SEO loss."
+          },
+          {
+            "id": "payments-setup",
+            "question": "What's needed for the payment infrastructure?",
+            "answer": "We guide you through virtual POS applications and paperwork; we handle the entire technical integration ourselves."
+          },
+          {
+            "id": "after-launch",
+            "question": "Do you provide support after the store opens?",
+            "answer": "Yes. With our maintenance, performance & SEO package we can handle updates, monitoring, and preparation for campaign seasons."
+          }
+        ]
+      }
+    },
+    "marka-tasarim-sistemi": {
+      "hero": {
+        "eyebrow": "Brand & Design System",
+        "title": "A Consistent, Scalable Design Language Across Every Channel",
+        "subtitle": "With a token-based design system and component library, your brand speaks the same language everywhere.",
+        "primaryCta": "Get a Quote",
+        "secondaryCta": "See Packages"
+      },
+      "audience": {
+        "eyebrow": "Who Is It For?",
+        "title": "Who is this service for?",
+        "subtitle": "For anyone who wants a systematic, consistent visual language for their brand.",
+        "items": [
+          {
+            "id": "new-brand",
+            "title": "New brands",
+            "description": "New ventures that want to build their identity right and systematically from day one."
+          },
+          {
+            "id": "rebrand",
+            "title": "Rebranding companies",
+            "description": "Companies ready to consolidate a scattered visual language into a modern identity."
+          },
+          {
+            "id": "product-teams",
+            "title": "Product teams",
+            "description": "Teams that want a shared language between designers and developers."
+          },
+          {
+            "id": "multi-product",
+            "title": "Multi-product organizations",
+            "description": "Companies managing several products or sub-brands with a single system."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Scope",
+        "title": "What do we offer as part of this service?",
+        "subtitle": "Your brand's entire visual infrastructure, from color to code.",
+        "items": [
+          {
+            "id": "design-tokens",
+            "title": "Token-Based System",
+            "description": "Color, typography, spacing, and motion — design decisions managed from a single source."
+          },
+          {
+            "id": "component-library",
+            "title": "Component Library",
+            "description": "A ready, consistent set of recurring parts: buttons, forms, cards, and more."
+          },
+          {
+            "id": "typography-color",
+            "title": "Typography & Color System",
+            "description": "Choices unique to your brand, made with readability and hierarchy in mind."
+          },
+          {
+            "id": "accessibility",
+            "title": "Accessibility Standards",
+            "description": "Contrast, keyboard, and screen-reader support built into the system from the start."
+          },
+          {
+            "id": "guidelines",
+            "title": "Usage Guidelines",
+            "description": "A reference document that teaches teams how to use the system."
+          },
+          {
+            "id": "design-to-code",
+            "title": "Design-to-Code Bridge",
+            "description": "The Figma system reflected one-to-one in code — no more design–development gap."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Packages",
+        "title": "A starting point that fits your needs",
+        "subtitle": "The packages below are an example structure; we'll define scope and pricing together.",
+        "priceLabel": "Custom quote",
+        "ctaLabel": "Get a Quote",
+        "tiers": [
+          {
+            "id": "identity",
+            "name": "Identity",
+            "description": "The foundations of brand identity: color, typography, core rules.",
+            "features": [
+              "Color and typography system",
+              "Logo usage rules",
+              "Core token set",
+              "Mini usage guide"
+            ]
+          },
+          {
+            "id": "system",
+            "name": "System",
+            "description": "A full design system for product and web.",
+            "features": [
+              "Everything in Identity",
+              "Component library (Figma)",
+              "Accessibility standards",
+              "Comprehensive documentation"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "system-code",
+            "name": "System + Code",
+            "description": "The design system translated into ready-to-use code.",
+            "features": [
+              "Everything in System",
+              "Coded component library",
+              "Tokens integrated into code",
+              "Developer documentation"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Let's Give Your Brand a System",
+        "subtitle": "Tell us where you are today; we'll scope the system you need together.",
+        "primaryCta": "Get a Quote"
+      },
+      "websiteBuilder": {
+        "badge": "Coming Soon",
+        "title": "Design Your Own Site Yourself",
+        "description": "With Website Builder, you'll be able to create a site unique to your brand yourself, with a drag-and-drop interface — no coding required. Currently in development.",
+        "cta": "Get Notified"
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "Frequently asked questions",
+        "items": [
+          {
+            "id": "logo",
+            "question": "Is logo design included in the scope?",
+            "answer": "Our focus is system design; we build on your existing logo. If a logo refresh is needed, we work with trusted designers or add it to the scope."
+          },
+          {
+            "id": "existing-brand",
+            "question": "We already have a brand identity; do we start from scratch?",
+            "answer": "No. We audit your current identity, keep what works, and systematize what's missing. The goal is order, not revolution."
+          },
+          {
+            "id": "tools",
+            "question": "What tools do you work with?",
+            "answer": "Figma on the design side; modern web standards (CSS variables, TypeScript components) on the code side. We deliver in whatever tool your team will maintain the system with."
+          },
+          {
+            "id": "team-handoff",
+            "question": "Can our own team maintain the system?",
+            "answer": "Yes — that's the goal. With documentation and handoff training, your team can use and grow the system independently."
+          },
+          {
+            "id": "scope-time",
+            "question": "How long does a design system take to build?",
+            "answer": "It depends on scope; a core identity system takes a few weeks, a full coded system matures over a few months. We give a clear timeline during discovery."
+          }
+        ]
+      }
+    },
+    "bakim-performans-seo": {
+      "hero": {
+        "eyebrow": "Maintenance, Performance & SEO",
+        "title": "Your Site Is Live; We've Got Its Back",
+        "subtitle": "Monitoring, security updates, speed optimization, and search visibility — in one package.",
+        "primaryCta": "Get a Quote",
+        "secondaryCta": "See Packages"
+      },
+      "audience": {
+        "eyebrow": "Who Is It For?",
+        "title": "Who is this service for?",
+        "subtitle": "For anyone who won't leave their live site's health and visibility to chance.",
+        "items": [
+          {
+            "id": "live-sites",
+            "title": "Owners of live sites",
+            "description": "Businesses whose site is live but not regularly maintained or updated."
+          },
+          {
+            "id": "visibility",
+            "title": "Businesses seeking visibility",
+            "description": "Those falling behind competitors on Google and wanting to be found in search."
+          },
+          {
+            "id": "slow-sites",
+            "title": "Slow sites",
+            "description": "Sites whose load time drives customers away and struggles on mobile."
+          },
+          {
+            "id": "security-first",
+            "title": "Security-conscious organizations",
+            "description": "Organizations unwilling to accept the risks of an unmaintained infrastructure."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Scope",
+        "title": "What do we offer as part of this service?",
+        "subtitle": "Continuous, planned care for your site's health.",
+        "items": [
+          {
+            "id": "performance-monitoring",
+            "title": "Performance Monitoring",
+            "description": "Continuous tracking of speed and Core Web Vitals, with early intervention."
+          },
+          {
+            "id": "seo-improvement",
+            "title": "SEO Improvement",
+            "description": "Technical SEO audits, content recommendations, and improved search visibility."
+          },
+          {
+            "id": "security-updates",
+            "title": "Security & Updates",
+            "description": "Regular, planned updates of dependencies and infrastructure."
+          },
+          {
+            "id": "content-updates",
+            "title": "Content Updates",
+            "description": "Text, image, and campaign changes published quickly."
+          },
+          {
+            "id": "reporting",
+            "title": "Monthly Reporting",
+            "description": "Clear summary reports of traffic, speed, and search performance."
+          },
+          {
+            "id": "infrastructure-care",
+            "title": "Infrastructure Health",
+            "description": "Hosting, domain, SSL, and backup processes kept in check."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Packages",
+        "title": "A starting point that fits your needs",
+        "subtitle": "The packages below are an example structure; we'll define scope and pricing together.",
+        "priceLabel": "Custom quote",
+        "ctaLabel": "Get a Quote",
+        "tiers": [
+          {
+            "id": "care",
+            "name": "Care",
+            "description": "The essential package to keep your site secure and up to date.",
+            "features": [
+              "Regular security updates",
+              "Uptime monitoring",
+              "Small monthly content changes",
+              "Backup oversight"
+            ]
+          },
+          {
+            "id": "growth",
+            "name": "Growth",
+            "description": "Active investment in speed and search visibility, on top of care.",
+            "features": [
+              "Everything in Care",
+              "Performance optimization",
+              "Technical SEO improvements",
+              "Monthly performance report"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "partner",
+            "name": "Partner",
+            "description": "A full partnership for continuously improving your digital presence.",
+            "features": [
+              "Everything in Growth",
+              "Priority response time",
+              "Content and campaign support",
+              "Quarterly strategy call"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Put Your Site in Safe Hands",
+        "subtitle": "Share your site's address; we'll come back with a free initial assessment.",
+        "primaryCta": "Get a Quote"
+      },
+      "websiteBuilder": {
+        "badge": "Coming Soon",
+        "title": "Design Your Own Site Yourself",
+        "description": "With Website Builder, you'll be able to create a site unique to your brand yourself, with a drag-and-drop interface — no coding required. Currently in development.",
+        "cta": "Get Notified"
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "Frequently asked questions",
+        "items": [
+          {
+            "id": "other-developer",
+            "question": "Another team built our site; will you still maintain it?",
+            "answer": "Yes. We first run a technical assessment, evaluate whether the current setup is maintainable, and present a clear scope."
+          },
+          {
+            "id": "seo-guarantee",
+            "question": "Do you guarantee the #1 spot in SEO?",
+            "answer": "No — nobody can, and be wary of anyone who does. We aim for sustainable growth through measurable technical improvements, sound content structure, and regular reporting."
+          },
+          {
+            "id": "response-time",
+            "question": "How fast do you respond when something breaks?",
+            "answer": "We define clear response times per package. Critical outages get priority response; planned work follows the monthly schedule."
+          },
+          {
+            "id": "contract",
+            "question": "Is a long-term contract required?",
+            "answer": "We work month to month; no long commitment is required. We keep working together as long as you're happy."
+          },
+          {
+            "id": "whats-included",
+            "question": "Is new feature development part of maintenance?",
+            "answer": "Small changes are in scope; larger work like new pages or features is planned and priced separately. We make the boundary clear upfront."
+          }
+        ]
+      }
+    },
+    "danismanlik-teknik-strateji": {
+      "hero": {
+        "eyebrow": "Consulting & Technical Strategy",
+        "title": "Sound Technology Decisions, a Clear Roadmap",
+        "subtitle": "Prevent expensive mistakes upfront with architecture reviews, technology selection, and process consulting.",
+        "primaryCta": "Get a Quote",
+        "secondaryCta": "See Packages"
+      },
+      "audience": {
+        "eyebrow": "Who Is It For?",
+        "title": "Who is this service for?",
+        "subtitle": "For anyone who wants their technology decisions on solid ground.",
+        "items": [
+          {
+            "id": "pre-build",
+            "title": "Teams before a build",
+            "description": "Those who want to settle the right scope and technology before development starts."
+          },
+          {
+            "id": "tech-teams",
+            "title": "Technical teams",
+            "description": "Teams that want their architecture validated by an experienced outside eye."
+          },
+          {
+            "id": "legacy-systems",
+            "title": "Owners of legacy systems",
+            "description": "Organizations that want to modernize aging infrastructure but don't know where to start."
+          },
+          {
+            "id": "scaling",
+            "title": "Scaling businesses",
+            "description": "Businesses whose growth is straining their systems and who need to prepare for scale."
+          }
+        ]
+      },
+      "offerings": {
+        "eyebrow": "Scope",
+        "title": "What do we offer as part of this service?",
+        "subtitle": "An experienced technical mind at your side when decisions are made.",
+        "items": [
+          {
+            "id": "architecture-review",
+            "title": "Architecture Review",
+            "description": "Analysis of the strengths and risks of your current or planned architecture."
+          },
+          {
+            "id": "tech-selection",
+            "title": "Technology Selection",
+            "description": "Long-lived technology decisions that fit your needs and your team."
+          },
+          {
+            "id": "roadmap",
+            "title": "Technical Roadmap",
+            "description": "A phased, realistic implementation plan with clarified priorities."
+          },
+          {
+            "id": "team-process",
+            "title": "Team & Process Consulting",
+            "description": "Guidance on hiring, team structure, and development processes."
+          },
+          {
+            "id": "code-audit",
+            "title": "Code Audit",
+            "description": "Quality, security, and sustainability audit of your existing codebase."
+          },
+          {
+            "id": "transformation",
+            "title": "Digital Transformation Support",
+            "description": "Strategic guidance for digitalizing manual processes."
+          }
+        ]
+      },
+      "packages": {
+        "eyebrow": "Packages",
+        "title": "A starting point that fits your needs",
+        "subtitle": "The packages below are an example structure; we'll define scope and pricing together.",
+        "priceLabel": "Custom quote",
+        "ctaLabel": "Get a Quote",
+        "tiers": [
+          {
+            "id": "assessment",
+            "name": "Assessment",
+            "description": "A one-time audit capturing where you stand today.",
+            "features": [
+              "Architecture and code review",
+              "Risk and priority report",
+              "Findings presentation",
+              "Q&A session"
+            ]
+          },
+          {
+            "id": "roadmap",
+            "name": "Roadmap",
+            "description": "Assessment plus an actionable, phased plan.",
+            "features": [
+              "Everything in Assessment",
+              "Phased technical roadmap",
+              "Technology selection report",
+              "Cost and timeline estimates"
+            ],
+            "highlighted": true
+          },
+          {
+            "id": "advisor",
+            "name": "Ongoing Advisory",
+            "description": "Regular monthly advisory, at your side when decisions are made.",
+            "features": [
+              "Everything in Roadmap",
+              "Regular monthly sessions",
+              "Written opinions and evaluations",
+              "Priority access for your team"
+            ]
+          }
+        ]
+      },
+      "cta": {
+        "title": "Let's Clarify Your Decision Together",
+        "subtitle": "Describe your situation; we'll offer an honest direction in the first call.",
+        "primaryCta": "Get a Quote"
+      },
+      "websiteBuilder": {
+        "badge": "Coming Soon",
+        "title": "Design Your Own Site Yourself",
+        "description": "With Website Builder, you'll be able to create a site unique to your brand yourself, with a drag-and-drop interface — no coding required. Currently in development.",
+        "cta": "Get Notified"
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "Frequently asked questions",
+        "items": [
+          {
+            "id": "vendor-neutral",
+            "question": "Is your advice neutral, or are you selling your own services?",
+            "answer": "Our consulting reports are neutral; you're not required to have us do the implementation. Your own team or another vendor can execute our recommendations."
+          },
+          {
+            "id": "small-company",
+            "question": "We're a small business; isn't consulting overkill for us?",
+            "answer": "Quite the opposite — the costliest mistakes happen where resources are tight. We shrink the scope to your needs and focus only on decisions that matter to your business."
+          },
+          {
+            "id": "output",
+            "question": "What is the concrete deliverable?",
+            "answer": "A written report: current state, risks, prioritized recommendations, and an actionable roadmap — delivered together with a presentation."
+          },
+          {
+            "id": "nda",
+            "question": "How is the confidentiality of our code and business protected?",
+            "answer": "We sign an NDA before the engagement; access is used only for the duration of the assessment and with minimal permissions."
+          },
+          {
+            "id": "remote",
+            "question": "Are sessions in person or online?",
+            "answer": "We work mostly online; on-site work can be planned when needed. Remote work speeds up the process and lowers the cost."
+          }
+        ]
+      }
     }
+  },
+  "whatsapp": {
+    "defaultMessage": "Hello, I'd like to get information about your services."
+  },
+  "serviceDemo": {
+    "eyebrow": "Sample Preview",
+    "title": "What does the delivered work look like?",
+    "subtitle": "The demos below are sample structures; your project is designed with your own brand and content."
   },
   "process": {
     "eyebrow": "How We Work",
@@ -390,10 +1286,51 @@
   "footer": {
     "rights": "All rights reserved.",
     "quickLinksTitle": "Quick Links",
+    "productsTitle": "Products",
+    "companyTitle": "Company",
+    "legalTitle": "Legal",
     "servicesTitle": "Services",
     "contactTitle": "Contact",
     "writeToUs": "Write to us",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: July 7, 2026",
+    "intro": "These terms govern the use of the HIZIR Software website and the digital products and services we provide (including the QR Menu, Website, POS, and Complete Business packages). By using the site or our services, you are deemed to have accepted these terms.",
+    "sections": [
+      {
+        "id": "services",
+        "heading": "Scope of services",
+        "body": "HIZIR Software provides QR menu, website, POS, and integrated business solutions for businesses. Package contents and prices on the site are for information; the final scope and pricing are settled by a written quote or contract with you. We reserve the right to change prices and package contents; changes do not retroactively affect existing contracts."
+      },
+      {
+        "id": "payment",
+        "heading": "Payment and subscription",
+        "body": "Monthly packages are charged at the start of each period. Unpaid services may be suspended. Setup is free; upon cancellation, fees already paid for the current period are not refunded and service continues until the end of the period. To cancel, simply reach us via WhatsApp or email."
+      },
+      {
+        "id": "content",
+        "heading": "Content and responsibility",
+        "body": "You are responsible for the accuracy and currency of your business content such as menus, images, prices, and promotional copy. You may not use our services to publish unlawful content. HIZIR Software cannot be held liable for legal claims arising from content you provide."
+      },
+      {
+        "id": "ip",
+        "heading": "Intellectual property",
+        "body": "Unless otherwise agreed in writing at delivery, you own the right to use the site/product built specifically for you; infrastructure components, template systems, and platform code belong to HIZIR Software. The brand, design, and content of this site may not be copied without permission."
+      },
+      {
+        "id": "availability",
+        "heading": "Service continuity",
+        "body": "We take reasonable care to provide services without interruption; however, outages may occur due to maintenance, updates, or third-party infrastructure. Planned maintenance is announced in advance where possible. Our liability for indirect damages (such as lost profit) is limited to the service fee paid for the relevant period."
+      },
+      {
+        "id": "changes",
+        "heading": "Changes to these terms",
+        "body": "These terms may be updated when necessary; the current version is always published on this page. Significant changes are additionally communicated to active customers. For questions, reach us via our WhatsApp line or by email."
+      }
+    ]
   },
   "notFound": {
     "title": "Page not found",
@@ -408,7 +1345,7 @@
       {
         "id": "collected",
         "heading": "What data do we collect?",
-        "body": "When you fill in the contact form, your full name, email address, (optional) company name, and message are transmitted to us. The site has no membership or account system; no personal data is requested outside the form."
+        "body": "When you fill in the contact form, your full name, email address, (optional) company name, and message are transmitted to us. The site has no public membership or account system; no personal data is requested outside the form."
       },
       {
         "id": "purpose",
@@ -418,7 +1355,7 @@
       {
         "id": "processing",
         "heading": "How is the data transmitted and stored?",
-        "body": "Form submissions reach us as email via an email delivery service and are kept for a reasonable period as part of our correspondence history. Your data is not retained longer unless legal obligations require it."
+        "body": "Form submissions are stored in a secure database so your request can be followed up, and are also delivered to us as email via an email delivery service. Records are kept for a reasonable period to resolve your request and as part of our correspondence history; they are not retained longer unless legal obligations require it. Upon your deletion request, your records are removed from the database."
       },
       {
         "id": "cookies",

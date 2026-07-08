@@ -31,7 +31,14 @@ export function getServiceSlug(id: string): string | undefined {
  * ServicesGrid, yalnızca burada listelenen slug'lar için kartı tıklanabilir
  * yapıp detay sayfasına bağlar; listelenmeyenler mevcut (statik) haliyle kalır.
  */
-export const SERVICE_DETAIL_SLUGS = ["kurumsal-web-siteleri"] as const;
+export const SERVICE_DETAIL_SLUGS = [
+  "kurumsal-web-siteleri",
+  "dijital-urun-gelistirme",
+  "e-ticaret-cozumleri",
+  "marka-tasarim-sistemi",
+  "bakim-performans-seo",
+  "danismanlik-teknik-strateji",
+] as const;
 
 export type ServiceDetailSlug = (typeof SERVICE_DETAIL_SLUGS)[number];
 

@@ -4,8 +4,11 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Hero } from "@/components/sections/hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ServicesGrid, type ServiceItem } from "@/components/sections/services-grid";
+import { PricingGrid, type PricingProduct } from "@/components/sections/pricing-grid";
+import { ShowcaseGallery, type ShowcaseItem } from "@/components/sections/showcase-gallery";
 import { ProcessSteps, type ProcessStep } from "@/components/sections/process-steps";
 import { CtaSection } from "@/components/sections/cta-section";
+import { siteConfig } from "@/config/site";
 
 export default async function HomePage({
   params,
@@ -19,12 +22,61 @@ export default async function HomePage({
 
   return (
     <>
+      {/* "Hakkımızda" ön izlemesi bilinçli olarak kaldırıldı (rafa kaldırma
+          kararı) — kurumsal bilgi isteyen ziyaretçi WhatsApp hattını kullanır. */}
       <Hero />
+      <Pricing />
+      <Works />
       <ServicesPreview />
       <Process />
-      <AboutPreview />
       <FinalCta />
     </>
+  );
+}
+
+function Pricing() {
+  const t = useTranslations("home.pricing");
+  const products = t.raw("products") as PricingProduct[];
+
+  return (
+    <section id="fiyatlandirma" className="border-t border-border">
+      <div className="mx-auto max-w-6xl px-6 py-24">
+        <SectionHeading
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          subtitle={t("subtitle")}
+          className="mb-12"
+        />
+        <PricingGrid
+          products={products}
+          whatsappNumber={siteConfig.whatsappNumber}
+          whatsappCtaLabel={t("whatsappCta")}
+          whatsappMessage={t.raw("whatsappMessage") as string}
+        />
+        <p className="mt-8 text-center text-sm text-muted-foreground">
+          {t("note")}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function Works() {
+  const t = useTranslations("home.works");
+  const items = t.raw("items") as ShowcaseItem[];
+
+  return (
+    <section className="border-t border-border bg-surface">
+      <div className="mx-auto max-w-6xl px-6 py-24">
+        <SectionHeading
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          subtitle={t("subtitle")}
+          className="mb-12"
+        />
+        <ShowcaseGallery items={items} demoBadge={t("demoBadge")} />
+      </div>
+    </section>
   );
 }
 
@@ -76,44 +128,19 @@ function Process() {
   );
 }
 
-function AboutPreview() {
-  const t = useTranslations("home.about");
-
-  return (
-    <section className="border-t border-border bg-surface">
-      <div className="mx-auto max-w-2xl px-6 py-24 text-center">
-        <p className="mb-4 text-sm font-medium tracking-widest text-accent uppercase">
-          {t("eyebrow")}
-        </p>
-        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-          {t("title")}
-        </h2>
-        <p className="mt-4 text-balance text-lg text-muted-foreground">
-          {t("body")}
-        </p>
-        <div className="mt-8">
-          <ButtonLink href="/hakkimizda" variant="outline">
-            {t("cta")}
-          </ButtonLink>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function FinalCta() {
   const t = useTranslations("home.cta");
 
+  // Fiyat vitrini asıl odak olduğundan bu bölüm bilinçli olarak kompakt.
   return (
     <section className="border-t border-border">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+      <div className="mx-auto max-w-6xl px-6 py-16">
         <CtaSection
+          compact
           title={t("title")}
           subtitle={t("subtitle")}
           primaryCta={t("primaryCta")}
           primaryHref="/iletisim"
-          secondaryCta={t("secondaryCta")}
-          secondaryHref="/hizmetler"
         />
       </div>
     </section>

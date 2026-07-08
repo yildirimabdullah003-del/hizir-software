@@ -6,10 +6,12 @@ import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
 import { cn } from "@/lib/utils";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { HeroShowcase } from "@/components/sections/hero-showcase";
 
 /**
- * Ana sayfa Hero'su — büyük tipografi, ince gradient/blur dekorları ve
- * imleci takip eden hafif bir glow ile premium bir giriş noktası.
+ * Ana sayfa Hero'su — solda ölçülü tipografi + CTA'lar, sağda ürünü
+ * gösteren cihaz mockup'ları (HeroShowcase). Dev tipografi bilinçli olarak
+ * terk edildi: ziyaretçi ilk ekranda ne sattığımızı GÖRMELİ.
  * Sahte rakam/referans içermez; yalnızca gerçek konumlandırma metni kullanılır.
  */
 export function Hero() {
@@ -59,42 +61,49 @@ export function Hero() {
         style={{ background: glowBackground }}
       />
 
-      <motion.div
-        variants={staggerContainer(0.12, 0.05)}
-        initial="hidden"
-        animate="visible"
-        className="relative mx-auto max-w-4xl px-6 py-32 text-center sm:py-40"
-      >
-        <motion.p
-          variants={fadeInUp}
-          className="mb-5 text-sm font-medium tracking-widest text-muted-foreground uppercase"
-        >
-          {t("eyebrow")}
-        </motion.p>
-        <motion.h1
-          variants={fadeInUp}
-          className="text-balance text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl"
-        >
-          {t("title")}
-        </motion.h1>
-        <motion.p
-          variants={fadeInUp}
-          className="mx-auto mt-6 max-w-xl text-balance text-lg text-muted-foreground sm:text-xl"
-        >
-          {t("subtitle")}
-        </motion.p>
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 pb-28 pt-20 sm:pt-28 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         <motion.div
-          variants={fadeInUp}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          variants={staggerContainer(0.12, 0.05)}
+          initial="hidden"
+          animate="visible"
+          className="text-center lg:text-left"
         >
-          <ButtonLink href="/iletisim" size="lg">
-            {t("primaryCta")}
-          </ButtonLink>
-          <ButtonLink href="/hizmetler" size="lg" variant="outline">
-            {t("secondaryCta")}
-          </ButtonLink>
+          <motion.p
+            variants={fadeInUp}
+            className="mb-5 text-sm font-medium tracking-widest text-muted-foreground uppercase"
+          >
+            {t("eyebrow")}
+          </motion.p>
+          <motion.h1
+            variants={fadeInUp}
+            className="text-balance text-3xl font-semibold leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl"
+          >
+            {t("title")}
+          </motion.h1>
+          <motion.p
+            variants={fadeInUp}
+            className="mx-auto mt-5 max-w-xl text-balance text-base text-muted-foreground sm:text-lg lg:mx-0"
+          >
+            {t("subtitle")}
+          </motion.p>
+          <motion.div
+            variants={fadeInUp}
+            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
+          >
+            <ButtonLink href="/iletisim" size="lg">
+              {t("primaryCta")}
+            </ButtonLink>
+            <ButtonLink href="#fiyatlandirma" size="lg" variant="outline">
+              {t("secondaryCta")}
+            </ButtonLink>
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+        {/* Ürün vitrini — telefonun taşma payı için alt boşluk */}
+        <div className="pb-10 lg:pb-6">
+          <HeroShowcase />
+        </div>
+      </div>
     </section>
   );
 }
