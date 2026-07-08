@@ -6,7 +6,10 @@
 
 export const siteConfig = {
   // Görünen ad ve marka bilgisi çevirilerde (site.name) tutulur.
-  url: "https://hizirsoftware.com", // ileride gerçek alan adıyla güncellenecek
+  // URL env'den okunur: yerelde localhost, üretimde Vercel'de tanımlı gerçek
+  // alan adı (NEXT_PUBLIC_SITE_URL). Böylece canonical/OG/sitemap tek yerden,
+  // deploy'a göre doğru domaini yayar.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hizirsoftware.com",
   contactEmail: "iletisim@hizirsoftware.com", // ileride gerçek adresle güncellenecek
   phone: "0545 936 33 47",
   // wa.me uluslararası biçim ister (başında + veya 0 olmadan).

@@ -1339,23 +1339,23 @@
   },
   "privacy": {
     "title": "Gizlilik Politikası",
-    "lastUpdated": "Son güncelleme: 6 Temmuz 2026",
+    "lastUpdated": "Son güncelleme: 8 Temmuz 2026",
     "intro": "Bu politika, HIZIR Software'in bu web sitesi üzerinden hangi kişisel verileri, hangi amaçla ve nasıl işlediğini açıklar. Kişisel verileriniz, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında işlenir.",
     "sections": [
       {
         "id": "collected",
         "heading": "Hangi verileri topluyoruz?",
-        "body": "İletişim formunu doldurduğunuzda ad soyad, e-posta adresi, (isteğe bağlı) şirket adı ve mesajınız tarafımıza iletilir. Sitede ziyaretçilere açık üyelik veya hesap sistemi bulunmaz; formun dışında sizden kişisel veri talep edilmez."
+        "body": "İletişim formunu doldurduğunuzda ad soyad, e-posta adresi, (isteğe bağlı) şirket adı ve mesajınız tarafımıza iletilir. Ayrıca spam ve kötüye kullanımı önlemek amacıyla gönderim anındaki IP adresiniz kaydedilir. Sitede ziyaretçilere açık üyelik veya hesap sistemi bulunmaz; formun dışında sizden kişisel veri talep edilmez."
       },
       {
         "id": "purpose",
-        "heading": "Verileri hangi amaçla kullanıyoruz?",
-        "body": "Form üzerinden ilettiğiniz bilgiler yalnızca talebinizi yanıtlamak, sizinle iletişime geçmek ve teklif hazırlamak amacıyla kullanılır. Açık rızanız olmadan pazarlama iletisi gönderilmez; verileriniz üçüncü taraflara satılmaz veya pazarlama amacıyla paylaşılmaz."
+        "heading": "Verileri hangi amaçla ve hangi hukuki dayanakla kullanıyoruz?",
+        "body": "Form üzerinden ilettiğiniz bilgiler yalnızca talebinizi yanıtlamak, sizinle iletişime geçmek ve teklif hazırlamak amacıyla kullanılır. Hukuki dayanak, tarafınızca başlatılan iletişime yanıt verilmesindeki meşru menfaattir; IP adresi ise güvenlik ve kötüye kullanımı önleme meşru menfaatine dayanır. Açık rızanız olmadan pazarlama iletisi gönderilmez; verileriniz üçüncü taraflara satılmaz veya pazarlama amacıyla paylaşılmaz."
       },
       {
         "id": "processing",
-        "heading": "Veriler nasıl iletiliyor ve saklanıyor?",
-        "body": "Form gönderimleri, talebinizin takip edilebilmesi için güvenli bir veritabanında saklanır ve ayrıca e-posta iletim altyapısı aracılığıyla tarafımıza e-posta olarak ulaştırılır. Kayıtlar, talebinizin sonuçlandırılması ve yazışma geçmişi kapsamında makul bir süre tutulur; yasal yükümlülükler gerektirmedikçe daha uzun süre saklanmaz. Silme talebiniz halinde kayıtlarınız veritabanından kaldırılır."
+        "heading": "Veriler nasıl iletiliyor, nerede saklanıyor?",
+        "body": "Form gönderimleri, talebinizin takip edilebilmesi için güvenli bir veritabanında saklanır ve ayrıca e-posta iletim altyapısı aracılığıyla tarafımıza ulaştırılır. Bu süreçte hizmet aldığımız altyapı sağlayıcıları (barındırma için Vercel, veritabanı için Neon, e-posta iletimi için Resend) verileri yalnızca bu hizmeti sunmak üzere işler. Bu sağlayıcıların sunucuları yurt dışında bulunabileceğinden verileriniz KVKK kapsamında yurt dışında işlenebilir. Kayıtlar, talebinizin sonuçlandırılması ve yazışma geçmişi kapsamında makul bir süre tutulur; yasal yükümlülükler gerektirmedikçe daha uzun süre saklanmaz. Silme talebiniz halinde kayıtlarınız veritabanından kaldırılır."
       },
       {
         "id": "cookies",

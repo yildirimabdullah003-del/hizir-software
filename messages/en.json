@@ -1339,23 +1339,23 @@
   },
   "privacy": {
     "title": "Privacy Policy",
-    "lastUpdated": "Last updated: July 6, 2026",
+    "lastUpdated": "Last updated: July 8, 2026",
     "intro": "This policy explains which personal data HIZIR Software processes through this website, for what purpose, and how. Your personal data is processed in accordance with the Turkish Personal Data Protection Law (KVKK, Law No. 6698).",
     "sections": [
       {
         "id": "collected",
         "heading": "What data do we collect?",
-        "body": "When you fill in the contact form, your full name, email address, (optional) company name, and message are transmitted to us. The site has no public membership or account system; no personal data is requested outside the form."
+        "body": "When you fill in the contact form, your full name, email address, (optional) company name, and message are transmitted to us. Your IP address at the time of submission is also recorded to prevent spam and abuse. The site has no public membership or account system; no personal data is requested outside the form."
       },
       {
         "id": "purpose",
-        "heading": "What do we use the data for?",
-        "body": "Information submitted through the form is used solely to respond to your inquiry, contact you, and prepare a quote. No marketing messages are sent without your explicit consent; your data is not sold or shared with third parties for marketing."
+        "heading": "What do we use the data for, and on what legal basis?",
+        "body": "Information submitted through the form is used solely to respond to your inquiry, contact you, and prepare a quote. The legal basis is our legitimate interest in responding to communication you initiate; the IP address relies on our legitimate interest in security and abuse prevention. No marketing messages are sent without your explicit consent; your data is not sold or shared with third parties for marketing."
       },
       {
         "id": "processing",
-        "heading": "How is the data transmitted and stored?",
-        "body": "Form submissions are stored in a secure database so your request can be followed up, and are also delivered to us as email via an email delivery service. Records are kept for a reasonable period to resolve your request and as part of our correspondence history; they are not retained longer unless legal obligations require it. Upon your deletion request, your records are removed from the database."
+        "heading": "How is the data transmitted, and where is it stored?",
+        "body": "Form submissions are stored in a secure database so your request can be followed up, and are also delivered to us via an email service. The infrastructure providers we use in this process (Vercel for hosting, Neon for the database, Resend for email delivery) process the data solely to provide that service. As these providers' servers may be located abroad, your data may be processed abroad under Turkish data-protection law (KVKK). Records are kept for a reasonable period to resolve your request and as part of our correspondence history; they are not retained longer unless legal obligations require it. Upon your deletion request, your records are removed from the database."
       },
       {
         "id": "cookies",
