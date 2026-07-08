@@ -9,14 +9,38 @@ import { Button } from "@/components/ui/button";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 type Status = "idle" | "sending" | "success" | "error";
+type FieldName = "name" | "email" | "message";
+type FieldErrors = Partial<Record<FieldName, string>>;
+
+// Client tarafı format kontrolü — sunucudaki doğrulamayı (route.ts) tekrar
+// eder; amaç kullanıcıya anında geri bildirim, sunucu son sözü söyler.
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const inputClasses =
   "w-full rounded-md border border-input bg-background px-4 py-2.5 text-sm outline-none transition-[border-color,box-shadow] duration-fast placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-4 focus-visible:ring-accent/15";
+
+const inputErrorClasses =
+  "border-danger focus-visible:border-danger focus-visible:ring-danger/15";
 
 export function ContactForm() {
   const t = useTranslations("contact.form");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+
+  function validate(payload: {
+    name: string;
+    email: string;
+    message: string;
+  }): FieldErrors {
+    const errors: FieldErrors = {};
+    if (!payload.name) errors.name = t("nameRequired");
+    if (!payload.email) errors.email = t("emailRequired");
+    else if (!EMAIL_PATTERN.test(payload.email))
+      errors.email = t("emailInvalid");
+    if (!payload.message) errors.message = t("messageRequired");
+    return errors;
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,12 +55,20 @@ export function ContactForm() {
       website: String(data.get("website") ?? "").trim(),
     };
 
-    if (!payload.name || !payload.email || !payload.message) {
+    const errors = validate(payload);
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
       setStatus("error");
       setErrorMessage(t("requiredError"));
+      // İlk hatalı alana odağı taşı (klavye/ekran okuyucu için kritik).
+      const firstInvalid = (["name", "email", "message"] as FieldName[]).find(
+        (f) => errors[f]
+      );
+      if (firstInvalid) form.querySelector<HTMLElement>(`#${firstInvalid}`)?.focus();
       return;
     }
 
+    setFieldErrors({});
     setStatus("sending");
     setErrorMessage(null);
 
@@ -91,24 +123,28 @@ export function ContactForm() {
           className="relative flex flex-col gap-5"
         >
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label={t("nameLabel")} htmlFor="name">
+            <Field label={t("nameLabel")} htmlFor="name" error={fieldErrors.name}>
               <input
                 id="name"
                 name="name"
                 type="text"
                 autoComplete="name"
                 placeholder={t("namePlaceholder")}
-                className={inputClasses}
+                aria-invalid={fieldErrors.name ? true : undefined}
+                aria-describedby={fieldErrors.name ? "name-error" : undefined}
+                className={`${inputClasses}${fieldErrors.name ? ` ${inputErrorClasses}` : ""}`}
               />
             </Field>
-            <Field label={t("emailLabel")} htmlFor="email">
+            <Field label={t("emailLabel")} htmlFor="email" error={fieldErrors.email}>
               <input
                 id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
                 placeholder={t("emailPlaceholder")}
-                className={inputClasses}
+                aria-invalid={fieldErrors.email ? true : undefined}
+                aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                className={`${inputClasses}${fieldErrors.email ? ` ${inputErrorClasses}` : ""}`}
               />
             </Field>
           </div>
@@ -124,13 +160,15 @@ export function ContactForm() {
             />
           </Field>
 
-          <Field label={t("messageLabel")} htmlFor="message">
+          <Field label={t("messageLabel")} htmlFor="message" error={fieldErrors.message}>
             <textarea
               id="message"
               name="message"
               rows={5}
               placeholder={t("messagePlaceholder")}
-              className={inputClasses}
+              aria-invalid={fieldErrors.message ? true : undefined}
+              aria-describedby={fieldErrors.message ? "message-error" : undefined}
+              className={`${inputClasses}${fieldErrors.message ? ` ${inputErrorClasses}` : ""}`}
             />
           </Field>
 
@@ -149,6 +187,8 @@ export function ContactForm() {
           <AnimatePresence>
             {status === "error" && errorMessage ? (
               <motion.div
+                role="alert"
+                aria-live="assertive"
                 initial={{ opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
@@ -193,10 +233,12 @@ export function ContactForm() {
 function Field({
   label,
   htmlFor,
+  error,
   children,
 }: {
   label: string;
   htmlFor: string;
+  error?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -205,6 +247,11 @@ function Field({
         {label}
       </label>
       {children}
+      {error ? (
+        <p id={`${htmlFor}-error`} className="text-xs text-danger">
+          {error}
+        </p>
+      ) : null}
     </motion.div>
   );
 }

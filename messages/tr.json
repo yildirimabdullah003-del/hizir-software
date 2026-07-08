@@ -1269,6 +1269,10 @@
       "success": "Mesajınız alındı. En kısa sürede size dönüş yapacağız.",
       "error": "Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.",
       "requiredError": "Lütfen ad, e-posta ve mesaj alanlarını doldurun.",
+      "nameRequired": "Lütfen adınızı girin.",
+      "emailRequired": "Lütfen e-posta adresinizi girin.",
+      "emailInvalid": "Geçerli bir e-posta adresi girin.",
+      "messageRequired": "Lütfen mesajınızı yazın.",
       "privacyNotice": "Bu formu göndererek verilerinizin <link>Gizlilik Politikası</link> kapsamında işlenmesini kabul etmiş olursunuz."
     },
     "info": {

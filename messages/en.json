@@ -1269,6 +1269,10 @@
       "success": "Your message has been received. We'll get back to you soon.",
       "error": "Your message couldn't be sent. Please try again later.",
       "requiredError": "Please fill in your name, email, and message.",
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "Please enter a valid email address.",
+      "messageRequired": "Please enter your message.",
       "privacyNotice": "By submitting this form, you agree to the processing of your data under our <link>Privacy Policy</link>."
     },
     "info": {
