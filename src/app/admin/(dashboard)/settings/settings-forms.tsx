@@ -1,0 +1,123 @@
+"use client";
+
+import { useActionState } from "react";
+import {
+  saveSiteMeta,
+  saveSocialLinks,
+  type SaveSettingState,
+} from "@/features/admin/settings/actions";
+import { Button } from "@/components/ui/button";
+
+const inputClass =
+  "w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-fast focus-visible:border-accent focus-visible:ring-4 focus-visible:ring-accent/15";
+
+type SocialLink = { name: string; href: string; icon: "linkedin" | "github" | "x" };
+
+function FormStatus({ state }: { state: SaveSettingState }) {
+  if (state.error)
+    return (
+      <p role="alert" className="text-sm text-red-600">
+        {state.error}
+      </p>
+    );
+  if (state.success)
+    return <p className="text-sm text-emerald-700">Kaydedildi ✓</p>;
+  return null;
+}
+
+export function SettingsForms({
+  siteMeta,
+  socialLinks,
+}: {
+  siteMeta: { url: string; contactEmail: string };
+  socialLinks: SocialLink[];
+}) {
+  const [metaState, metaAction, metaPending] = useActionState<
+    SaveSettingState,
+    FormData
+  >(saveSiteMeta, {});
+  const [socialState, socialAction, socialPending] = useActionState<
+    SaveSettingState,
+    FormData
+  >(saveSocialLinks, {});
+
+  const hrefFor = (icon: SocialLink["icon"]) =>
+    socialLinks.find((l) => l.icon === icon)?.href ?? "";
+
+  return (
+    <div className="mt-6 space-y-6">
+      <form
+        action={metaAction}
+        className="space-y-4 rounded-xl border border-border bg-background p-6"
+      >
+        <h2 className="text-sm font-semibold">Site Bilgileri</h2>
+        <div>
+          <label htmlFor="url" className="mb-1 block text-xs font-medium">
+            Site adresi (canonical URL ve e-postalarda kullanılır)
+          </label>
+          <input
+            id="url"
+            name="url"
+            type="url"
+            defaultValue={siteMeta.url}
+            required
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="contactEmail"
+            className="mb-1 block text-xs font-medium"
+          >
+            İletişim e-postası (form mesajları buraya iletilir)
+          </label>
+          <input
+            id="contactEmail"
+            name="contactEmail"
+            type="email"
+            defaultValue={siteMeta.contactEmail}
+            required
+            className={inputClass}
+          />
+        </div>
+        <div className="flex items-center gap-4">
+          <Button type="submit" size="sm" disabled={metaPending}>
+            {metaPending ? "Kaydediliyor..." : "Kaydet"}
+          </Button>
+          <FormStatus state={metaState} />
+        </div>
+      </form>
+
+      <form
+        action={socialAction}
+        className="space-y-4 rounded-xl border border-border bg-background p-6"
+      >
+        <h2 className="text-sm font-semibold">Sosyal Bağlantılar</h2>
+        <p className="text-xs text-muted-foreground">
+          Boş bırakılan platform footer&apos;da gösterilmez.
+        </p>
+        {(["linkedin", "github", "x"] as const).map((icon) => (
+          <div key={icon}>
+            <label htmlFor={icon} className="mb-1 block text-xs font-medium">
+              {icon === "linkedin" ? "LinkedIn" : icon === "github" ? "GitHub" : "X"}
+            </label>
+            <input
+              id={icon}
+              name={icon}
+              type="url"
+              placeholder={`https://${icon === "x" ? "x.com" : `${icon}.com`}/...`}
+              defaultValue={hrefFor(icon)}
+              className={inputClass}
+            />
+          </div>
+        ))}
+        <div className="flex items-center gap-4">
+          <Button type="submit" size="sm" disabled={socialPending}>
+            {socialPending ? "Kaydediliyor..." : "Kaydet"}
+          </Button>
+          <FormStatus state={socialState} />
+        </div>
+      </form>
+    </div>
+  );
+}

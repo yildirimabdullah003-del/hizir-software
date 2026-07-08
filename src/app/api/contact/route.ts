@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { siteConfig } from "@/config/site";
+import { prisma } from "@/lib/prisma";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -63,6 +64,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid-payload" }, { status: 400 });
   }
 
+  // DB-öncelikli kayıt: e-posta iletimi başarısız olsa bile lead kaybolmaz
+  // (admin paneldeki Mesajlar kutusuna düşer). DB yazımı başarısızsa eski
+  // davranışa geri düşülür — e-posta iletimi DB sağlığına bağlanmaz.
+  let submissionId: string | null = null;
+  try {
+    const submission = await prisma.contactSubmission.create({
+      data: { name, email, company: company || null, message, ipAddress: ip },
+      select: { id: true },
+    });
+    submissionId = submission.id;
+  } catch (err) {
+    console.error(
+      "[contact] Mesaj veritabanına KAYDEDİLEMEDİ (e-posta yine de denenecek):",
+      err
+    );
+  }
+
   const resendApiKey = process.env.RESEND_API_KEY;
 
   // RESEND_API_KEY tanımlı değilse e-posta gönderilmez; talep sunucu loguna
@@ -73,13 +91,19 @@ export async function POST(request: Request) {
     if (process.env.NODE_ENV === "production") {
       console.error(
         "[contact] KRİTİK: Üretim ortamında RESEND_API_KEY tanımlı değil — " +
-          "form mesajları e-posta olarak İLETİLMİYOR, yalnızca loglanıyor:",
-        { name, email, company, message }
+          "form mesajları e-posta olarak İLETİLMİYOR" +
+          (submissionId
+            ? "; mesaj veritabanına kaydedildi (admin panel > Mesajlar)."
+            : ", yalnızca loglanıyor:"),
+        submissionId ? { submissionId } : { name, email, company, message }
       );
     } else {
       console.warn(
-        "[contact] RESEND_API_KEY tanımlı değil, mesaj yalnızca loglanıyor:",
-        { name, email, company, message }
+        "[contact] RESEND_API_KEY tanımlı değil" +
+          (submissionId
+            ? "; mesaj yalnızca veritabanına kaydedildi."
+            : ", mesaj yalnızca loglanıyor:"),
+        submissionId ? { submissionId } : { name, email, company, message }
       );
     }
     return NextResponse.json({ ok: true, delivered: false });
@@ -110,7 +134,25 @@ export async function POST(request: Request) {
 
   if (!response.ok) {
     console.error("[contact] Resend isteği başarısız oldu:", await response.text());
+    // Mesaj DB'ye kaydedildiyse lead güvende — kullanıcıya hata gösterip
+    // formu tekrar doldurtmak yerine başarı dönülür.
+    if (submissionId) {
+      return NextResponse.json({ ok: true, delivered: false });
+    }
     return NextResponse.json({ error: "delivery-failed" }, { status: 502 });
+  }
+
+  // İletim işareti best-effort: güncelleme başarısız olsa da mesaj zaten
+  // kalıcı olarak kayıtlı.
+  if (submissionId) {
+    try {
+      await prisma.contactSubmission.update({
+        where: { id: submissionId },
+        data: { emailDelivered: true },
+      });
+    } catch (err) {
+      console.error("[contact] emailDelivered güncellenemedi:", err);
+    }
   }
 
   return NextResponse.json({ ok: true, delivered: true });

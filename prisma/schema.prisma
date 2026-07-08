@@ -1,0 +1,117 @@
+// HIZIR Software — admin panel (V1: yalnızca site yönetimi) veri şeması.
+// Karar gerekçeleri için bkz. docs/decisions/ ve plan dosyası:
+// - Multi-tenancy YOK: Website Builder / restoran platformu ayrı bir şema
+//   olarak tasarlanacak (Faz C); bu şemaya spekülatif tenantId eklenmez.
+// - Audit log YOK (Rule of Three — ikinci editör + gerçek ihtiyaç doğunca).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  EDITOR
+}
+
+enum Locale {
+  tr
+  en
+}
+
+enum SubmissionStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  SPAM
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(EDITOR)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  uploadedMedia      MediaAsset[]
+  handledSubmissions ContactSubmission[]
+}
+
+// Yönetilebilir her public sayfa için bir satır (hizmet detayları vb.).
+// `type` + `slug` ile jenerik: yeni içerik türleri (blog, portfolyo) yeni
+// tablo değil yeni `type` değeri demektir.
+model Page {
+  id          String   @id @default(cuid())
+  type        String // "service-detail" | "static" | ileride: "blog-post", "portfolio-item"
+  slug        String
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  translations PageTranslation[]
+
+  @@unique([type, slug])
+}
+
+// Dil başına içerik. `content`, mevcut tip sözleşmelerine (örn.
+// ServiceDetailContent) uyan yapısal JSON'dur; yazım anında Zod ile
+// doğrulanır (src/features/admin/pages/schema.ts).
+model PageTranslation {
+  id             String   @id @default(cuid())
+  pageId         String
+  locale         Locale
+  content        Json
+  seoTitle       String?
+  seoDescription String?
+  updatedAt      DateTime @updatedAt
+
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@unique([pageId, locale])
+}
+
+// İkili (binary) veri DB'de tutulmaz; dosyalar Vercel Blob'da yaşar,
+// burada yalnızca metadata bulunur.
+model MediaAsset {
+  id           String   @id @default(cuid())
+  url          String
+  filename     String
+  mimeType     String
+  sizeBytes    Int
+  altText      String?
+  uploadedById String?
+  createdAt    DateTime @default(now())
+
+  uploadedBy User? @relation(fields: [uploadedById], references: [id])
+}
+
+model ContactSubmission {
+  id             String           @id @default(cuid())
+  name           String
+  email          String
+  company        String?
+  message        String
+  status         SubmissionStatus @default(NEW)
+  emailDelivered Boolean          @default(false)
+  ipAddress      String?
+  createdAt      DateTime         @default(now())
+  handledById    String?
+
+  handledBy User? @relation(fields: [handledById], references: [id])
+}
+
+// Nav / footer / sosyal linkler / site meta — anahtar başına JSON değer.
+// Yapı değişikliği migration gerektirmesin diye key/value modellendi.
+model SiteSetting {
+  key       String   @id // "nav" | "footer" | "socialLinks" | "siteMeta"
+  value     Json
+  updatedAt DateTime @updatedAt
+}
