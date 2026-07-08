@@ -10,7 +10,11 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  // Uygulama sorguları: Neon POOLED bağlantısı (pgbouncer).
   url      = env("DATABASE_URL")
+  // Migration'lar pooler üzerinden çalışamaz; doğrudan (pooler'sız) bağlantı.
+  // Neon dışı/tek bağlantılı kurulumlarda DATABASE_URL ile aynı değer verilir.
+  directUrl = env("DIRECT_URL")
 }
 
 enum Role {
