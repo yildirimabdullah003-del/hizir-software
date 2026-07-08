@@ -8,6 +8,23 @@ Yol haritası ve aşama gerekçeleri için bkz. [docs/ROADMAP.md](docs/ROADMAP.m
 
 ## [Yayımlanmadı]
 
+### Yol haritası aşamaları (0-5) — kod tarafı
+- **Aşama 0:** Mükerrer platform ADR'si silindi (0006 çakışması giderildi),
+  CHANGELOG eklendi, oturum işleri mantıklı commit gruplarına ayrıldı.
+- **Aşama 1:** `schema.prisma`'ya `directUrl` (Neon pooler + migration ayrımı),
+  `.env.example` güncellendi.
+- **Aşama 2:** `site.ts` url env'e bağlandı, `build:prod` script'i, gizlilik
+  metni gerçek veri akışına göre güncellendi (IP toplama, işleyiciler, yurt
+  dışı aktarım, hukuki dayanak).
+- **Aşama 3:** İletişim formu erişilebilirlik + doğrulama (alan-bazlı hata,
+  aria-live, e-posta format kontrolü, hataya odak).
+- **Aşama 4:** Public `/calismalar` sayfası, ana sayfa SSS bölümü, fiyat
+  kartı "En çok tercih edilen" rozeti + "Kurulum ücretsiz · Sözleşme yok" notu.
+- **Aşama 5:** Admin login brute-force koruması (rate-limit) + ADR 0008
+  (güvenlik/yedekleme).
+- **Aşama 6 (koşullu):** Çok kiracılı platform DB'si — gerçek müşteri talebine
+  bağlı, bilinçli olarak ertelendi (bkz. ROADMAP + ADR 0007).
+
 ### Eklendi
 - Ana sayfa: cihaz mockup'lı hero vitrini, fiyatlandırma bölümü (QR Menü / Web
   Sitesi / POS / Kapsamlı İşletme) WhatsApp CTA'larıyla, "Örnek Çalışmalar"
