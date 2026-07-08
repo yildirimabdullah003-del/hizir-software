@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { ServicesGrid, type ServiceItem } from "@/components/sections/services-grid";
 import { PricingGrid, type PricingProduct } from "@/components/sections/pricing-grid";
 import { ShowcaseGallery, type ShowcaseItem } from "@/components/sections/showcase-gallery";
+import { Faq, type FaqItem } from "@/components/sections/faq";
 import { ProcessSteps, type ProcessStep } from "@/components/sections/process-steps";
 import { CtaSection } from "@/components/sections/cta-section";
 import { siteConfig } from "@/config/site";
@@ -29,6 +30,7 @@ export default async function HomePage({
       <Works />
       <ServicesPreview />
       <Process />
+      <HomeFaq />
       <FinalCta />
     </>
   );
@@ -52,6 +54,8 @@ function Pricing() {
           whatsappNumber={siteConfig.whatsappNumber}
           whatsappCtaLabel={t("whatsappCta")}
           whatsappMessage={t.raw("whatsappMessage") as string}
+          popularLabel={t("popularBadge")}
+          setupNote={t("setupNote")}
         />
         <p className="mt-8 text-center text-sm text-muted-foreground">
           {t("note")}
@@ -75,6 +79,30 @@ function Works() {
           className="mb-12"
         />
         <ShowcaseGallery items={items} demoBadge={t("demoBadge")} />
+        <div className="mt-10 text-center">
+          <ButtonLink href="/calismalar" variant="outline">
+            {t("cta")}
+          </ButtonLink>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeFaq() {
+  const t = useTranslations("home.faq");
+  const items = t.raw("items") as FaqItem[];
+
+  return (
+    <section className="border-t border-border bg-surface">
+      <div className="mx-auto max-w-6xl px-6 py-24">
+        <SectionHeading
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          subtitle={t("subtitle")}
+          className="mb-12"
+        />
+        <Faq items={items} />
       </div>
     </section>
   );

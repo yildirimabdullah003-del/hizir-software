@@ -27,6 +27,8 @@
       "title": "Net fiyat, aynı gün kurulum",
       "subtitle": "İşletmeniz için hazır çözümler; sürpriz maliyet yok, sözleşme zorunluluğu yok.",
       "whatsappCta": "WhatsApp'tan Başlayın",
+      "popularBadge": "En çok tercih edilen",
+      "setupNote": "Kurulum ücretsiz · Sözleşme yok",
       "whatsappMessage": "Merhaba, {product} paketi hakkında bilgi almak istiyorum.",
       "note": "Tüm paketlerde kurulum ücretsizdir. Özel ihtiyaçlar için WhatsApp üzerinden yazabilir veya iletişim sayfasından bize ulaşabilirsiniz.",
       "products": [
@@ -98,6 +100,9 @@
       "title": "Ürünlerimiz iş başında",
       "subtitle": "Aşağıdaki demolar, teslim ettiğimiz işlerin birebir yapısını yansıtır — sizin markanızla, sizin renklerinizle kurulur.",
       "demoBadge": "Demo",
+      "cta": "Tüm örnekleri gör",
+      "pageTitle": "Örnek Çalışmalar",
+      "pageSubtitle": "Ürünlerimizin nasıl göründüğünü gösteren örnek kurgular. Gerçek projeleriniz kendi markanız ve içeriğinizle hayata geçer; ilk gerçek referanslarımız yayınlandıkça burada yer alacak.",
       "items": [
         {
           "id": "web-site",
@@ -116,6 +121,38 @@
           "tag": "Kapsamlı İşletme",
           "title": "Saray Pide",
           "description": "Pide salonu için işletme paneli: masa ve paket siparişleri, günlük ciro ve mutfak akışı tek panelde."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "Sık Sorulan Sorular",
+      "title": "Aklınıza takılanlar",
+      "subtitle": "Daha fazlası için WhatsApp'tan yazabilirsiniz; en hızlı yanıtı oradan alırsınız.",
+      "items": [
+        {
+          "id": "sure",
+          "question": "Ne kadar sürede kurulur?",
+          "answer": "QR menü ve web sitesi genellikle aynı gün kurulur. İçerikleriniz (menü, görseller) hazırsa yayına almak birkaç saat sürer; kapsamlı işletme paketinde şube/masa yapınıza göre kısa bir kurulum planı çıkarırız."
+        },
+        {
+          "id": "sozlesme",
+          "question": "Sözleşme zorunluluğu var mı?",
+          "answer": "Hayır. Aylık çalışırız, uzun taahhüt yoktur. Memnun kaldığınız sürece devam edersiniz; iptal etmek isterseniz WhatsApp'tan yazmanız yeterli."
+        },
+        {
+          "id": "guncelleme",
+          "question": "Menü veya fiyat değişince ne yapıyorum?",
+          "answer": "Değişiklikleri bize iletmeniz yeterli; QR menüde fiyat ve ürün güncellemesi saniyeler içinde yansır, ayrıca baskı maliyeti olmaz. Dilerseniz kendi panelinizden de yönetebilirsiniz."
+        },
+        {
+          "id": "sahiplik",
+          "question": "Site ve içerik bana mı ait?",
+          "answer": "Evet. Alan adı, içerikler ve tasarım sizin adınıza kurulur; menü ve görseller size aittir. İstediğiniz zaman kayıtlarınızı talep edebilirsiniz."
+        },
+        {
+          "id": "nasil-baslarim",
+          "question": "Nasıl başlıyoruz?",
+          "answer": "WhatsApp'tan yazın veya iletişim formunu doldurun. İhtiyacınızı konuşup uygun paketi belirleriz, içerikleri toplar ve kurulumu yaparız — üç adım: yaz, kur, yayınla."
         }
       ]
     },

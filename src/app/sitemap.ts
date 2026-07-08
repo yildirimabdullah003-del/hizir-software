@@ -8,6 +8,7 @@ import { absoluteUrl, localeAlternates } from "@/lib/seo";
 const PATHS = [
   "",
   "/hizmetler",
+  "/calismalar",
   "/iletisim",
   "/gizlilik",
   "/kullanim-kosullari",

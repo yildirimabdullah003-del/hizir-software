@@ -26,12 +26,18 @@ export function PricingGrid({
   whatsappNumber,
   whatsappCtaLabel,
   whatsappMessage,
+  popularLabel,
+  setupNote,
 }: {
   products: PricingProduct[];
   whatsappNumber: string;
   whatsappCtaLabel: string;
   /** İçinde {product} geçen şablon; ürün adına göre doldurulur. */
   whatsappMessage: string;
+  /** Öne çıkan (highlighted) ürüne konan rozet. */
+  popularLabel: string;
+  /** Her kartın altındaki güven notu (ör. "Kurulum ücretsiz · Sözleşme yok"). */
+  setupNote: string;
 }) {
   return (
     <motion.div
@@ -52,12 +58,17 @@ export function PricingGrid({
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 300, damping: 24 }}
             className={cn(
-              "flex flex-col rounded-xl border p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:shadow-lifted",
+              "relative flex flex-col rounded-xl border p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:shadow-lifted",
               product.highlighted
                 ? "border-accent/50 bg-surface ring-1 ring-accent/20"
                 : "border-border bg-background hover:border-accent/40"
             )}
           >
+            {product.highlighted ? (
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-3 py-1 text-xs font-medium text-[var(--color-accent-foreground)] shadow-soft">
+                {popularLabel}
+              </span>
+            ) : null}
             <h3 className="text-lg font-semibold tracking-tight">
               {product.name}
             </h3>
@@ -101,6 +112,9 @@ export function PricingGrid({
                 <WhatsAppIcon className="h-4 w-4" />
                 {whatsappCtaLabel}
               </a>
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                {setupNote}
+              </p>
             </div>
           </motion.div>
         );

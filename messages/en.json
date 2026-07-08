@@ -27,6 +27,8 @@
       "title": "Clear pricing, same-day setup",
       "subtitle": "Ready-made solutions for your business; no surprise costs, no contract lock-in.",
       "whatsappCta": "Start on WhatsApp",
+      "popularBadge": "Most popular",
+      "setupNote": "Free setup · No contract",
       "whatsappMessage": "Hello, I'd like to get information about the {product} package.",
       "note": "Setup is free on all packages. For custom needs, message us on WhatsApp or reach us via the contact page.",
       "products": [
@@ -98,6 +100,9 @@
       "title": "Our products in action",
       "subtitle": "The demos below mirror the exact structure of what we deliver — built with your brand and your colors.",
       "demoBadge": "Demo",
+      "cta": "See all examples",
+      "pageTitle": "Featured Work",
+      "pageSubtitle": "Sample builds showing how our products look. Your real projects come to life with your own brand and content; our first real references will appear here as they are published.",
       "items": [
         {
           "id": "web-site",
@@ -116,6 +121,38 @@
           "tag": "Complete Business",
           "title": "Saray Pide",
           "description": "A business panel for a pide house: table and takeaway orders, daily revenue, and kitchen flow in one panel."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Questions you might have",
+      "subtitle": "For more, message us on WhatsApp — that's where you'll get the fastest reply.",
+      "items": [
+        {
+          "id": "sure",
+          "question": "How long does setup take?",
+          "answer": "A QR menu and website are usually set up the same day. If your content (menu, images) is ready, going live takes a few hours; for the Complete Business package we prepare a short setup plan based on your branch/table structure."
+        },
+        {
+          "id": "sozlesme",
+          "question": "Is a contract required?",
+          "answer": "No. We work month to month with no long commitment. You continue as long as you're happy; to cancel, just message us on WhatsApp."
+        },
+        {
+          "id": "guncelleme",
+          "question": "What do I do when a menu or price changes?",
+          "answer": "Just send us the changes; price and item updates on the QR menu appear in seconds, with no printing cost. You can also manage them from your own panel if you like."
+        },
+        {
+          "id": "sahiplik",
+          "question": "Do I own the site and content?",
+          "answer": "Yes. The domain, content, and design are set up in your name; your menu and images are yours. You can request your records at any time."
+        },
+        {
+          "id": "nasil-baslarim",
+          "question": "How do we start?",
+          "answer": "Message us on WhatsApp or fill in the contact form. We discuss your needs, pick the right package, gather content, and set it up — three steps: write, set up, publish."
         }
       ]
     },
