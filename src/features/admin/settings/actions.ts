@@ -17,7 +17,7 @@ const socialLinksSchema = z.array(
   z.object({
     name: z.string().min(1),
     href: z.string().url(),
-    icon: z.enum(["linkedin", "github", "x"]),
+    icon: z.enum(["linkedin", "github", "x", "instagram"]),
   })
 );
 
@@ -54,6 +54,7 @@ export async function saveSocialLinks(
   if (isPreviewMode()) return { error: PREVIEW_WRITE_MESSAGE };
 
   const platforms = [
+    { icon: "instagram" as const, name: "Instagram" },
     { icon: "linkedin" as const, name: "LinkedIn" },
     { icon: "github" as const, name: "GitHub" },
     { icon: "x" as const, name: "X" },

@@ -6,7 +6,11 @@ import { SettingsForms } from "./settings-forms";
 export const dynamic = "force-dynamic";
 
 type SiteMeta = { url: string; contactEmail: string };
-type SocialLink = { name: string; href: string; icon: "linkedin" | "github" | "x" };
+type SocialLink = {
+  name: string;
+  href: string;
+  icon: "linkedin" | "github" | "x" | "instagram";
+};
 
 export default async function AdminSettingsPage() {
   await requireRole("ADMIN");

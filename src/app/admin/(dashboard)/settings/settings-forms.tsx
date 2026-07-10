@@ -11,7 +11,25 @@ import { Button } from "@/components/ui/button";
 const inputClass =
   "w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-fast focus-visible:border-accent focus-visible:ring-4 focus-visible:ring-accent/15";
 
-type SocialLink = { name: string; href: string; icon: "linkedin" | "github" | "x" };
+type SocialLink = {
+  name: string;
+  href: string;
+  icon: "linkedin" | "github" | "x" | "instagram";
+};
+
+const PLATFORM_LABELS: Record<SocialLink["icon"], string> = {
+  instagram: "Instagram",
+  linkedin: "LinkedIn",
+  github: "GitHub",
+  x: "X",
+};
+
+const PLATFORM_PLACEHOLDERS: Record<SocialLink["icon"], string> = {
+  instagram: "https://instagram.com/...",
+  linkedin: "https://linkedin.com/company/...",
+  github: "https://github.com/...",
+  x: "https://x.com/...",
+};
 
 function FormStatus({ state }: { state: SaveSettingState }) {
   if (state.error)
@@ -96,16 +114,16 @@ export function SettingsForms({
         <p className="text-xs text-muted-foreground">
           Boş bırakılan platform footer&apos;da gösterilmez.
         </p>
-        {(["linkedin", "github", "x"] as const).map((icon) => (
+        {(["instagram", "linkedin", "github", "x"] as const).map((icon) => (
           <div key={icon}>
             <label htmlFor={icon} className="mb-1 block text-xs font-medium">
-              {icon === "linkedin" ? "LinkedIn" : icon === "github" ? "GitHub" : "X"}
+              {PLATFORM_LABELS[icon]}
             </label>
             <input
               id={icon}
               name={icon}
               type="url"
-              placeholder={`https://${icon === "x" ? "x.com" : `${icon}.com`}/...`}
+              placeholder={PLATFORM_PLACEHOLDERS[icon]}
               defaultValue={hrefFor(icon)}
               className={inputClass}
             />

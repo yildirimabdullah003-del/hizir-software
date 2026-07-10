@@ -22,9 +22,14 @@ export const siteConfig = {
     { key: "pricing", href: "/#fiyatlandirma" },
     { key: "contact", href: "/iletisim" },
   ],
-  // Gerçek hesaplar açıldığında doldurulacak (bkz. footer sosyal ikonları).
-  // Var olmayan/doğrulanamayan hesaplara link vermemek için şimdilik boş.
-  socialLinks: [] as { name: string; href: string; icon: "linkedin" | "github" | "x" }[],
+  // Footer'daki sosyal ikonlar. Yalnızca gerçekten var olan hesaplar eklenir.
+  socialLinks: [
+    {
+      name: "Instagram",
+      href: "https://instagram.com/hizirsoftware",
+      icon: "instagram",
+    },
+  ] as { name: string; href: string; icon: "linkedin" | "github" | "x" | "instagram" }[],
 } as const;
 
 export type NavItem = (typeof siteConfig.navItems)[number];

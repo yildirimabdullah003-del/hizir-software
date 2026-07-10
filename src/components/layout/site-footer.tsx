@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone, Github, Linkedin, Twitter, type LucideIcon } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Twitter, Instagram, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -12,6 +12,7 @@ const SOCIAL_ICONS: Record<string, LucideIcon> = {
   linkedin: Linkedin,
   github: Github,
   x: Twitter,
+  instagram: Instagram,
 };
 
 export function SiteFooter() {
