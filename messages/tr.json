@@ -28,9 +28,9 @@
       "subtitle": "İşletmeniz için hazır çözümler; sürpriz maliyet yok, sözleşme zorunluluğu yok.",
       "whatsappCta": "WhatsApp'tan Başlayın",
       "popularBadge": "En çok tercih edilen",
-      "setupNote": "Kurulum ücretsiz · Sözleşme yok",
+      "setupNote": "Sözleşme yok · Dilediğinde iptal",
       "whatsappMessage": "Merhaba, {product} paketi hakkında bilgi almak istiyorum.",
-      "note": "Tüm paketlerde kurulum ücretsizdir. Özel ihtiyaçlar için WhatsApp üzerinden yazabilir veya iletişim sayfasından bize ulaşabilirsiniz.",
+      "note": "İndirimli fiyatlar ilk 15 müşteri için geçerlidir; kurulum ücretleri tek seferliktir. Özel ihtiyaçlar için WhatsApp üzerinden yazabilir veya iletişim sayfasından bize ulaşabilirsiniz.",
       "products": [
         {
           "id": "qr-menu",
@@ -46,12 +46,16 @@
             "Kendi QR tasarımınız",
             "Aynı gün kurulum"
           ],
-          "highlighted": true
+          "highlighted": true,
+          "listPrice": "₺500",
+          "annualListPrice": "₺5.000",
+          "annualPrice": "₺3.500",
+          "setupPrice": "₺1.000"
         },
         {
           "id": "web-site",
           "name": "Web Sitesi",
-          "price": "₺750",
+          "price": "₺1.225",
           "period": "/ay",
           "description": "İşletmenize özel, hızlı ve SEO uyumlu web sitesi.",
           "features": [
@@ -61,12 +65,16 @@
             "Google Haritalar ve yol tarifi",
             "Fotoğraf galerisi",
             "Sosyal medya bağlantıları"
-          ]
+          ],
+          "listPrice": "₺1.750",
+          "annualListPrice": "₺17.500",
+          "annualPrice": "₺12.250",
+          "setupPrice": "₺2.500"
         },
         {
           "id": "pos",
           "name": "POS Sistemi",
-          "price": "₺950",
+          "price": "₺875",
           "period": "/ay",
           "description": "Kasadan mutfağa siparişin tüm akışı tek sistemde.",
           "features": [
@@ -76,12 +84,16 @@
             "Gün sonu Z-raporu",
             "Yetki bazlı personel yönetimi",
             "Çevrimdışı da çalışır"
-          ]
+          ],
+          "listPrice": "₺1.250",
+          "annualListPrice": "₺12.500",
+          "annualPrice": "₺8.750",
+          "setupPrice": "₺3.500"
         },
         {
           "id": "complete",
           "name": "Kapsamlı İşletme",
-          "price": "₺1.850",
+          "price": "₺1.715",
           "period": "/ay",
           "description": "QR Menü + Web Sitesi + POS ve fazlası, tek pakette.",
           "features": [
@@ -91,9 +103,18 @@
             "Kurye paneli ve sipariş takibi",
             "Stok takibi ve uyarıları",
             "Sınırsız masa ve personel"
-          ]
+          ],
+          "listPrice": "₺2.450",
+          "annualListPrice": "₺24.500",
+          "annualPrice": "₺17.150",
+          "setupPrice": "₺4.500"
         }
-      ]
+      ],
+      "campaign": "İlk 15 müşteriye özel %30 indirim",
+      "discountBadge": "%30 indirim",
+      "annualLabel": "Yıllık",
+      "setupLabel": "Kurulum",
+      "setupSuffix": "tek seferlik"
     },
     "works": {
       "eyebrow": "Örnek Çalışmalar",
@@ -1352,7 +1373,7 @@
       {
         "id": "payment",
         "heading": "Ödeme ve abonelik",
-        "body": "Aylık paketler, ilgili dönem başında ücretlendirilir. Ödemesi yapılmayan hizmetler askıya alınabilir. Kurulum ücretsizdir; iptal halinde o döneme ait ödenmiş ücret iade edilmez, hizmet dönem sonuna kadar sürer. Abonelik iptali için WhatsApp veya e-posta üzerinden bize ulaşmanız yeterlidir."
+        "body": "Aylık paketler, ilgili dönem başında ücretlendirilir. Ödemesi yapılmayan hizmetler askıya alınabilir. Kurulum ücreti pakete göre tek seferlik olarak tahsil edilir; iptal halinde o döneme ait ödenmiş ücret iade edilmez, hizmet dönem sonuna kadar sürer. Abonelik iptali için WhatsApp veya e-posta üzerinden bize ulaşmanız yeterlidir."
       },
       {
         "id": "content",

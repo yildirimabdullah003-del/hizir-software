@@ -47,8 +47,15 @@ function Pricing() {
           eyebrow={t("eyebrow")}
           title={t("title")}
           subtitle={t("subtitle")}
-          className="mb-12"
+          className="mb-6"
         />
+        {/* Kampanya bandı — ilk 15 müşteri kotası dolunca messages'tan
+            kaldırılır, kartlardaki listPrice alanları da silinir. */}
+        <p className="mb-12 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent">
+            🎉 {t("campaign")}
+          </span>
+        </p>
         <PricingGrid
           products={products}
           whatsappNumber={siteConfig.whatsappNumber}
@@ -56,6 +63,10 @@ function Pricing() {
           whatsappMessage={t.raw("whatsappMessage") as string}
           popularLabel={t("popularBadge")}
           setupNote={t("setupNote")}
+          discountBadge={t("discountBadge")}
+          annualLabel={t("annualLabel")}
+          setupLabel={t("setupLabel")}
+          setupSuffix={t("setupSuffix")}
         />
         <p className="mt-8 text-center text-sm text-muted-foreground">
           {t("note")}

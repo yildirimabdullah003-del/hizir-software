@@ -9,8 +9,12 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 export type PricingProduct = {
   id: string;
   name: string;
-  price: string; // "₺300" — biçimlendirilmiş; para birimi/biçim içerikte kalır
+  price: string; // indirimli aylık, "₺350" — biçimlendirilmiş; biçim içerikte kalır
+  listPrice?: string; // kampanya öncesi liste fiyatı, üstü çizili gösterilir
   period: string; // "/ay"
+  annualPrice?: string; // indirimli yıllık
+  annualListPrice?: string; // liste yıllık, üstü çizili
+  setupPrice?: string; // tek seferlik kurulum ücreti
   description: string;
   features: string[];
   highlighted?: boolean;
@@ -28,6 +32,10 @@ export function PricingGrid({
   whatsappMessage,
   popularLabel,
   setupNote,
+  discountBadge,
+  annualLabel,
+  setupLabel,
+  setupSuffix,
 }: {
   products: PricingProduct[];
   whatsappNumber: string;
@@ -36,8 +44,16 @@ export function PricingGrid({
   whatsappMessage: string;
   /** Öne çıkan (highlighted) ürüne konan rozet. */
   popularLabel: string;
-  /** Her kartın altındaki güven notu (ör. "Kurulum ücretsiz · Sözleşme yok"). */
+  /** Her kartın altındaki güven notu (ör. "Sözleşme yok · Dilediğinde iptal"). */
   setupNote: string;
+  /** Çizili liste fiyatının yanındaki kampanya rozeti (ör. "%30 indirim"). */
+  discountBadge: string;
+  /** "Yıllık" satır etiketi. */
+  annualLabel: string;
+  /** "Kurulum" satır etiketi. */
+  setupLabel: string;
+  /** Kurulum ücretinin yanındaki ek ("tek seferlik"). */
+  setupSuffix: string;
 }) {
   return (
     <motion.div
@@ -75,14 +91,44 @@ export function PricingGrid({
             <p className="mt-1.5 text-sm text-muted-foreground">
               {product.description}
             </p>
-            <p className="mt-5">
-              <span className="text-3xl font-semibold tracking-tight">
-                {product.price}
-              </span>
-              <span className="text-sm text-muted-foreground">
-                {product.period}
-              </span>
-            </p>
+            <div className="mt-5">
+              {product.listPrice ? (
+                <p className="flex items-center gap-2 text-sm">
+                  <s className="text-muted-foreground">{product.listPrice}</s>
+                  <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-semibold text-accent">
+                    {discountBadge}
+                  </span>
+                </p>
+              ) : null}
+              <p className={product.listPrice ? "mt-0.5" : undefined}>
+                <span className="text-3xl font-semibold tracking-tight">
+                  {product.price}
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  {product.period}
+                </span>
+              </p>
+              {product.annualPrice ? (
+                <p className="mt-1.5 text-xs text-muted-foreground">
+                  {annualLabel}:{" "}
+                  {product.annualListPrice ? (
+                    <s>{product.annualListPrice}</s>
+                  ) : null}{" "}
+                  <span className="font-semibold text-foreground">
+                    {product.annualPrice}
+                  </span>
+                </p>
+              ) : null}
+              {product.setupPrice ? (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {setupLabel}:{" "}
+                  <span className="font-semibold text-foreground">
+                    {product.setupPrice}
+                  </span>{" "}
+                  ({setupSuffix})
+                </p>
+              ) : null}
+            </div>
             <ul className="mt-5 flex flex-col gap-2 border-t border-border pt-5">
               {product.features.map((feature) => (
                 <li

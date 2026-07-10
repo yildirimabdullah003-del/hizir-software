@@ -28,9 +28,9 @@
       "subtitle": "Ready-made solutions for your business; no surprise costs, no contract lock-in.",
       "whatsappCta": "Start on WhatsApp",
       "popularBadge": "Most popular",
-      "setupNote": "Free setup · No contract",
+      "setupNote": "No contract · Cancel anytime",
       "whatsappMessage": "Hello, I'd like to get information about the {product} package.",
-      "note": "Setup is free on all packages. For custom needs, message us on WhatsApp or reach us via the contact page.",
+      "note": "Discounted prices apply to our first 15 customers; setup fees are one-time. For custom needs, message us on WhatsApp or reach us via the contact page.",
       "products": [
         {
           "id": "qr-menu",
@@ -46,12 +46,16 @@
             "Your own QR design",
             "Same-day setup"
           ],
-          "highlighted": true
+          "highlighted": true,
+          "listPrice": "₺500",
+          "annualListPrice": "₺5.000",
+          "annualPrice": "₺3.500",
+          "setupPrice": "₺1.000"
         },
         {
           "id": "web-site",
           "name": "Website",
-          "price": "₺750",
+          "price": "₺1.225",
           "period": "/mo",
           "description": "A fast, SEO-friendly website built for your business.",
           "features": [
@@ -61,12 +65,16 @@
             "Google Maps and directions",
             "Photo gallery",
             "Social media links"
-          ]
+          ],
+          "listPrice": "₺1.750",
+          "annualListPrice": "₺17.500",
+          "annualPrice": "₺12.250",
+          "setupPrice": "₺2.500"
         },
         {
           "id": "pos",
           "name": "POS System",
-          "price": "₺950",
+          "price": "₺875",
           "period": "/mo",
           "description": "The whole order flow, from register to kitchen, in one system.",
           "features": [
@@ -76,12 +84,16 @@
             "End-of-day Z-report",
             "Role-based staff management",
             "Works offline too"
-          ]
+          ],
+          "listPrice": "₺1.250",
+          "annualListPrice": "₺12.500",
+          "annualPrice": "₺8.750",
+          "setupPrice": "₺3.500"
         },
         {
           "id": "complete",
           "name": "Complete Business",
-          "price": "₺1.850",
+          "price": "₺1.715",
           "period": "/mo",
           "description": "QR Menu + Website + POS and more, in one package.",
           "features": [
@@ -91,9 +103,18 @@
             "Courier panel and order tracking",
             "Stock tracking and alerts",
             "Unlimited tables and staff"
-          ]
+          ],
+          "listPrice": "₺2.450",
+          "annualListPrice": "₺24.500",
+          "annualPrice": "₺17.150",
+          "setupPrice": "₺4.500"
         }
-      ]
+      ],
+      "campaign": "30% off for our first 15 customers",
+      "discountBadge": "30% off",
+      "annualLabel": "Annual",
+      "setupLabel": "Setup",
+      "setupSuffix": "one-time"
     },
     "works": {
       "eyebrow": "Featured Work",
@@ -1352,7 +1373,7 @@
       {
         "id": "payment",
         "heading": "Payment and subscription",
-        "body": "Monthly packages are charged at the start of each period. Unpaid services may be suspended. Setup is free; upon cancellation, fees already paid for the current period are not refunded and service continues until the end of the period. To cancel, simply reach us via WhatsApp or email."
+        "body": "Monthly packages are charged at the start of each period. Unpaid services may be suspended. A one-time setup fee is charged per package; upon cancellation, fees already paid for the current period are not refunded and service continues until the end of the period. To cancel, simply reach us via WhatsApp or email."
       },
       {
         "id": "content",
