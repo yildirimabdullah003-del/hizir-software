@@ -35,7 +35,7 @@
         {
           "id": "qr-menu",
           "name": "QR Menu",
-          "price": "₺300",
+          "price": "₺350",
           "period": "/mo",
           "description": "A digital menu for your restaurant — no printing costs.",
           "features": [
@@ -45,12 +45,13 @@
             "Multilingual menu support",
             "Your own QR design",
             "Same-day setup"
-          ]
+          ],
+          "highlighted": true
         },
         {
           "id": "web-site",
           "name": "Website",
-          "price": "₺450",
+          "price": "₺750",
           "period": "/mo",
           "description": "A fast, SEO-friendly website built for your business.",
           "features": [
@@ -65,7 +66,7 @@
         {
           "id": "pos",
           "name": "POS System",
-          "price": "₺675",
+          "price": "₺950",
           "period": "/mo",
           "description": "The whole order flow, from register to kitchen, in one system.",
           "features": [
@@ -80,10 +81,9 @@
         {
           "id": "complete",
           "name": "Complete Business",
-          "price": "₺900",
+          "price": "₺1.850",
           "period": "/mo",
           "description": "QR Menu + Website + POS and more, in one package.",
-          "highlighted": true,
           "features": [
             "All packages included",
             "Tablet waiter panel",
@@ -1284,6 +1284,9 @@
       "title": "Interested in working together?",
       "subtitle": "Tell us about your project and let's find the right approach for it.",
       "primaryCta": "Get in touch"
+    },
+    "social": {
+      "followUs": "Follow us on Instagram"
     }
   },
   "contact": {

@@ -35,7 +35,7 @@
         {
           "id": "qr-menu",
           "name": "QR Menü",
-          "price": "₺300",
+          "price": "₺350",
           "period": "/ay",
           "description": "Restoranınız için dijital menü — baskı maliyeti yok.",
           "features": [
@@ -45,12 +45,13 @@
             "Çok dilli menü desteği",
             "Kendi QR tasarımınız",
             "Aynı gün kurulum"
-          ]
+          ],
+          "highlighted": true
         },
         {
           "id": "web-site",
           "name": "Web Sitesi",
-          "price": "₺450",
+          "price": "₺750",
           "period": "/ay",
           "description": "İşletmenize özel, hızlı ve SEO uyumlu web sitesi.",
           "features": [
@@ -65,7 +66,7 @@
         {
           "id": "pos",
           "name": "POS Sistemi",
-          "price": "₺675",
+          "price": "₺950",
           "period": "/ay",
           "description": "Kasadan mutfağa siparişin tüm akışı tek sistemde.",
           "features": [
@@ -80,10 +81,9 @@
         {
           "id": "complete",
           "name": "Kapsamlı İşletme",
-          "price": "₺900",
+          "price": "₺1.850",
           "period": "/ay",
           "description": "QR Menü + Web Sitesi + POS ve fazlası, tek pakette.",
-          "highlighted": true,
           "features": [
             "Tüm paketler dahil",
             "Tablet garson paneli",
@@ -1284,6 +1284,9 @@
       "title": "Birlikte çalışmaya ne dersiniz?",
       "subtitle": "Projenizi anlatın, size en uygun yaklaşımı birlikte belirleyelim.",
       "primaryCta": "İletişime geç"
+    },
+    "social": {
+      "followUs": "Bizi Instagram'da takip edin"
     }
   },
   "contact": {

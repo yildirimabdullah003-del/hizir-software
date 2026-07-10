@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Instagram } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -6,6 +7,7 @@ import { ValuesGrid, type ValueItem } from "@/components/sections/values-grid";
 import { MissionVisionGrid } from "@/components/sections/mission-vision";
 import { CtaSection } from "@/components/sections/cta-section";
 import { Reveal } from "@/components/motion/reveal";
+import { siteConfig } from "@/config/site";
 import { absoluteUrl, localeAlternates } from "@/lib/seo";
 
 const PATH = "/hakkimizda";
@@ -81,7 +83,36 @@ function Story() {
       <p className="mt-4 text-balance text-lg leading-relaxed text-muted-foreground">
         {t("body")}
       </p>
+      <SocialFollow />
     </Reveal>
+  );
+}
+
+/**
+ * Instagram takip satırı — ikon + kullanıcı adı. Adres tek doğruluk
+ * kaynağından (siteConfig.socialLinks) okunur; hesap değişirse yalnızca
+ * config güncellenir.
+ */
+function SocialFollow() {
+  const t = useTranslations("about.social");
+  const instagram = siteConfig.socialLinks.find((l) => l.icon === "instagram");
+  if (!instagram) return null;
+
+  const handle = instagram.href.split("/").filter(Boolean).pop();
+
+  return (
+    <div className="mt-8">
+      <p className="text-sm text-muted-foreground">{t("followUs")}</p>
+      <a
+        href={instagram.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-medium transition-colors duration-fast hover:border-accent/40 hover:text-accent"
+      >
+        <Instagram className="h-4 w-4 text-accent" aria-hidden="true" />
+        {handle}
+      </a>
+    </div>
   );
 }
 
