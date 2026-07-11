@@ -19,6 +19,11 @@ export function SiteFooter() {
   const t = useTranslations();
   const year = new Date().getFullYear();
   const services = t.raw("services.items") as ServiceItem[];
+  // İletişim bloğunda telefonun altında gösterilecek Instagram (varsa).
+  const instagramLink = siteConfig.socialLinks.find(
+    (l) => l.icon === "instagram"
+  );
+  const instagramHandle = instagramLink?.href.split("/").filter(Boolean).pop();
 
   return (
     <footer className="border-t border-border bg-surface">
@@ -76,6 +81,12 @@ export function SiteFooter() {
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
               {siteConfig.phone}
             </FooterLink>
+            {instagramLink ? (
+              <FooterLink href={instagramLink.href}>
+                <Instagram className="h-3.5 w-3.5" aria-hidden="true" />
+                {instagramHandle}
+              </FooterLink>
+            ) : null}
           </FooterLinkGroup>
         </div>
 
