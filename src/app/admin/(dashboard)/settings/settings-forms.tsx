@@ -66,7 +66,7 @@ export function SettingsForms({
     <div className="mt-6 space-y-6">
       <form
         action={metaAction}
-        className="space-y-4 rounded-xl border border-border bg-background p-6"
+        className="space-y-4 rounded-xl border border-border bg-background p-6 shadow-soft"
       >
         <h2 className="text-sm font-semibold">Site Bilgileri</h2>
         <div>
@@ -108,7 +108,7 @@ export function SettingsForms({
 
       <form
         action={socialAction}
-        className="space-y-4 rounded-xl border border-border bg-background p-6"
+        className="space-y-4 rounded-xl border border-border bg-background p-6 shadow-soft"
       >
         <h2 className="text-sm font-semibold">Sosyal Bağlantılar</h2>
         <p className="text-xs text-muted-foreground">

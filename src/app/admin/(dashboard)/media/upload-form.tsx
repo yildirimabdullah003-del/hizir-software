@@ -13,7 +13,7 @@ export function UploadForm() {
   return (
     <form
       action={formAction}
-      className="mt-6 flex flex-wrap items-end gap-4 rounded-xl border border-border bg-background p-5"
+      className="mt-6 flex flex-wrap items-end gap-4 rounded-xl border border-border bg-background p-5 shadow-soft"
     >
       <div>
         <label htmlFor="file" className="mb-1 block text-xs font-medium">

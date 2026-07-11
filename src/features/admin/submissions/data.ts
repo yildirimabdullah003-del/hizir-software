@@ -36,9 +36,24 @@ export function updateSubmissionStatus(
   });
 }
 
-export function countSubmissionsByStatus() {
-  return prisma.contactSubmission.groupBy({
+/** Durum başına mesaj sayıları (filtre çiplerindeki rozetler için). */
+export async function countSubmissionsByStatus(): Promise<
+  Record<SubmissionStatus, number>
+> {
+  const counts: Record<SubmissionStatus, number> = {
+    NEW: 0,
+    IN_PROGRESS: 0,
+    RESOLVED: 0,
+    SPAM: 0,
+  };
+  if (isPreviewMode()) {
+    for (const s of PREVIEW_SUBMISSIONS) counts[s.status] += 1;
+    return counts;
+  }
+  const rows = await prisma.contactSubmission.groupBy({
     by: ["status"],
     _count: { _all: true },
   });
+  for (const row of rows) counts[row.status] = row._count._all;
+  return counts;
 }

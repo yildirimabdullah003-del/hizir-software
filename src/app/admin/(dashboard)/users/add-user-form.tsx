@@ -16,7 +16,7 @@ export function AddUserForm() {
   return (
     <form
       action={formAction}
-      className="mt-4 grid gap-4 rounded-xl border border-border bg-background p-6 sm:grid-cols-2"
+      className="mt-4 grid gap-4 rounded-xl border border-border bg-background p-6 shadow-soft sm:grid-cols-2"
     >
       <div>
         <label htmlFor="new-name" className="mb-1 block text-xs font-medium">
