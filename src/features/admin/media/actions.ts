@@ -9,6 +9,20 @@ import { isPreviewMode, PREVIEW_WRITE_MESSAGE } from "@/features/admin/preview";
 
 export type UploadState = { error?: string; success?: boolean };
 
+/**
+ * Blob kimlik bilgisi mevcut mu? Vercel'in güncel modeli (2026) iki yol tanır:
+ * 1) OIDC (varsayılan, Vercel üzerinde): VERCEL_OIDC_TOKEN (otomatik, kısa
+ *    ömürlü) + BLOB_STORE_ID — SDK ikisini kendisi okur, statik token gerekmez.
+ * 2) Statik BLOB_READ_WRITE_TOKEN: Vercel dışı ortamlar/yerel geliştirme için.
+ *    Yerelde: `npx vercel env pull` kısa ömürlü OIDC token'ı da indirir.
+ */
+function hasBlobCredentials(): boolean {
+  return Boolean(
+    process.env.BLOB_READ_WRITE_TOKEN ||
+      (process.env.VERCEL_OIDC_TOKEN && process.env.BLOB_STORE_ID)
+  );
+}
+
 const MAX_SIZE_BYTES = 10 * 1024 * 1024; // 10 MB
 const ALLOWED_TYPES = [
   "image/jpeg",
@@ -26,11 +40,12 @@ export async function uploadMedia(
   const auth = await requireSession();
   if (isPreviewMode()) return { error: PREVIEW_WRITE_MESSAGE };
 
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  if (!hasBlobCredentials()) {
     return {
       error:
-        "Dosya deposu yapılandırılmamış (BLOB_READ_WRITE_TOKEN eksik). " +
-        "Vercel Blob token'ı .env.local dosyasına ekleyin.",
+        "Dosya deposu kimlik bilgisi bulunamadı. Vercel'de Blob store'un bu " +
+        "projeye bağlı olduğundan emin olun (OIDC otomatik çalışır); yerel " +
+        "geliştirmede `npx vercel env pull` çalıştırın veya BLOB_READ_WRITE_TOKEN girin.",
     };
   }
 
@@ -76,7 +91,7 @@ export async function removeMedia(formData: FormData) {
 
   // Önce Blob'dan sil; DB kaydı en son gider ki yarım silmede kayıt
   // (dolayısıyla URL) elde kalsın ve tekrar denenebilsin.
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
+  if (hasBlobCredentials()) {
     try {
       await del(asset.url);
     } catch {
