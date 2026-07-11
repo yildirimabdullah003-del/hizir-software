@@ -213,3 +213,48 @@ export const PREVIEW_STATS = {
 /** Yazma işlemleri önizlemede engellenir; formlar bu mesajı gösterir. */
 export const PREVIEW_WRITE_MESSAGE =
   "Önizleme modunda değişiklikler kaydedilmez. Gerçek veritabanı bağlanınca aktif olur.";
+
+// Demo analitik — grafik ve istatistiklerin önizlemede dolu görünmesi için.
+// Deterministik (sinüs + sabit tohum) üretilir ki her yenilemede aynı olsun.
+export const previewAnalytics = {
+  daily(days: number) {
+    const out: { day: string; pageviews: number; visitors: number }[] = [];
+    for (let i = days - 1; i >= 0; i--) {
+      const d = new Date(BASE);
+      d.setUTCDate(d.getUTCDate() - i);
+      const base = 40 + Math.round(30 * Math.sin(i / 2)) + ((i * 7) % 17);
+      const pageviews = Math.max(8, base);
+      out.push({
+        day: d.toISOString().slice(0, 10),
+        pageviews,
+        visitors: Math.max(5, Math.round(pageviews * 0.62)),
+      });
+    }
+    return out;
+  },
+  totals(days: number) {
+    const series = this.daily(days);
+    return {
+      pageviews: series.reduce((a, b) => a + b.pageviews, 0),
+      visitors: Math.round(series.reduce((a, b) => a + b.visitors, 0) * 0.7),
+    };
+  },
+  whatsapp() {
+    return [
+      { label: "qr-menu", count: 34 },
+      { label: "complete", count: 18 },
+      { label: "float", count: 12 },
+      { label: "web-site", count: 9 },
+      { label: "pos", count: 5 },
+    ];
+  },
+  topPaths() {
+    return [
+      { path: "/tr", count: 210 },
+      { path: "/tr/hizmetler", count: 86 },
+      { path: "/tr/calismalar", count: 54 },
+      { path: "/tr/iletisim", count: 41 },
+      { path: "/tr/hizmetler/kurumsal-web-siteleri", count: 33 },
+    ];
+  },
+};

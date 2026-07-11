@@ -1425,7 +1425,7 @@
       {
         "id": "cookies",
         "heading": "Cookies and analytics",
-        "body": "This site does not use tracking cookies. If visit statistics are collected, a cookieless analytics tool that does not gather personal data is preferred."
+        "body": "This site does not use tracking cookies. For visit statistics we use privacy-friendly analytics that collects no personal data: page views and unique visitor counts are measured via an anonymous identifier stored in your browser that cannot be linked to your identity. Your IP address is not stored for this purpose, and data is not sold to third parties."
       },
       {
         "id": "rights",

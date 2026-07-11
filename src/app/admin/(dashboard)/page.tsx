@@ -5,8 +5,28 @@ import {
   PREVIEW_STATS,
   PREVIEW_SUBMISSIONS,
 } from "@/features/admin/preview";
+import {
+  getDailySeries,
+  getTotals,
+  getWhatsappBreakdown,
+  getTopPaths,
+  type DailyPoint,
+  type Totals,
+  type LabelCount,
+  type PathCount,
+} from "@/features/admin/analytics/data";
+import { TrafficChart } from "./traffic-chart";
 
 export const dynamic = "force-dynamic";
+
+// WhatsApp label -> okunur ürün adı.
+const PRODUCT_LABELS: Record<string, string> = {
+  "qr-menu": "QR Menü",
+  "web-site": "Web Sitesi",
+  pos: "POS Sistemi",
+  complete: "Kapsamlı İşletme",
+  float: "Yüzen buton",
+};
 
 /**
  * Genel bakış: temel sayılar + son mesajlar. DB'ye ulaşılamıyorsa panel
@@ -22,6 +42,14 @@ export default async function AdminDashboardPage() {
   let recent: { id: string; name: string; email: string; createdAt: Date }[] =
     [];
 
+  // Analitik (grafik + kırılımlar). DB'ye ulaşılamazsa boş kalır, panel çökmez.
+  let series: DailyPoint[] = [];
+  let today: Totals = { pageviews: 0, visitors: 0 };
+  let last7: Totals = { pageviews: 0, visitors: 0 };
+  let last30: Totals = { pageviews: 0, visitors: 0 };
+  let whatsapp: LabelCount[] = [];
+  let topPaths: PathCount[] = [];
+
   if (isPreviewMode()) {
     // Önizleme: DB'ye gitmeden demo sayılar ve son mesajlar.
     stats = PREVIEW_STATS;
@@ -31,6 +59,14 @@ export default async function AdminDashboardPage() {
       email: s.email,
       createdAt: s.createdAt,
     }));
+    [series, today, last7, last30, whatsapp, topPaths] = await Promise.all([
+      getDailySeries(14),
+      getTotals(1),
+      getTotals(7),
+      getTotals(30),
+      getWhatsappBreakdown(30),
+      getTopPaths(30),
+    ]);
   } else {
     try {
       const [newSubmissions, totalSubmissions, pages, media, recentRows] =
@@ -47,6 +83,15 @@ export default async function AdminDashboardPage() {
         ]);
       stats = { newSubmissions, totalSubmissions, pages, media };
       recent = recentRows;
+
+      [series, today, last7, last30, whatsapp, topPaths] = await Promise.all([
+        getDailySeries(14),
+        getTotals(1),
+        getTotals(7),
+        getTotals(30),
+        getWhatsappBreakdown(30),
+        getTopPaths(30),
+      ]);
     } catch {
       stats = null;
     }
@@ -75,6 +120,8 @@ export default async function AdminDashboardPage() {
     { label: "Medya dosyası", value: stats.media, href: "/admin/media" },
   ];
 
+  const hasTraffic = series.some((d) => d.pageviews > 0);
+
   return (
     <div>
       <h1 className="text-2xl font-semibold tracking-tight">Genel Bakış</h1>
@@ -91,6 +138,85 @@ export default async function AdminDashboardPage() {
             </p>
           </Link>
         ))}
+      </div>
+
+      {/* --- Trafik / analitik --- */}
+      <div className="mt-10 flex items-center justify-between">
+        <h2 className="text-lg font-semibold tracking-tight">Site trafiği</h2>
+        <span className="text-xs text-muted-foreground">Çerezsiz · anonim</span>
+      </div>
+
+      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        <TrafficTile title="Bugün" totals={today} />
+        <TrafficTile title="Son 7 gün" totals={last7} />
+        <TrafficTile title="Son 30 gün" totals={last30} />
+      </div>
+
+      <div className="mt-4">
+        {hasTraffic ? (
+          <TrafficChart data={series} />
+        ) : (
+          <div className="rounded-xl border border-dashed border-border bg-background p-8 text-center text-sm text-muted-foreground">
+            Henüz ziyaret verisi yok. Site ziyaret edildikçe grafik burada
+            dolmaya başlayacak.
+          </div>
+        )}
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        {/* WhatsApp tıklama kırılımı */}
+        <div className="rounded-xl border border-border bg-background p-5">
+          <h3 className="text-sm font-semibold">
+            WhatsApp tıklamaları{" "}
+            <span className="font-normal text-muted-foreground">(son 30 gün)</span>
+          </h3>
+          {whatsapp.length === 0 ? (
+            <p className="mt-3 text-sm text-muted-foreground">Henüz tıklama yok.</p>
+          ) : (
+            <ul className="mt-3 space-y-2">
+              {whatsapp.map((w) => {
+                const max = whatsapp[0].count || 1;
+                return (
+                  <li key={w.label} className="text-sm">
+                    <div className="mb-1 flex justify-between">
+                      <span>{PRODUCT_LABELS[w.label] ?? w.label}</span>
+                      <span className="font-medium">{w.count}</span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+                      <div
+                        className="h-full rounded-full bg-accent"
+                        style={{ width: `${(w.count / max) * 100}%` }}
+                      />
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+
+        {/* En çok görüntülenen sayfalar */}
+        <div className="rounded-xl border border-border bg-background p-5">
+          <h3 className="text-sm font-semibold">
+            En çok görüntülenen sayfalar{" "}
+            <span className="font-normal text-muted-foreground">(son 30 gün)</span>
+          </h3>
+          {topPaths.length === 0 ? (
+            <p className="mt-3 text-sm text-muted-foreground">Henüz veri yok.</p>
+          ) : (
+            <ul className="mt-3 divide-y divide-border">
+              {topPaths.map((p) => (
+                <li
+                  key={p.path}
+                  className="flex items-center justify-between py-2 text-sm"
+                >
+                  <span className="truncate text-muted-foreground">{p.path}</span>
+                  <span className="ml-3 shrink-0 font-medium">{p.count}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
 
       <h2 className="mt-10 text-lg font-semibold tracking-tight">
@@ -123,6 +249,28 @@ export default async function AdminDashboardPage() {
           ))}
         </ul>
       )}
+    </div>
+  );
+}
+
+function TrafficTile({ title, totals }: { title: string; totals: Totals }) {
+  return (
+    <div className="rounded-xl border border-border bg-background p-5">
+      <p className="text-sm text-muted-foreground">{title}</p>
+      <div className="mt-2 flex items-end gap-5">
+        <div>
+          <p className="text-2xl font-semibold tracking-tight">
+            {totals.visitors}
+          </p>
+          <p className="text-xs text-muted-foreground">ziyaretçi</p>
+        </div>
+        <div>
+          <p className="text-2xl font-semibold tracking-tight text-muted-foreground">
+            {totals.pageviews}
+          </p>
+          <p className="text-xs text-muted-foreground">görüntülenme</p>
+        </div>
+      </div>
     </div>
   );
 }

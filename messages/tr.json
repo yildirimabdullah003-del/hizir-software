@@ -1425,7 +1425,7 @@
       {
         "id": "cookies",
         "heading": "Çerezler ve analitik",
-        "body": "Bu site takip çerezi kullanmaz. Ziyaret istatistikleri için kullanılması halinde, kişisel veri toplamayan çerezsiz bir analitik aracı tercih edilir."
+        "body": "Bu site takip çerezi kullanmaz. Ziyaret istatistikleri için, kişisel veri toplamayan gizlilik dostu analitik kullanılır: sayfa görüntülenmeleri ve tekil ziyaretçi sayısı, tarayıcınızda saklanan anonim ve kimliğinizle ilişkilendirilemeyen bir tanımlayıcı ile ölçülür. IP adresiniz bu amaçla saklanmaz, veriler üçüncü taraflara satılmaz."
       },
       {
         "id": "rights",

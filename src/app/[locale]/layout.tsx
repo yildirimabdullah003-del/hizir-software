@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl, localeAlternates } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/react";
+import { PageTracker } from "@/components/analytics/page-tracker";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { OrganizationJsonLd } from "@/components/seo/organization-json-ld";
 import "../globals.css";
@@ -95,9 +96,10 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <MotionProvider>{children}</MotionProvider>
         </NextIntlClientProvider>
-        {/* Vercel Web Analytics — çerezsiz, KVKK/gizlilik metniyle uyumlu
-            ("kişisel veri toplamayan çerezsiz analitik"). Yalnızca Vercel
-            üzerinde veri toplar; yerelde sessizdir. */}
+        {/* Kendi barındırdığımız gizlilik dostu sayfa-görüntüleme takibi
+            (panel grafikleri için) + Vercel Web Analytics. İkisi de çerezsiz
+            ve kişisel veri toplamaz. */}
+        <PageTracker />
         <Analytics />
         {/* Çerezsiz analitik (Plausible) — yalnızca env değişkeni tanımlıysa
             yüklenir; tanımlı değilken sıfır maliyet. bkz. .env.example */}

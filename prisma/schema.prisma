@@ -112,10 +112,26 @@ model ContactSubmission {
   handledBy User? @relation(fields: [handledById], references: [id])
 }
 
-// Nav / footer / sosyal linkler / site meta — anahtar başına JSON değer.
-// Yapı değişikliği migration gerektirmesin diye key/value modellendi.
+// Nav / footer / sosyal linkler / site meta / fiyatlandırma — anahtar başına
+// JSON değer. Yapı değişikliği migration gerektirmesin diye key/value modellendi.
 model SiteSetting {
-  key       String   @id // "nav" | "footer" | "socialLinks" | "siteMeta"
+  key       String   @id // "siteMeta" | "socialLinks" | "pricing:tr" | "pricing:en"
   value     Json
   updatedAt DateTime @updatedAt
+}
+
+// Kendi barındırdığımız, gizlilik dostu analitik. KİŞİSEL VERİ YOK: IP
+// saklanmaz; visitorId istemci tarafında üretilen anonim rastgele bir
+// kimliktir (kişiyle ilişkilendirilemez). Tekil ziyaretçi sayımı için
+// kullanılır. Üçüncü tarafa veri gönderilmez.
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  type      String // "pageview" | "whatsapp_click"
+  path      String // "/tr", "/tr/hizmetler/kurumsal-web-siteleri"
+  visitorId String // anonim, istemci-üretimli
+  label     String? // etkileşimler için ek bilgi (ör. paket id: "qr-menu")
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([type, createdAt])
 }

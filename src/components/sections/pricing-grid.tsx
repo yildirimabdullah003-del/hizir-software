@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
 import { cn } from "@/lib/utils";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { trackEvent } from "@/lib/track";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export type PricingProduct = {
@@ -149,7 +150,10 @@ export function PricingGrid({
                 href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => track("whatsapp_click", { product: product.id })}
+                onClick={() => {
+                  track("whatsapp_click", { product: product.id });
+                  trackEvent("whatsapp_click", product.id);
+                }}
                 className={cn(
                   "inline-flex w-full items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-colors",
                   product.highlighted
