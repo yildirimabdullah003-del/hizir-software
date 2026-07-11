@@ -1,15 +1,17 @@
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Hero } from "@/components/sections/hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ServicesGrid, type ServiceItem } from "@/components/sections/services-grid";
-import { PricingGrid, type PricingProduct } from "@/components/sections/pricing-grid";
+import { PricingGrid } from "@/components/sections/pricing-grid";
 import { ShowcaseGallery, type ShowcaseItem } from "@/components/sections/showcase-gallery";
 import { Faq, type FaqItem } from "@/components/sections/faq";
 import { ProcessSteps, type ProcessStep } from "@/components/sections/process-steps";
 import { CtaSection } from "@/components/sections/cta-section";
 import { siteConfig } from "@/config/site";
+import { getStoredPricing } from "@/features/admin/pricing/data";
+import type { PricingContent } from "@/features/admin/pricing/schema";
 
 export default async function HomePage({
   params,
@@ -21,12 +23,18 @@ export default async function HomePage({
   // Statik üretim için dili bildir (setRequestLocale, hook'lardan önce çağrılmalı).
   setRequestLocale(locale);
 
+  // Fiyatlandırma: panelde kaydedilmişse DB'den, yoksa koddaki (messages) içerik.
+  const stored = await getStoredPricing(locale);
+  const messages = await getMessages({ locale });
+  const pricing =
+    stored ?? ((messages.home as Record<string, unknown>).pricing as PricingContent);
+
   return (
     <>
       {/* "Hakkımızda" ön izlemesi bilinçli olarak kaldırıldı (rafa kaldırma
           kararı) — kurumsal bilgi isteyen ziyaretçi WhatsApp hattını kullanır. */}
       <Hero />
-      <Pricing />
+      <Pricing content={pricing} />
       <Works />
       <ServicesPreview />
       <Process />
@@ -36,40 +44,41 @@ export default async function HomePage({
   );
 }
 
-function Pricing() {
-  const t = useTranslations("home.pricing");
-  const products = t.raw("products") as PricingProduct[];
-
+function Pricing({ content }: { content: PricingContent }) {
   return (
     <section id="fiyatlandirma" className="border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
-          eyebrow={t("eyebrow")}
-          title={t("title")}
-          subtitle={t("subtitle")}
+          eyebrow={content.eyebrow}
+          title={content.title}
+          subtitle={content.subtitle}
           className="mb-6"
         />
-        {/* Kampanya bandı — ilk 15 müşteri kotası dolunca messages'tan
-            kaldırılır, kartlardaki listPrice alanları da silinir. */}
-        <p className="mb-12 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent">
-            🎉 {t("campaign")}
-          </span>
-        </p>
+        {/* Kampanya bandı — kampanya metni boşsa gösterilmez. Panelden
+            (Admin > Fiyatlandırma) düzenlenir. */}
+        {content.campaign ? (
+          <p className="mb-12 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent">
+              🎉 {content.campaign}
+            </span>
+          </p>
+        ) : (
+          <div className="mb-12" />
+        )}
         <PricingGrid
-          products={products}
+          products={content.products}
           whatsappNumber={siteConfig.whatsappNumber}
-          whatsappCtaLabel={t("whatsappCta")}
-          whatsappMessage={t.raw("whatsappMessage") as string}
-          popularLabel={t("popularBadge")}
-          setupNote={t("setupNote")}
-          discountBadge={t("discountBadge")}
-          annualLabel={t("annualLabel")}
-          setupLabel={t("setupLabel")}
-          setupSuffix={t("setupSuffix")}
+          whatsappCtaLabel={content.whatsappCta}
+          whatsappMessage={content.whatsappMessage}
+          popularLabel={content.popularBadge}
+          setupNote={content.setupNote}
+          discountBadge={content.discountBadge}
+          annualLabel={content.annualLabel}
+          setupLabel={content.setupLabel}
+          setupSuffix={content.setupSuffix}
         />
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          {t("note")}
+          {content.note}
         </p>
       </div>
     </section>
