@@ -1,4 +1,12 @@
 import Link from "next/link";
+import {
+  Inbox,
+  MessageSquare,
+  FileText,
+  Image as ImageIcon,
+  ArrowUpRight,
+  type LucideIcon,
+} from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import {
   isPreviewMode,
@@ -113,11 +121,38 @@ export default async function AdminDashboardPage() {
     );
   }
 
-  const cards = [
-    { label: "Yeni mesaj", value: stats.newSubmissions, href: "/admin/submissions" },
-    { label: "Toplam mesaj", value: stats.totalSubmissions, href: "/admin/submissions" },
-    { label: "Yönetilen sayfa", value: stats.pages, href: "/admin/pages" },
-    { label: "Medya dosyası", value: stats.media, href: "/admin/media" },
+  const cards: {
+    label: string;
+    value: number;
+    href: string;
+    icon: LucideIcon;
+    highlight?: boolean;
+  }[] = [
+    {
+      label: "Yeni mesaj",
+      value: stats.newSubmissions,
+      href: "/admin/submissions?status=NEW",
+      icon: Inbox,
+      highlight: stats.newSubmissions > 0,
+    },
+    {
+      label: "Toplam mesaj",
+      value: stats.totalSubmissions,
+      href: "/admin/submissions",
+      icon: MessageSquare,
+    },
+    {
+      label: "Yönetilen sayfa",
+      value: stats.pages,
+      href: "/admin/pages",
+      icon: FileText,
+    },
+    {
+      label: "Medya dosyası",
+      value: stats.media,
+      href: "/admin/media",
+      icon: ImageIcon,
+    },
   ];
 
   const hasTraffic = series.some((d) => d.pageviews > 0);
@@ -125,17 +160,35 @@ export default async function AdminDashboardPage() {
   return (
     <div>
       <h1 className="text-2xl font-semibold tracking-tight">Genel Bakış</h1>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Sitenizin özeti — mesajlar, içerik ve trafik.
+      </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
           <Link
             key={card.label}
             href={card.href}
-            className="rounded-xl border border-border bg-background p-6 transition-colors hover:border-accent/40"
+            className="group relative rounded-xl border border-border bg-background p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lifted"
           >
-            <p className="text-sm text-muted-foreground">{card.label}</p>
-            <p className="mt-1 text-3xl font-semibold tracking-tight">
+            <div className="flex items-center justify-between">
+              <span
+                className={
+                  card.highlight
+                    ? "flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent"
+                    : "flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground"
+                }
+              >
+                <card.icon className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <ArrowUpRight
+                className="h-4 w-4 text-muted-foreground/40 transition-colors group-hover:text-accent"
+                aria-hidden="true"
+              />
+            </div>
+            <p className="mt-4 text-3xl font-semibold tracking-tight">
               {card.value}
             </p>
+            <p className="mt-0.5 text-sm text-muted-foreground">{card.label}</p>
           </Link>
         ))}
       </div>
@@ -255,22 +308,14 @@ export default async function AdminDashboardPage() {
 
 function TrafficTile({ title, totals }: { title: string; totals: Totals }) {
   return (
-    <div className="rounded-xl border border-border bg-background p-5">
+    <div className="rounded-xl border border-border bg-background p-5 shadow-soft">
       <p className="text-sm text-muted-foreground">{title}</p>
-      <div className="mt-2 flex items-end gap-5">
-        <div>
-          <p className="text-2xl font-semibold tracking-tight">
-            {totals.visitors}
-          </p>
-          <p className="text-xs text-muted-foreground">ziyaretçi</p>
-        </div>
-        <div>
-          <p className="text-2xl font-semibold tracking-tight text-muted-foreground">
-            {totals.pageviews}
-          </p>
-          <p className="text-xs text-muted-foreground">görüntülenme</p>
-        </div>
-      </div>
+      <p className="mt-2 text-3xl font-semibold tracking-tight">
+        {totals.visitors.toLocaleString("tr-TR")}
+      </p>
+      <p className="mt-1 text-xs text-muted-foreground">
+        ziyaretçi · {totals.pageviews.toLocaleString("tr-TR")} görüntülenme
+      </p>
     </div>
   );
 }
