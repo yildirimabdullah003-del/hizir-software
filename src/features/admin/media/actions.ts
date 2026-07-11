@@ -10,16 +10,20 @@ import { isPreviewMode, PREVIEW_WRITE_MESSAGE } from "@/features/admin/preview";
 export type UploadState = { error?: string; success?: boolean };
 
 /**
- * Blob kimlik bilgisi mevcut mu? Vercel'in güncel modeli (2026) iki yol tanır:
- * 1) OIDC (varsayılan, Vercel üzerinde): VERCEL_OIDC_TOKEN (otomatik, kısa
- *    ömürlü) + BLOB_STORE_ID — SDK ikisini kendisi okur, statik token gerekmez.
- * 2) Statik BLOB_READ_WRITE_TOKEN: Vercel dışı ortamlar/yerel geliştirme için.
- *    Yerelde: `npx vercel env pull` kısa ömürlü OIDC token'ı da indirir.
+ * Blob kullanılabilir mi? Vercel'in güncel modeli (2026):
+ * - OIDC (varsayılan): Vercel fonksiyonlarında token çalışma anında
+ *   `x-vercel-oidc-token` İSTEK BAŞLIĞIYLA gelir (env değişkeni DEĞİL) ve
+ *   SDK bunu kendisi edinir. Bu yüzden burada OIDC token'ı aranmaz;
+ *   store'un bağlı olduğunun kanıtı olan BLOB_STORE_ID yeterli sayılır,
+ *   kimlik doğrulama denemesi SDK'ya bırakılır (hata aşağıda yakalanır).
+ * - Statik BLOB_READ_WRITE_TOKEN: Vercel dışı ortam/yerel geliştirme için.
+ *   Yerelde: `npx vercel env pull` kısa ömürlü OIDC token'ı da indirir.
  */
 function hasBlobCredentials(): boolean {
   return Boolean(
     process.env.BLOB_READ_WRITE_TOKEN ||
-      (process.env.VERCEL_OIDC_TOKEN && process.env.BLOB_STORE_ID)
+      process.env.BLOB_STORE_ID ||
+      process.env.VERCEL_OIDC_TOKEN
   );
 }
 
@@ -62,10 +66,24 @@ export async function uploadMedia(
 
   const altText = String(formData.get("altText") ?? "").trim() || null;
 
-  const blob = await put(`media/${file.name}`, file, {
-    access: "public",
-    addRandomSuffix: true,
-  });
+  let blob;
+  try {
+    blob = await put(`media/${file.name}`, file, {
+      access: "public",
+      addRandomSuffix: true,
+    });
+  } catch (err) {
+    // OIDC/token edinimi başarısızsa SDK burada fırlatır — paneli
+    // kilitlemek yerine teşhis edilebilir bir mesaj göster.
+    console.error("[media] Blob yükleme hatası:", err);
+    return {
+      error:
+        "Dosya deposuna yüklenemedi: " +
+        (err instanceof Error ? err.message : "bilinmeyen hata") +
+        ". Blob store'un bu projeye bağlı olduğunu ve son deploy'un store " +
+        "bağlandıktan SONRA yapıldığını kontrol edin.",
+    };
+  }
 
   await createMediaAsset({
     url: blob.url,
