@@ -7,6 +7,34 @@
 
 ---
 
+## ⚡ YENİ OTURUM İÇİN HIZLI BAŞLANGIÇ (önce bunu oku)
+
+Merhaba! Bu proje üzerinde çalışmaya devam ediyorsun. Başlamadan önce:
+
+1. **Proje kök dizini:**
+   `C:\Users\Abdullah Yıldırım\Downloads\hizir-software-skeleton\hizir-software`
+   (git deposu burada; `.git`, `package.json`, `prisma/` burada)
+2. **İlk yapman gerekenler:**
+   - `git log --oneline -15` ile son durumu gör
+   - Bu dosyanın tamamını oku (§1-9)
+   - Gerekirse `docs/ROADMAP.md` ve `CHANGELOG.md`'ye bak
+3. **Ortam:** Windows, PowerShell + Bash. Sunucu için `npm run dev` YERİNE
+   preview aracını kullan. Prisma komutları için Bash: `.env.local`'daki
+   `DATABASE_URL`/`DIRECT_URL`'i ortama yükleyip çalıştır (bkz. §4).
+4. **Değişiklik akışı:** kod düzenle → `npm run typecheck` → gerekirse tarayıcıda
+   doğrula → **aşama aşama commit** (Co-Authored-By satırıyla) → `git push origin master`
+   (Vercel otomatik deploy eder). Kullanıcı "yayınla/push" beklentisindedir.
+5. **Kritik uyarı:** Admin **yazma** aksiyonları (Kaydet) Claude iç tarayıcısında
+   test EDİLEMEZ (cookie/POST kısıtı, bkz. §6). Üretimde çalışır. Yerel test için
+   `ADMIN_PREVIEW=1` (salt görsel) veya kullanıcıdan canlıda teyit iste.
+6. **Bekleyen işler:** §7'ye bak. En güncel kullanıcı talebi: **admin panelini
+   premium tasarıma kavuşturmak + Mesajlar/Medya/Kullanıcılar/Ayarlar sekmelerini
+   zenginleştirmek**, ayrıca **`NEXT_PUBLIC_SITE_URL`'i gerçek domaine güncelleyip
+   redeploy** (SEO).
+7. **Dil:** Kullanıcıyla **Türkçe** konuş. Sahibi teknik değil; net ve adım adım anlat.
+
+---
+
 ## 1. Hedef (Proje ne için var?)
 
 HIZIR Software; **restoranlara ve küçük işletmelere** dijital çözümler satan
