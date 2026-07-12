@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { siteConfig } from "@/config/site";
 import { prisma } from "@/lib/prisma";
+import { getSiteContact } from "@/lib/site-contact";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -109,6 +109,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, delivered: false });
   }
 
+  // İletim adresleri panelden yönetilir (Admin > Ayarlar). Kime gönderileceği
+  // ve gönderen domaini DB'den okunur; kayıt yoksa siteConfig'e düşülür.
+  const contact = await getSiteContact();
+
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -116,8 +120,8 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: `HIZIR Software <noreply@${new URL(siteConfig.url).hostname}>`,
-      to: siteConfig.contactEmail,
+      from: `HIZIR Software <noreply@${new URL(contact.url).hostname}>`,
+      to: contact.contactEmail,
       reply_to: email,
       subject: `Yeni proje talebi — ${name}`,
       text: [
