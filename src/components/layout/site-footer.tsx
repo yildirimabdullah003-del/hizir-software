@@ -4,9 +4,9 @@ import { Mail, Phone, Github, Linkedin, Twitter, Instagram, type LucideIcon } fr
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { siteConfig } from "@/config/site";
 import { getServiceSlug, isServiceDetailSlug } from "@/config/services";
 import type { ServiceItem } from "@/components/sections/services-grid";
+import type { SiteContact } from "@/lib/site-contact";
 
 const SOCIAL_ICONS: Record<string, LucideIcon> = {
   linkedin: Linkedin,
@@ -15,12 +15,16 @@ const SOCIAL_ICONS: Record<string, LucideIcon> = {
   instagram: Instagram,
 };
 
-export function SiteFooter() {
+/**
+ * İletişim/sosyal bilgiler panelden yönetilir (Admin > Ayarlar); layout
+ * DB-öncelikli okuyup `contact` prop'uyla geçirir.
+ */
+export function SiteFooter({ contact }: { contact: SiteContact }) {
   const t = useTranslations();
   const year = new Date().getFullYear();
   const services = t.raw("services.items") as ServiceItem[];
   // İletişim bloğunda telefonun altında gösterilecek Instagram (varsa).
-  const instagramLink = siteConfig.socialLinks.find(
+  const instagramLink = contact.socialLinks.find(
     (l) => l.icon === "instagram"
   );
   const instagramHandle = instagramLink?.href.split("/").filter(Boolean).pop();
@@ -73,13 +77,13 @@ export function SiteFooter() {
             <FooterLink href="/kullanim-kosullari">
               {t("footer.terms")}
             </FooterLink>
-            <FooterLink href={`mailto:${siteConfig.contactEmail}`}>
+            <FooterLink href={`mailto:${contact.contactEmail}`}>
               <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-              {siteConfig.contactEmail}
+              {contact.contactEmail}
             </FooterLink>
-            <FooterLink href={`https://wa.me/${siteConfig.whatsappNumber}`}>
+            <FooterLink href={`https://wa.me/${contact.whatsappNumber}`}>
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-              {siteConfig.phone}
+              {contact.phone}
             </FooterLink>
             {instagramLink ? (
               <FooterLink href={instagramLink.href}>
@@ -94,9 +98,9 @@ export function SiteFooter() {
           <p className="text-sm text-muted-foreground">
             © {year} {t("site.name")}. {t("footer.rights")}
           </p>
-          {siteConfig.socialLinks.length > 0 ? (
+          {contact.socialLinks.length > 0 ? (
             <div className="flex items-center gap-2">
-              {siteConfig.socialLinks.map((social) => {
+              {contact.socialLinks.map((social) => {
                 const Icon = SOCIAL_ICONS[social.icon];
                 return (
                   <motion.a

@@ -17,6 +17,11 @@ export type ShowcaseItem = {
   tag: string;
   title: string;
   description: string;
+  /**
+   * Panelden (Admin > Çalışmalar) seçilen gerçek ekran görüntüsü. Doluysa
+   * kodla çizilmiş demo yerine bu görsel gösterilir ve "Demo" rozeti kalkar.
+   */
+  imageUrl?: string;
 };
 
 // Yemek "fotoğrafı" hissi veren katmanlı gradyan küçük görseller.
@@ -287,10 +292,25 @@ export function ShowcaseGallery({
             className="flex flex-col rounded-2xl border border-border bg-surface p-5 transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-lifted"
           >
             <div className="relative">
-              {Demo ? <Demo /> : null}
-              <span className="absolute right-2.5 top-2.5 rounded-full bg-foreground/70 px-2 py-0.5 text-[9px] font-medium text-background backdrop-blur">
-                {demoBadge}
-              </span>
+              {item.imageUrl ? (
+                // Gerçek müşteri ekran görüntüsü (panelden seçildi). Blob
+                // URL'leri harici olduğundan bilinçli olarak düz img.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full rounded-xl border border-border object-cover shadow-soft"
+                />
+              ) : (
+                <>
+                  {Demo ? <Demo /> : null}
+                  {/* Dürüstlük rozeti yalnızca kurgu demolarda gösterilir. */}
+                  <span className="absolute right-2.5 top-2.5 rounded-full bg-foreground/70 px-2 py-0.5 text-[9px] font-medium text-background backdrop-blur">
+                    {demoBadge}
+                  </span>
+                </>
+              )}
             </div>
             <div className="flex flex-1 flex-col px-1 pt-5">
               <p className="text-xs font-medium tracking-widest text-accent uppercase">

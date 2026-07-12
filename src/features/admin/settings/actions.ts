@@ -11,6 +11,13 @@ export type SaveSettingState = { error?: string; success?: boolean };
 const siteMetaSchema = z.object({
   url: z.string().url("Geçerli bir URL girin (örn. https://hizirsoftware.com)"),
   contactEmail: z.string().email("Geçerli bir e-posta adresi girin"),
+  phone: z.string().min(7, "Geçerli bir telefon numarası girin"),
+  whatsappNumber: z
+    .string()
+    .regex(
+      /^\d{10,15}$/,
+      "WhatsApp numarası uluslararası biçimde, yalnızca rakam olmalı (örn. 905459363347)"
+    ),
 });
 
 const socialLinksSchema = z.array(
@@ -32,14 +39,29 @@ export async function saveSiteMeta(
   const parsed = siteMetaSchema.safeParse({
     url: String(formData.get("url") ?? "").trim(),
     contactEmail: String(formData.get("contactEmail") ?? "").trim(),
+    phone: String(formData.get("phone") ?? "").trim(),
+    // Kullanıcı 0 545... veya +90 545... yazarsa normalize et:
+    // rakam dışı her şeyi at; baştaki 0'ı 90 ile değiştir.
+    whatsappNumber: normalizeWhatsapp(
+      String(formData.get("whatsappNumber") ?? "")
+    ),
   });
   if (!parsed.success) {
     return { error: parsed.error.issues[0].message };
   }
 
   await upsertSetting("siteMeta", parsed.data);
+  // Footer/CTA'lar her sayfada — tüm siteyi yeniden doğrula.
+  revalidatePath("/", "layout");
   revalidatePath("/admin/settings");
   return { success: true };
+}
+
+/** "0545 936 33 47" / "+90 545..." → "905459363347" (wa.me biçimi). */
+function normalizeWhatsapp(input: string): string {
+  const digits = input.replace(/\D/g, "");
+  if (digits.startsWith("0")) return `9${digits}`; // 0545... → 90545...
+  return digits;
 }
 
 /**
@@ -74,6 +96,8 @@ export async function saveSocialLinks(
   }
 
   await upsertSetting("socialLinks", parsed.data);
+  // Footer her sayfada — tüm siteyi yeniden doğrula.
+  revalidatePath("/", "layout");
   revalidatePath("/admin/settings");
   return { success: true };
 }

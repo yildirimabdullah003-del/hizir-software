@@ -47,7 +47,12 @@ export function SettingsForms({
   siteMeta,
   socialLinks,
 }: {
-  siteMeta: { url: string; contactEmail: string };
+  siteMeta: {
+    url: string;
+    contactEmail: string;
+    phone: string;
+    whatsappNumber: string;
+  };
   socialLinks: SocialLink[];
 }) {
   const [metaState, metaAction, metaPending] = useActionState<
@@ -68,7 +73,11 @@ export function SettingsForms({
         action={metaAction}
         className="space-y-4 rounded-xl border border-border bg-background p-6 shadow-soft"
       >
-        <h2 className="text-sm font-semibold">Site Bilgileri</h2>
+        <h2 className="text-sm font-semibold">Site ve İletişim Bilgileri</h2>
+        <p className="text-xs text-muted-foreground">
+          Bu değerler footer&apos;da, iletişim sayfasında ve sitedeki tüm
+          WhatsApp butonlarında kullanılır.
+        </p>
         <div>
           <label htmlFor="url" className="mb-1 block text-xs font-medium">
             Site adresi (canonical URL ve e-postalarda kullanılır)
@@ -87,7 +96,7 @@ export function SettingsForms({
             htmlFor="contactEmail"
             className="mb-1 block text-xs font-medium"
           >
-            İletişim e-postası (form mesajları buraya iletilir)
+            İletişim e-postası (footer&apos;da görünür)
           </label>
           <input
             id="contactEmail"
@@ -97,6 +106,42 @@ export function SettingsForms({
             required
             className={inputClass}
           />
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="phone" className="mb-1 block text-xs font-medium">
+              Telefon (sitede görünen biçim)
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              defaultValue={siteMeta.phone}
+              placeholder="0545 936 33 47"
+              required
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="whatsappNumber"
+              className="mb-1 block text-xs font-medium"
+            >
+              WhatsApp numarası (tüm butonların hedefi)
+            </label>
+            <input
+              id="whatsappNumber"
+              name="whatsappNumber"
+              type="tel"
+              defaultValue={siteMeta.whatsappNumber}
+              placeholder="905459363347"
+              required
+              className={inputClass}
+            />
+            <p className="mt-1 text-xs text-muted-foreground">
+              0 veya +90 ile yazsanız da otomatik düzeltilir.
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <Button type="submit" size="sm" disabled={metaPending}>

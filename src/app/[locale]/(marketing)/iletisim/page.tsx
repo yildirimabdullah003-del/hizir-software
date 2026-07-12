@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ContactForm } from "@/components/sections/contact-form";
 import { ContactInfo } from "@/components/sections/contact-info";
-import { siteConfig } from "@/config/site";
+import { getSiteContact, type SiteContact } from "@/lib/site-contact";
 import { absoluteUrl, localeAlternates } from "@/lib/seo";
 
 // Katlanan alanın altında, dekoratif bir blok — ana JS paketinden ayrı bir
@@ -42,12 +42,15 @@ export default async function ContactPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  // İletişim bilgileri panelden yönetilir (Admin > Ayarlar) — DB-öncelikli.
+  const contact = await getSiteContact();
+
   return (
     <section className="mx-auto max-w-6xl px-6 pt-24 pb-24 sm:pt-32">
       <ContactHero />
       <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_22rem]">
         <ContactForm />
-        <ContactInfoSection />
+        <ContactInfoSection contact={contact} />
       </div>
       <div className="mt-16">
         <MapSection />
@@ -67,14 +70,14 @@ function ContactHero() {
   );
 }
 
-function ContactInfoSection() {
+function ContactInfoSection({ contact }: { contact: SiteContact }) {
   const t = useTranslations("contact.info");
   return (
     <ContactInfo
       title={t("title")}
-      email={siteConfig.contactEmail}
-      phone={siteConfig.phone}
-      whatsappHref={`https://wa.me/${siteConfig.whatsappNumber}`}
+      email={contact.contactEmail}
+      phone={contact.phone}
+      whatsappHref={`https://wa.me/${contact.whatsappNumber}`}
       note={t("note")}
       processTitle={t("processTitle")}
       processBody={t("processBody")}

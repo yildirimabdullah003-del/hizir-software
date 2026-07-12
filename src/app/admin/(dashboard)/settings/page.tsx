@@ -5,7 +5,12 @@ import { SettingsForms } from "./settings-forms";
 
 export const dynamic = "force-dynamic";
 
-type SiteMeta = { url: string; contactEmail: string };
+type SiteMeta = {
+  url: string;
+  contactEmail: string;
+  phone: string;
+  whatsappNumber: string;
+};
 type SocialLink = {
   name: string;
   href: string;
@@ -20,10 +25,14 @@ export default async function AdminSettingsPage() {
     getSetting("socialLinks"),
   ]);
 
-  // DB'de kayıt yoksa koddaki mevcut değerler başlangıç olarak gösterilir.
-  const siteMeta: SiteMeta = (siteMetaRow?.value as SiteMeta) ?? {
-    url: siteConfig.url,
-    contactEmail: siteConfig.contactEmail,
+  // DB'de kayıt yoksa (veya eski kayıtta alan eksikse) koddaki mevcut
+  // değerler başlangıç olarak gösterilir.
+  const storedMeta = (siteMetaRow?.value as Partial<SiteMeta>) ?? {};
+  const siteMeta: SiteMeta = {
+    url: storedMeta.url || siteConfig.url,
+    contactEmail: storedMeta.contactEmail || siteConfig.contactEmail,
+    phone: storedMeta.phone || siteConfig.phone,
+    whatsappNumber: storedMeta.whatsappNumber || siteConfig.whatsappNumber,
   };
   const socialLinks: SocialLink[] =
     (socialRow?.value as SocialLink[]) ?? [...siteConfig.socialLinks];
@@ -32,8 +41,9 @@ export default async function AdminSettingsPage() {
     <div className="max-w-2xl">
       <h1 className="text-2xl font-semibold tracking-tight">Ayarlar</h1>
       <p className="mt-1 text-sm text-muted-foreground">
-        Site geneli yapılandırma. Bu değerler yalnızca OWNER/ADMIN
-        tarafından değiştirilebilir.
+        Site geneli yapılandırma — kaydettiğinizde sitede anında yansır
+        (footer, iletişim sayfası ve tüm WhatsApp butonları). Yalnızca
+        OWNER/ADMIN değiştirebilir.
       </p>
       <SettingsForms siteMeta={siteMeta} socialLinks={socialLinks} />
     </div>

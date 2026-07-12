@@ -168,27 +168,29 @@ export default async function AdminDashboardPage() {
           <Link
             key={card.label}
             href={card.href}
-            className="group relative rounded-xl border border-border bg-background p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lifted"
+            className="group relative flex items-center gap-3.5 rounded-xl border border-border bg-background px-4 py-3.5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lifted"
           >
-            <div className="flex items-center justify-between">
-              <span
-                className={
-                  card.highlight
-                    ? "flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent"
-                    : "flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground"
-                }
-              >
-                <card.icon className="h-5 w-5" aria-hidden="true" />
+            <span
+              className={
+                card.highlight
+                  ? "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent"
+                  : "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground"
+              }
+            >
+              <card.icon className="h-4.5 w-4.5" aria-hidden="true" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xl font-semibold leading-tight tracking-tight">
+                {card.value}
               </span>
-              <ArrowUpRight
-                className="h-4 w-4 text-muted-foreground/40 transition-colors group-hover:text-accent"
-                aria-hidden="true"
-              />
-            </div>
-            <p className="mt-4 text-3xl font-semibold tracking-tight">
-              {card.value}
-            </p>
-            <p className="mt-0.5 text-sm text-muted-foreground">{card.label}</p>
+              <span className="block text-xs leading-tight text-muted-foreground">
+                {card.label}
+              </span>
+            </span>
+            <ArrowUpRight
+              className="h-4 w-4 shrink-0 text-muted-foreground/40 transition-colors group-hover:text-accent"
+              aria-hidden="true"
+            />
           </Link>
         ))}
       </div>
@@ -308,12 +310,12 @@ export default async function AdminDashboardPage() {
 
 function TrafficTile({ title, totals }: { title: string; totals: Totals }) {
   return (
-    <div className="rounded-xl border border-border bg-background p-5 shadow-soft">
-      <p className="text-sm text-muted-foreground">{title}</p>
-      <p className="mt-2 text-3xl font-semibold tracking-tight">
+    <div className="rounded-xl border border-border bg-background px-4 py-3.5 shadow-soft">
+      <p className="text-xs text-muted-foreground">{title}</p>
+      <p className="mt-1 text-xl font-semibold leading-tight tracking-tight">
         {totals.visitors.toLocaleString("tr-TR")}
       </p>
-      <p className="mt-1 text-xs text-muted-foreground">
+      <p className="mt-0.5 text-xs text-muted-foreground">
         ziyaretçi · {totals.pageviews.toLocaleString("tr-TR")} görüntülenme
       </p>
     </div>

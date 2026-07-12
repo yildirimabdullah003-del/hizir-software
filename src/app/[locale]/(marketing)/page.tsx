@@ -9,9 +9,10 @@ import { ShowcaseGallery, type ShowcaseItem } from "@/components/sections/showca
 import { Faq, type FaqItem } from "@/components/sections/faq";
 import { ProcessSteps, type ProcessStep } from "@/components/sections/process-steps";
 import { CtaSection } from "@/components/sections/cta-section";
-import { siteConfig } from "@/config/site";
+import { getSiteContact } from "@/lib/site-contact";
 import { getStoredPricing } from "@/features/admin/pricing/data";
 import type { PricingContent } from "@/features/admin/pricing/schema";
+import { getStoredShowcase } from "@/features/admin/showcase/data";
 
 export default async function HomePage({
   params,
@@ -23,19 +24,27 @@ export default async function HomePage({
   // Statik üretim için dili bildir (setRequestLocale, hook'lardan önce çağrılmalı).
   setRequestLocale(locale);
 
-  // Fiyatlandırma: panelde kaydedilmişse DB'den, yoksa koddaki (messages) içerik.
-  const stored = await getStoredPricing(locale);
-  const messages = await getMessages({ locale });
-  const pricing =
-    stored ?? ((messages.home as Record<string, unknown>).pricing as PricingContent);
+  // Fiyatlandırma + vitrin: panelde kaydedilmişse DB'den, yoksa koddaki
+  // (messages) içerik.
+  const [storedPricing, storedShowcase, messages, contact] = await Promise.all([
+    getStoredPricing(locale),
+    getStoredShowcase(locale),
+    getMessages({ locale }),
+    getSiteContact(),
+  ]);
+  const home = messages.home as Record<string, unknown>;
+  const pricing = storedPricing ?? (home.pricing as PricingContent);
+  const showcaseItems =
+    storedShowcase?.items ??
+    ((home.works as Record<string, unknown>).items as ShowcaseItem[]);
 
   return (
     <>
       {/* "Hakkımızda" ön izlemesi bilinçli olarak kaldırıldı (rafa kaldırma
           kararı) — kurumsal bilgi isteyen ziyaretçi WhatsApp hattını kullanır. */}
       <Hero />
-      <Pricing content={pricing} />
-      <Works />
+      <Pricing content={pricing} whatsappNumber={contact.whatsappNumber} />
+      <Works items={showcaseItems} />
       <ServicesPreview />
       <Process />
       <HomeFaq />
@@ -44,7 +53,13 @@ export default async function HomePage({
   );
 }
 
-function Pricing({ content }: { content: PricingContent }) {
+function Pricing({
+  content,
+  whatsappNumber,
+}: {
+  content: PricingContent;
+  whatsappNumber: string;
+}) {
   return (
     <section id="fiyatlandirma" className="border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-24">
@@ -67,7 +82,7 @@ function Pricing({ content }: { content: PricingContent }) {
         )}
         <PricingGrid
           products={content.products}
-          whatsappNumber={siteConfig.whatsappNumber}
+          whatsappNumber={whatsappNumber}
           whatsappCtaLabel={content.whatsappCta}
           whatsappMessage={content.whatsappMessage}
           popularLabel={content.popularBadge}
@@ -85,9 +100,8 @@ function Pricing({ content }: { content: PricingContent }) {
   );
 }
 
-function Works() {
+function Works({ items }: { items: ShowcaseItem[] }) {
   const t = useTranslations("home.works");
-  const items = t.raw("items") as ShowcaseItem[];
 
   return (
     <section className="border-t border-border bg-surface">

@@ -3,15 +3,21 @@
 import { track } from "@vercel/analytics";
 import { trackEvent } from "@/lib/track";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
-import { siteConfig } from "@/config/site";
 
 /**
  * Sayfanın sağ altında sabit duran WhatsApp butonu. Hedef kitle (restoran
  * işletmecileri) için en hızlı iletişim kanalı — her sayfadan tek dokunuşla
  * erişilir. Tıklamalar analitiğe "whatsapp_click / float" olarak düşer.
+ * Numara panelden yönetilir; layout DB-öncelikli okuyup buraya geçirir.
  */
-export function WhatsAppFloat({ message }: { message: string }) {
-  const href = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+export function WhatsAppFloat({
+  message,
+  whatsappNumber,
+}: {
+  message: string;
+  whatsappNumber: string;
+}) {
+  const href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     message
   )}`;
   return (

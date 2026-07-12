@@ -8,6 +8,7 @@ import {
 } from "@/components/sections/showcase-gallery";
 import { CtaSection } from "@/components/sections/cta-section";
 import { absoluteUrl, localeAlternates } from "@/lib/seo";
+import { getStoredShowcase } from "@/features/admin/showcase/data";
 
 const PATH = "/calismalar";
 
@@ -37,9 +38,12 @@ export default async function WorksPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  // Vitrin: panelde kaydedilmişse DB'den, yoksa koddaki (messages) içerik.
+  const stored = await getStoredShowcase(locale);
+
   return (
     <section className="mx-auto max-w-6xl px-6 pt-24 pb-24 sm:pt-32">
-      <Gallery />
+      <Gallery storedItems={stored?.items ?? null} />
       <div className="mt-20">
         <FinalCta />
       </div>
@@ -47,9 +51,9 @@ export default async function WorksPage({
   );
 }
 
-function Gallery() {
+function Gallery({ storedItems }: { storedItems: ShowcaseItem[] | null }) {
   const t = useTranslations("home.works");
-  const items = t.raw("items") as ShowcaseItem[];
+  const items = storedItems ?? (t.raw("items") as ShowcaseItem[]);
   return (
     <>
       <SectionHeading

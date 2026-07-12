@@ -191,6 +191,8 @@ export const PREVIEW_SETTINGS: Record<string, { key: string; value: unknown; upd
     value: {
       url: "https://hizirsoftware.com",
       contactEmail: "iletisim@hizirsoftware.com",
+      phone: "0545 936 33 47",
+      whatsappNumber: "905459363347",
     },
     updatedAt: daysAgo(2),
   },
