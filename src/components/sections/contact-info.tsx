@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
@@ -10,6 +10,8 @@ export function ContactInfo({
   email,
   phone,
   whatsappHref,
+  instagramHref,
+  instagramHandle,
   note,
   processTitle,
   processBody,
@@ -18,6 +20,8 @@ export function ContactInfo({
   email: string;
   phone?: string;
   whatsappHref?: string;
+  instagramHref?: string;
+  instagramHandle?: string;
   note: string;
   processTitle: string;
   processBody: string;
@@ -61,6 +65,31 @@ export function ContactInfo({
               <WhatsAppIcon className="h-4 w-4" />
             </span>
             <span className="flex-1">{phone}</span>
+            <ArrowUpRight
+              className="h-4 w-4 shrink-0 opacity-0 transition-opacity duration-fast group-hover:opacity-100"
+              aria-hidden="true"
+            />
+          </a>
+        ) : null}
+        {instagramHref ? (
+          <a
+            href={instagramHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-3 flex items-center gap-3 text-sm text-foreground transition-colors duration-fast hover:text-[#C13584]"
+          >
+            <span
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-white"
+              style={{
+                background:
+                  "linear-gradient(135deg, #F58529 0%, #DD2A7B 45%, #8134AF 75%, #515BD4 100%)",
+              }}
+            >
+              <Instagram className="h-4 w-4" aria-hidden="true" />
+            </span>
+            <span className="flex-1">
+              {instagramHandle ? `@${instagramHandle}` : "Instagram"}
+            </span>
             <ArrowUpRight
               className="h-4 w-4 shrink-0 opacity-0 transition-opacity duration-fast group-hover:opacity-100"
               aria-hidden="true"

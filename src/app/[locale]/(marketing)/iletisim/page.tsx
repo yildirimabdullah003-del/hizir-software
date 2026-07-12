@@ -72,12 +72,16 @@ function ContactHero() {
 
 function ContactInfoSection({ contact }: { contact: SiteContact }) {
   const t = useTranslations("contact.info");
+  const instagram = contact.socialLinks.find((l) => l.icon === "instagram");
+  const instagramHandle = instagram?.href.split("/").filter(Boolean).pop();
   return (
     <ContactInfo
       title={t("title")}
       email={contact.contactEmail}
       phone={contact.phone}
       whatsappHref={`https://wa.me/${contact.whatsappNumber}`}
+      instagramHref={instagram?.href}
+      instagramHandle={instagramHandle}
       note={t("note")}
       processTitle={t("processTitle")}
       processBody={t("processBody")}

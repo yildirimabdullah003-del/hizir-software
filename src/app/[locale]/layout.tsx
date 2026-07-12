@@ -6,6 +6,8 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
+import { getServiceSlug, isServiceDetailSlug } from "@/config/services";
+import { getSiteContact } from "@/lib/site-contact";
 import { absoluteUrl, localeAlternates } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/react";
 import { PageTracker } from "@/components/analytics/page-tracker";
@@ -39,6 +41,10 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "site" });
 
+  // Google Search Console doğrulaması: token Vercel env'ine girilince
+  // <meta name="google-site-verification"> otomatik eklenir (kod değişmez).
+  const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
+
   return {
     metadataBase: new URL(siteConfig.url),
     title: {
@@ -50,6 +56,19 @@ export async function generateMetadata({
       canonical: absoluteUrl(locale),
       languages: localeAlternates(),
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    ...(googleVerification
+      ? { verification: { google: googleVerification } }
+      : {}),
     openGraph: {
       type: "website",
       locale,
@@ -83,7 +102,21 @@ export default async function LocaleLayout({
   // Statik üretim için aktif dili bildir.
   setRequestLocale(locale);
 
-  const t = await getTranslations({ locale, namespace: "site" });
+  const [t, servicesT, contact] = await Promise.all([
+    getTranslations({ locale, namespace: "site" }),
+    getTranslations({ locale, namespace: "services" }),
+    getSiteContact(),
+  ]);
+
+  // Yapılandırılmış veri için hizmet listesi: kendi detay sayfası olan
+  // hizmetleri (isim + mutlak URL) makesOffer'a çevir.
+  const serviceItems = (servicesT.raw("items") as { id: string; title: string }[])
+    .map((item) => {
+      const slug = getServiceSlug(item.id);
+      if (!slug || !isServiceDetailSlug(slug)) return null;
+      return { name: item.title, url: absoluteUrl(locale, `/hizmetler/${slug}`) };
+    })
+    .filter((s): s is { name: string; url: string } => s !== null);
 
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
@@ -92,6 +125,10 @@ export default async function LocaleLayout({
           name={t("name")}
           description={t("tagline")}
           locale={locale}
+          phone={contact.phone}
+          email={contact.contactEmail}
+          sameAs={contact.socialLinks.map((l) => l.href)}
+          services={serviceItems}
         />
         <NextIntlClientProvider>
           <MotionProvider>{children}</MotionProvider>
