@@ -61,7 +61,12 @@ function Pricing({
   whatsappNumber: string;
 }) {
   return (
-    <section id="fiyatlandirma" className="border-t border-border">
+    // Bölümler sert çizgiyle değil, eriyen gradyanlarla birbirine akar —
+    // sayfa tek bir hikâye gibi ilerler (bkz. motion güncellemesi).
+    <section
+      id="fiyatlandirma"
+      className="bg-gradient-to-b from-background via-background to-surface"
+    >
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
           eyebrow={content.eyebrow}
@@ -104,7 +109,7 @@ function Works({ items }: { items: ShowcaseItem[] }) {
   const t = useTranslations("home.works");
 
   return (
-    <section className="border-t border-border bg-surface">
+    <section className="bg-surface">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -128,7 +133,7 @@ function HomeFaq() {
   const items = t.raw("items") as FaqItem[];
 
   return (
-    <section className="border-t border-border bg-surface">
+    <section className="bg-gradient-to-b from-background via-surface to-surface">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -148,7 +153,7 @@ function ServicesPreview() {
   const items = servicesT.raw("items") as ServiceItem[];
 
   return (
-    <section className="border-t border-border bg-surface">
+    <section className="bg-gradient-to-b from-surface to-background">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -176,7 +181,7 @@ function Process() {
   const steps = t.raw("steps") as ProcessStep[];
 
   return (
-    <section className="border-t border-border">
+    <section className="bg-background">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -195,7 +200,7 @@ function FinalCta() {
 
   // Fiyat vitrini asıl odak olduğundan bu bölüm bilinçli olarak kompakt.
   return (
-    <section className="border-t border-border">
+    <section className="bg-gradient-to-b from-surface to-background">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <CtaSection
           compact

@@ -31,7 +31,8 @@ export function ButtonLink({
   className?: string;
   children: React.ReactNode;
 } & VariantProps<typeof buttonVariants>) {
-  const classes = cn(buttonVariants({ variant, size }), className);
+  // .shine: hover'da soldan sağa geçen ışık süpürmesi (globals.css).
+  const classes = cn(buttonVariants({ variant, size }), "shine", className);
 
   // Sayfa içi çapa ve mailto bağlantıları locale-aware Link'ten geçmemeli.
   if (href.startsWith("#") || href.startsWith("mailto:")) {

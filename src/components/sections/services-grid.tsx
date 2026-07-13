@@ -81,14 +81,21 @@ function ServiceCard({
 
   const card = (
     <motion.div
-      variants={fadeInUp}
-      whileHover={{ y: -8 }}
+      // "hover" variant'ı çocuklara da yayılır: kart kalkarken ikon canlanır.
+      variants={{ ...fadeInUp, hover: { y: -8 } }}
+      whileHover="hover"
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
-      className="group flex h-full flex-col rounded-xl border border-border bg-background p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-lifted"
+      className="group flex h-full flex-col rounded-xl border border-border bg-background p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-glow"
     >
-      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors duration-base ease-out-soft group-hover:bg-accent group-hover:text-accent-foreground">
+      <motion.div
+        variants={{
+          hover: { rotate: [0, -10, 7, 0], scale: 1.08 },
+        }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors duration-base ease-out-soft group-hover:bg-accent group-hover:text-accent-foreground"
+      >
         <Icon className="h-5 w-5" aria-hidden="true" />
-      </div>
+      </motion.div>
       <h3 className="text-lg font-semibold tracking-tight">{item.title}</h3>
       <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
       {hasBullets ? (

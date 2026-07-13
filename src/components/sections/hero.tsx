@@ -1,7 +1,15 @@
 "use client";
 
-import { useState, type MouseEvent } from "react";
-import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { useRef, useState, type MouseEvent } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
 import { cn } from "@/lib/utils";
@@ -9,15 +17,33 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { HeroShowcase } from "@/components/sections/hero-showcase";
 
 /**
- * Ana sayfa Hero'su — solda ölçülü tipografi + CTA'lar, sağda ürünü
- * gösteren cihaz mockup'ları (HeroShowcase). Dev tipografi bilinçli olarak
- * terk edildi: ziyaretçi ilk ekranda ne sattığımızı GÖRMELİ.
- * Sahte rakam/referans içermez; yalnızca gerçek konumlandırma metni kullanılır.
+ * Ana sayfa Hero'su — solda ölçülü tipografi + CTA'lar, sağda yaşayan ürün
+ * vitrini (HeroShowcase). Scroll ile sinematik davranır: yazı ve sahne farklı
+ * hızlarda kayar (parallax), sahne hafifçe döner/büyür, arka plan ışığı
+ * yumuşakça yer değiştirir. Sahte rakam/referans içermez.
  */
 export function Hero() {
   const t = useTranslations("home.hero");
+  const sectionRef = useRef<HTMLElement>(null);
   const [glowActive, setGlowActive] = useState(false);
+  const reduced = useReducedMotion();
 
+  // --- Scroll sineması: hero görünürden çıkarken katmanlar ayrışır ---------
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  // Yazı kolonu daha hızlı yükselip erir; sahne yavaş kalır (derinlik hissi).
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const showcaseY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const showcaseScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const showcaseRotate = useTransform(scrollYProgress, [0, 1], [0, -3]);
+  // Arka plan ışığı ve blob'lar en yavaş katman.
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const blobY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+
+  // --- İmleci takip eden glow ----------------------------------------------
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const glowX = useSpring(mouseX, { stiffness: 120, damping: 20, mass: 0.4 });
@@ -32,23 +58,30 @@ export function Hero() {
   }
 
   return (
-    <section onMouseMove={handleMouseMove} className="relative overflow-hidden">
-      {/* Sabit, ince gradient zemin */}
-      <div
+    <section
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className="relative overflow-hidden"
+    >
+      {/* Sabit, ince gradient zemin — scroll'da en yavaş kayar */}
+      <motion.div
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           background:
             "radial-gradient(circle at 50% 0%, var(--color-accent), transparent 55%)",
+          y: reduced ? undefined : bgY,
         }}
         aria-hidden="true"
       />
-      {/* Blur'lu dekoratif accent blob'ları */}
-      <div
+      {/* Blur'lu dekoratif accent blob'ları — orta katman parallax */}
+      <motion.div
         className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl sm:h-96 sm:w-96"
+        style={{ y: reduced ? undefined : blobY }}
         aria-hidden="true"
       />
-      <div
+      <motion.div
         className="pointer-events-none absolute top-1/3 -right-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl sm:h-96 sm:w-96"
+        style={{ y: reduced ? undefined : bgY }}
         aria-hidden="true"
       />
       {/* İmleci takip eden hafif glow; ilk hareketten önce görünmez kalır */}
@@ -66,6 +99,7 @@ export function Hero() {
           variants={staggerContainer(0.12, 0.05)}
           initial="hidden"
           animate="visible"
+          style={reduced ? undefined : { y: textY, opacity: textOpacity }}
           className="text-center lg:text-left"
         >
           <motion.p
@@ -99,10 +133,17 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Ürün vitrini — telefonun taşma payı için alt boşluk */}
-        <div className="pb-10 lg:pb-6">
+        {/* Ürün vitrini — scroll'da yavaş kayar, hafif döner ve büyür */}
+        <motion.div
+          className="pb-10 lg:pb-6"
+          style={
+            reduced
+              ? undefined
+              : { y: showcaseY, scale: showcaseScale, rotate: showcaseRotate }
+          }
+        >
           <HeroShowcase />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

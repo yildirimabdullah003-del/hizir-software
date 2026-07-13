@@ -47,7 +47,7 @@ export function PackagesGrid({
           whileHover={{ y: -6 }}
           transition={{ type: "spring", stiffness: 300, damping: 24 }}
           className={cn(
-            "flex flex-col rounded-xl border p-8 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:shadow-lifted",
+            "flex flex-col rounded-xl border p-8 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:shadow-glow",
             tier.highlighted
               ? "border-accent/50 bg-surface ring-1 ring-accent/20"
               : "border-border bg-background hover:border-accent/40"

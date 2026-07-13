@@ -34,7 +34,7 @@ export function ValuesGrid({ items }: { items: ValueItem[] }) {
             variants={fadeInUp}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 300, damping: 24 }}
-            className="rounded-xl border border-border bg-background p-8 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-lifted"
+            className="rounded-xl border border-border bg-background p-8 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-glow"
           >
             <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent">
               <Icon className="h-5 w-5" aria-hidden="true" />

@@ -289,7 +289,7 @@ export function ShowcaseGallery({
             variants={fadeInUp}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 300, damping: 24 }}
-            className="flex flex-col rounded-2xl border border-border bg-surface p-5 transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-lifted"
+            className="flex flex-col rounded-2xl border border-border bg-surface p-5 transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-glow"
           >
             <div className="relative">
               {item.imageUrl ? (
