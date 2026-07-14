@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { HeroEcosystem } from "@/components/sections/hero-ecosystem";
+import { HeroStarfield } from "@/components/sections/hero-starfield";
 
 /**
  * Ana sayfa Hero'su — "Sipariş Yolculuğu".
@@ -68,10 +69,10 @@ export function Hero() {
           "linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 5%, var(--color-surface)) 0%, var(--color-background) 55%), radial-gradient(120% 80% at 78% 8%, color-mix(in srgb, var(--color-accent) 10%, transparent) 0%, transparent 55%)",
       }}
     >
-      {/* --- Zemin: aurora mesh + ince ızgara (derinlik) --- */}
+      {/* --- Zemin: akan yıldız alanı + morph eden aurora + ince ızgara --- */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
         style={{ y: reduced ? undefined : glowY }}
       >
         {/* İnce nokta ızgarası, merkeze doğru maskeli */}
@@ -88,7 +89,9 @@ export function Hero() {
               "radial-gradient(ellipse 80% 60% at 60% 35%, black 20%, transparent 72%)",
           }}
         />
-        {/* Aurora ışıma blob'ları — imleçle hafif parallax */}
+        {/* Akan yıldız/parçacık alanı (aura hissi) */}
+        <HeroStarfield className="absolute inset-0" />
+        {/* Aurora ışıma blob'ları — yavaşça nefes alır + imleçle hafif parallax */}
         <motion.div
           className="absolute -right-24 -top-24 h-[42rem] w-[42rem] rounded-full opacity-60"
           style={{
@@ -98,6 +101,8 @@ export function Hero() {
               "radial-gradient(circle, color-mix(in srgb, var(--color-accent) 30%, transparent) 0%, transparent 62%)",
             filter: "blur(48px)",
           }}
+          animate={reduced ? undefined : { scale: [1, 1.12, 1], opacity: [0.6, 0.75, 0.6] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute -left-40 top-1/3 h-[34rem] w-[34rem] rounded-full opacity-50"
@@ -107,6 +112,8 @@ export function Hero() {
               "radial-gradient(circle, color-mix(in srgb, #7c5cff 26%, transparent) 0%, transparent 60%)",
             filter: "blur(52px)",
           }}
+          animate={reduced ? undefined : { scale: [1, 1.18, 1], opacity: [0.5, 0.62, 0.5] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
 
