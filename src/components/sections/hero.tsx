@@ -61,6 +61,12 @@ export function Hero() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="relative overflow-hidden"
+      style={{
+        // Full beyaz değil: üstte serin bir tint, sağ-üstte hafif accent,
+        // aşağı doğru background'a erir — premium, derinlikli bir zemin.
+        background:
+          "linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 5%, var(--color-surface)) 0%, var(--color-background) 55%), radial-gradient(120% 80% at 78% 8%, color-mix(in srgb, var(--color-accent) 10%, transparent) 0%, transparent 55%)",
+      }}
     >
       {/* --- Zemin: aurora mesh + ince ızgara (derinlik) --- */}
       <motion.div
