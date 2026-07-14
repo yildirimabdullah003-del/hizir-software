@@ -11,16 +11,16 @@ import {
 import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
-import { HeroEcosystem } from "@/components/sections/hero-ecosystem";
+import { HeroProduct } from "@/components/sections/hero-product";
 import { HeroStarfield } from "@/components/sections/hero-starfield";
 
 /**
  * Ana sayfa Hero'su — "Sipariş Yolculuğu".
  *
- * Laptop/cihaz mockup'ı YOK. Solda editoryal başlık + CTA, sağda çerçevesiz
- * yüzen ürün yüzeylerinden oluşan yaşayan bir ekosistem (HeroEcosystem):
- * QR menü → canlı sipariş akışı → ciro, aralarında akan bir sipariş darbesiyle
- * bağlı. Objeler sabittir; hareket İÇERİKTEDİR.
+ * Laptop/cihaz mockup'ı YOK. Solda editoryal başlık + CTA, sağda TEK bir
+ * bağlı ürün yüzeyi (HeroProduct): QR menü → canlı sipariş rayı → ciro şeridi,
+ * hepsi tek arayüzün içinde. Sipariş yolculuğu bu tek üründe yaşar; ayrı
+ * kartlar değil. Yüzey sabittir; hareket İÇERİKTEDİR.
  *
  * Sayfaya bağlanma: sticky kilit yok. Scroll'da katmanlar hafifçe ayrışır,
  * zemin ışıması aşağı süzülür ve bölüm bir sonraki (fiyatlandırma) sahnenin
@@ -171,9 +171,9 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* --- Sağ: yaşayan ürün ekosistemi --- */}
+        {/* --- Sağ: tek, yaşayan ürün yüzeyi --- */}
         <motion.div style={{ y: reduced ? undefined : sceneY }} className="relative z-0">
-          <HeroEcosystem />
+          <HeroProduct />
         </motion.div>
       </div>
 
