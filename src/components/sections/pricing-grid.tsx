@@ -73,15 +73,22 @@ export function PricingGrid({
           <motion.div
             key={product.id}
             variants={fadeInUp}
-            whileHover={{ y: -6 }}
+            whileHover={{ y: -2 }}
             transition={{ type: "spring", stiffness: 300, damping: 24 }}
+            onMouseMove={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              e.currentTarget.style.setProperty("--spot-x", `${e.clientX - r.left}px`);
+              e.currentTarget.style.setProperty("--spot-y", `${e.clientY - r.top}px`);
+            }}
             className={cn(
-              "relative flex flex-col rounded-xl border p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:shadow-glow",
+              "group relative flex flex-col rounded-xl border p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:shadow-glow",
               product.highlighted
                 ? "border-accent/50 bg-surface ring-1 ring-accent/20"
                 : "border-border bg-background hover:border-accent/40"
             )}
           >
+            {/* İmleci izleyen yüzey ışığı (globals.css .spot-overlay) */}
+            <span className="spot-overlay" aria-hidden="true" />
             {product.highlighted ? (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-3 py-1 text-xs font-medium text-[var(--color-accent-foreground)] shadow-soft">
                 {popularLabel}

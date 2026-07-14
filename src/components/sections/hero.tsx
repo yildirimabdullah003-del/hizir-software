@@ -55,17 +55,19 @@ export function Hero() {
     useTransform(scrollYProgress, [0, 0.38], [1, 0.93]),
     smooth
   );
-  // Laptop: eğikten dik konuma döner, büyür, sahne merkezine yükselir.
+  // Laptop: SABİT bir sahne objesi gibi davranır — sallanmaz, eğilmez.
+  // Scroll yalnızca ÇOK hafif bir perspektif düzelmesi ve sahneye oturma
+  // hareketi verir (masterplan: "sahne sabit, hikâye akar").
   const laptopRotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.55], [32, 0]),
+    useTransform(scrollYProgress, [0, 0.55], [10, 0]),
     smooth
   );
   const laptopScale = useSpring(
-    useTransform(scrollYProgress, [0, 0.6], [0.84, 1.04]),
+    useTransform(scrollYProgress, [0, 0.6], [0.94, 1.0]),
     smooth
   );
   const laptopY = useSpring(
-    useTransform(scrollYProgress, [0, 0.6], [150, -170]),
+    useTransform(scrollYProgress, [0, 0.6], [110, -150]),
     smooth
   );
   // Arka plan: accent ışıması güçlenir/büyür, nokta ızgarası söner.
@@ -91,26 +93,23 @@ export function Hero() {
     smooth
   );
 
-  // --- İmleçle 3D eğim (scroll dönüşünün üzerine ayrı katmanda biner) --------
-  const springCfg = { stiffness: 120, damping: 18, mass: 0.5 };
-  const pointerRX = useSpring(0, springCfg);
-  const pointerRY = useSpring(0, springCfg);
+  // --- İmleç yalnızca ZEMİN katmanlarını kaydırır (derinlik hissi) -----------
+  // Ön plandaki objeye (laptop) tilt YOK — masterplan kuralı 5.
   const bgShiftX = useSpring(0, { stiffness: 60, damping: 20 });
+  const bgShiftY = useSpring(0, { stiffness: 60, damping: 20 });
 
   function handleMouseMove(event: MouseEvent<HTMLElement>) {
     if (reduced) return;
     const rect = event.currentTarget.getBoundingClientRect();
     const nx = (event.clientX - rect.left) / rect.width - 0.5;
     const ny = (event.clientY - rect.top) / rect.height - 0.5;
-    pointerRX.set(ny * -5);
-    pointerRY.set(nx * 7);
-    bgShiftX.set(nx * 40);
+    bgShiftX.set(nx * 36);
+    bgShiftY.set(ny * 20);
   }
 
   function handleMouseLeave() {
-    pointerRX.set(0);
-    pointerRY.set(0);
     bgShiftX.set(0);
+    bgShiftY.set(0);
   }
 
   // Azaltılmış harekette scroll-transform'ları hiç bağlama (statik sahne).
@@ -149,6 +148,7 @@ export function Hero() {
             opacity: reduced ? 0.1 : glowOpacity,
             scale: reduced ? 1 : glowScale,
             x: bgShiftX,
+            y: bgShiftY,
             background:
               "radial-gradient(circle, var(--color-accent) 0%, transparent 62%)",
             filter: "blur(40px)",
@@ -210,7 +210,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
             style={{ perspective: 1600 }}
           >
-            {/* Scroll dönüşü */}
+            {/* Scroll'a bağlı hafif perspektif düzelmesi — imleç eğimi YOK */}
             <motion.div
               style={scrollStyle({
                 rotateX: laptopRotateX,
@@ -218,25 +218,16 @@ export function Hero() {
                 transformOrigin: "center bottom",
               })}
             >
-              {/* İmleç eğimi ayrı katman: scroll dönüşüyle çakışmaz */}
-              <motion.div
-                style={scrollStyle({
-                  rotateX: pointerRX,
-                  rotateY: pointerRY,
-                  transformStyle: "preserve-3d" as const,
-                })}
-              >
-                {/* Laptop ekranı */}
-                <div className="rounded-xl border border-black/40 bg-[#1a1d26] p-1.5 shadow-lifted sm:rounded-2xl sm:p-2">
-                  {/* Kamera çentiği */}
-                  <div className="mx-auto mb-1 h-1 w-12 rounded-full bg-black/50" />
-                  <BusinessDashboard />
-                </div>
-                {/* Laptop gövdesi */}
-                <div className="mx-auto h-2.5 w-[104%] max-w-none -translate-x-[2%] rounded-b-xl bg-gradient-to-b from-[#2a2e3a] to-[#171a22] shadow-lifted sm:h-3.5">
-                  <div className="mx-auto h-1 w-16 rounded-b-md bg-black/30 sm:w-20" />
-                </div>
-              </motion.div>
+              {/* Laptop ekranı */}
+              <div className="rounded-xl border border-black/40 bg-[#1a1d26] p-1.5 shadow-lifted sm:rounded-2xl sm:p-2">
+                {/* Kamera çentiği */}
+                <div className="mx-auto mb-1 h-1 w-12 rounded-full bg-black/50" />
+                <BusinessDashboard />
+              </div>
+              {/* Laptop gövdesi */}
+              <div className="mx-auto h-2.5 w-[104%] max-w-none -translate-x-[2%] rounded-b-xl bg-gradient-to-b from-[#2a2e3a] to-[#171a22] shadow-lifted sm:h-3.5">
+                <div className="mx-auto h-1 w-16 rounded-b-md bg-black/30 sm:w-20" />
+              </div>
             </motion.div>
 
             {/* Panelin altındaki yumuşak yer gölgesi */}

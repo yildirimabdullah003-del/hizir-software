@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Star, MapPin, Clock, Bell, TrendingUp } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 /**
@@ -268,11 +269,15 @@ const DEMOS: Record<string, () => React.ReactNode> = {
 export function ShowcaseGallery({
   items,
   demoBadge,
+  tone = "default",
 }: {
   items: ShowcaseItem[];
   /** Kartların köşesindeki dürüstlük rozeti: "Demo" */
   demoBadge: string;
+  /** "inverted": koyu zeminli bölüm için kart/tipografi varyantı. */
+  tone?: "default" | "inverted";
 }) {
+  const inverted = tone === "inverted";
   return (
     <motion.div
       variants={staggerContainer(0.12)}
@@ -287,9 +292,12 @@ export function ShowcaseGallery({
           <motion.article
             key={item.id}
             variants={fadeInUp}
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 300, damping: 24 }}
-            className="flex flex-col rounded-2xl border border-border bg-surface p-5 transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-glow"
+            className={cn(
+              "flex flex-col rounded-2xl border p-5 transition-[box-shadow,border-color,background-color] duration-base ease-out-soft",
+              inverted
+                ? "border-white/10 bg-white/[0.04] hover:border-accent/50 hover:bg-white/[0.06]"
+                : "border-border bg-surface hover:border-accent/40 hover:shadow-glow"
+            )}
           >
             <div className="relative">
               {item.imageUrl ? (
@@ -300,7 +308,10 @@ export function ShowcaseGallery({
                   src={item.imageUrl}
                   alt={item.title}
                   loading="lazy"
-                  className="aspect-[4/3] w-full rounded-xl border border-border object-cover shadow-soft"
+                  className={cn(
+                    "aspect-[4/3] w-full rounded-xl border object-cover shadow-soft",
+                    inverted ? "border-white/10" : "border-border"
+                  )}
                 />
               ) : (
                 <>
@@ -313,13 +324,28 @@ export function ShowcaseGallery({
               )}
             </div>
             <div className="flex flex-1 flex-col px-1 pt-5">
-              <p className="text-xs font-medium tracking-widest text-accent uppercase">
+              <p
+                className={cn(
+                  "text-xs font-medium tracking-widest uppercase",
+                  inverted ? "text-[#8fb0ff]" : "text-accent"
+                )}
+              >
                 {item.tag}
               </p>
-              <h3 className="mt-1.5 text-lg font-semibold tracking-tight">
+              <h3
+                className={cn(
+                  "mt-1.5 text-lg font-semibold tracking-tight",
+                  inverted && "text-white"
+                )}
+              >
                 {item.title}
               </h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">
+              <p
+                className={cn(
+                  "mt-1.5 text-sm",
+                  inverted ? "text-white/55" : "text-muted-foreground"
+                )}
+              >
                 {item.description}
               </p>
             </div>

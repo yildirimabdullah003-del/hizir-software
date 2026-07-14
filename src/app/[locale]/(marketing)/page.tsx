@@ -9,6 +9,7 @@ import { ShowcaseGallery, type ShowcaseItem } from "@/components/sections/showca
 import { Faq, type FaqItem } from "@/components/sections/faq";
 import { ProcessSteps, type ProcessStep } from "@/components/sections/process-steps";
 import { CtaSection } from "@/components/sections/cta-section";
+import { CodeEditor } from "@/components/sections/code-editor";
 import { getSiteContact } from "@/lib/site-contact";
 import { getStoredPricing } from "@/features/admin/pricing/data";
 import type { PricingContent } from "@/features/admin/pricing/schema";
@@ -108,18 +109,31 @@ function Pricing({
 function Works({ items }: { items: ShowcaseItem[] }) {
   const t = useTranslations("home.works");
 
+  // Koyu atmosfer, blok DEĞİL: üstte surface'ten koyuya, altta koyudan
+  // background'a UZUN gradyanlarla erir — kullanıcı "farklı dünyaya
+  // süzüldüğünü" hisseder, renk duvarına çarpmaz (masterplan Sahne 2).
   return (
-    <section className="bg-surface">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+    <section
+      style={{
+        background:
+          "linear-gradient(180deg, var(--color-surface) 0%, #10131c 22%, #10131c 78%, var(--color-background) 100%)",
+      }}
+    >
+      <div className="mx-auto max-w-6xl px-6 py-32">
         <SectionHeading
           eyebrow={t("eyebrow")}
           title={t("title")}
           subtitle={t("subtitle")}
+          tone="inverted"
           className="mb-12"
         />
-        <ShowcaseGallery items={items} demoBadge={t("demoBadge")} />
+        <ShowcaseGallery items={items} demoBadge={t("demoBadge")} tone="inverted" />
         <div className="mt-10 text-center">
-          <ButtonLink href="/calismalar" variant="outline">
+          <ButtonLink
+            href="/calismalar"
+            variant="outline"
+            className="border-white/20 text-white hover:bg-white/10"
+          >
             {t("cta")}
           </ButtonLink>
         </div>
@@ -152,20 +166,28 @@ function ServicesPreview() {
   const servicesT = useTranslations("services");
   const items = servicesT.raw("items") as ServiceItem[];
 
+  // Kendi görsel dili: mini kod editörü — "böyle inşa ediyoruz" hissi
+  // (masterplan Sahne 3). Editör görünürken satırlar bir kez yazılır.
   return (
-    <section className="bg-gradient-to-b from-surface to-background">
+    <section className="bg-background">
       <div className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading
-          eyebrow={t("eyebrow")}
-          title={t("title")}
-          subtitle={t("subtitle")}
-          className="mb-12"
-        />
-        <ServicesGrid
-          items={items.slice(0, 3)}
-          showBullets={false}
-          viewDetailsLabel={servicesT("viewDetails")}
-        />
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+          <SectionHeading
+            eyebrow={t("eyebrow")}
+            title={t("title")}
+            subtitle={t("subtitle")}
+            align="left"
+            className="mx-0"
+          />
+          <CodeEditor />
+        </div>
+        <div className="mt-14">
+          <ServicesGrid
+            items={items.slice(0, 3)}
+            showBullets={false}
+            viewDetailsLabel={servicesT("viewDetails")}
+          />
+        </div>
         <div className="mt-10 text-center">
           <ButtonLink href="/hizmetler" variant="outline">
             {t("cta")}

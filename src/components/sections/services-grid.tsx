@@ -81,12 +81,20 @@ function ServiceCard({
 
   const card = (
     <motion.div
-      // "hover" variant'ı çocuklara da yayılır: kart kalkarken ikon canlanır.
-      variants={{ ...fadeInUp, hover: { y: -8 } }}
+      // "hover" variant'ı çocuklara yayılır: ikon canlanır. Kalkış minimum
+      // (≤2px) — tepki ölçek/zıplamayla değil ışıkla verilir (masterplan §4).
+      variants={{ ...fadeInUp, hover: { y: -2 } }}
       whileHover="hover"
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
-      className="group flex h-full flex-col rounded-xl border border-border bg-background p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-glow"
+      onMouseMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        e.currentTarget.style.setProperty("--spot-x", `${e.clientX - r.left}px`);
+        e.currentTarget.style.setProperty("--spot-y", `${e.clientY - r.top}px`);
+      }}
+      className="group relative flex h-full flex-col rounded-xl border border-border bg-background p-7 shadow-soft transition-[box-shadow,border-color] duration-base ease-out-soft hover:border-accent/40 hover:shadow-glow"
     >
+      {/* İmleci izleyen yüzey ışığı (globals.css .spot-overlay) */}
+      <span className="spot-overlay" aria-hidden="true" />
       <motion.div
         variants={{
           hover: { rotate: [0, -10, 7, 0], scale: 1.08 },

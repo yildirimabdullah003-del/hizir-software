@@ -122,6 +122,28 @@ body {
   transition: transform 650ms var(--ease-out-soft);
 }
 
+/* Spotlight kart yüzeyi: imlecin konumunu izleyen hafif accent ışığı.
+   Kart (position:relative) mouse move'da --spot-x/--spot-y CSS değişkenlerini
+   günceller; bu katman yalnızca hover'da görünür. Linear/Stripe dili —
+   scale/zıplama yerine ışıkla tepki. */
+.spot-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out-soft);
+  background: radial-gradient(
+    220px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    color-mix(in srgb, var(--color-accent) 10%, transparent),
+    transparent 70%
+  );
+}
+.group:hover > .spot-overlay,
+.spot-parent:hover > .spot-overlay {
+  opacity: 1;
+}
+
 /* Hareket azaltma tercihine saygı */
 @media (prefers-reduced-motion: reduce) {
   *,

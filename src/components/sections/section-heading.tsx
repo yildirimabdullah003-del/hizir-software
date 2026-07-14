@@ -12,12 +12,15 @@ export function SectionHeading({
   title,
   subtitle,
   align = "center",
+  tone = "default",
   className,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: "center" | "left";
+  /** "inverted": koyu zeminli bölümler için açık renk tipografi. */
+  tone?: "default" | "inverted";
   className?: string;
 }) {
   return (
@@ -29,15 +32,30 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-4 text-sm font-medium tracking-widest text-accent uppercase">
+        <p
+          className={cn(
+            "mb-4 text-sm font-medium tracking-widest uppercase",
+            tone === "inverted" ? "text-[#8fb0ff]" : "text-accent"
+          )}
+        >
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2
+        className={cn(
+          "text-balance text-3xl font-semibold tracking-tight sm:text-4xl",
+          tone === "inverted" && "text-white"
+        )}
+      >
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-4 text-balance text-lg text-muted-foreground">
+        <p
+          className={cn(
+            "mt-4 text-balance text-lg",
+            tone === "inverted" ? "text-white/55" : "text-muted-foreground"
+          )}
+        >
           {subtitle}
         </p>
       ) : null}
