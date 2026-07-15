@@ -210,21 +210,18 @@ function ServicesPreview() {
   const servicesT = useTranslations("services");
   const items = servicesT.raw("items") as ServiceItem[];
 
-  // Kendi görsel dili: mini kod editörü — "böyle inşa ediyoruz" hissi
-  // (masterplan Sahne 3). Editör görünürken satırlar bir kez yazılır.
+  // Kendi görsel dili: kod → canlı çıktı (V3 Faz C). Editör satırları yazdıkça
+  // yanındaki QR menü kendini kurar — "böyle inşa ediyoruz" hissi.
   return (
     <section className="bg-background">
       <div className="mx-auto max-w-6xl px-6 py-24">
-        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
-          <SectionHeading
-            eyebrow={t("eyebrow")}
-            title={t("title")}
-            subtitle={t("subtitle")}
-            align="left"
-            className="mx-0"
-          />
-          <CodeEditor />
-        </div>
+        <SectionHeading
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          subtitle={t("subtitle")}
+          className="mb-12"
+        />
+        <CodeEditor />
         <div className="mt-14">
           <ServicesGrid
             items={items.slice(0, 3)}

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { trackEvent } from "@/lib/track";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { AnimatedPrice } from "@/components/sections/animated-price";
 
 export type PricingProduct = {
   id: string;
@@ -111,7 +112,7 @@ export function PricingGrid({
               ) : null}
               <p className={product.listPrice ? "mt-0.5" : undefined}>
                 <span className="text-3xl font-semibold tracking-tight">
-                  {product.price}
+                  <AnimatedPrice value={product.price} />
                 </span>
                 <span className="text-sm text-muted-foreground">
                   {product.period}

@@ -2,11 +2,22 @@
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { Search, PenTool, Code2, Rocket, type LucideIcon } from "lucide-react";
 
 export type ProcessStep = {
   id: string;
   title: string;
   description: string;
+};
+
+// Her adımın kendine özgü motifi — "4 aynı daire"nin sıradanlığını kırar.
+// Nokta adıma ulaşınca ikon tek seferlik bir mikro jest yapar.
+const STEP_ICONS: LucideIcon[] = [Search, PenTool, Code2, Rocket];
+const STEP_GESTURE: Record<number, { rotate?: number[]; y?: number[]; scale?: number[] }> = {
+  0: { rotate: [0, -12, 8, 0], scale: [1, 1.12, 1] }, // Keşif: tarama
+  1: { rotate: [0, 14, -6, 0] }, // Tasarım: kalem
+  2: { scale: [1, 0.85, 1.1, 1] }, // Geliştirme: sıkıştır-genişlet
+  3: { y: [0, -5, 0], rotate: [0, 6, 0] }, // Yayın: kalkış
 };
 
 /**
@@ -95,34 +106,41 @@ export function ProcessSteps({ steps }: { steps: ProcessStep[] }) {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <motion.span
-              className="relative z-10 mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
-              initial={{
-                backgroundColor: "var(--color-foreground)",
-                color: "var(--color-background)",
-              }}
-              animate={
-                inView
-                  ? {
-                      backgroundColor: "var(--color-accent)",
-                      color: "#ffffff",
-                      // Aktifleşme anında tek nabız halkası hissi.
-                      boxShadow: [
-                        "0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent)",
-                        "0 0 0 8px color-mix(in srgb, var(--color-accent) 18%, transparent)",
-                        "0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent)",
-                      ],
-                    }
-                  : {}
-              }
-              transition={{
-                delay: reduced ? 0 : reachDelay,
-                duration: 0.55,
-                ease: "easeOut",
-              }}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </motion.span>
+            {/* İkon tile + adım numarası — her adım kendi motifiyle */}
+            <div className="mb-4 flex items-center gap-3">
+              <motion.span
+                className="relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl"
+                initial={{
+                  backgroundColor: "color-mix(in srgb, var(--color-foreground) 6%, transparent)",
+                  color: "var(--color-muted-foreground)",
+                }}
+                animate={
+                  inView
+                    ? {
+                        backgroundColor: "color-mix(in srgb, var(--color-accent) 12%, transparent)",
+                        color: "var(--color-accent)",
+                        boxShadow: [
+                          "0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent)",
+                          "0 0 0 8px color-mix(in srgb, var(--color-accent) 16%, transparent)",
+                          "0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent)",
+                        ],
+                      }
+                    : {}
+                }
+                transition={{ delay: reduced ? 0 : reachDelay, duration: 0.55, ease: "easeOut" }}
+              >
+                <motion.span
+                  animate={inView && !reduced ? STEP_GESTURE[index] : undefined}
+                  transition={{ delay: reachDelay, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex"
+                >
+                  <StepIcon index={index} />
+                </motion.span>
+              </motion.span>
+              <span className="text-xs font-semibold tabular-nums text-muted-foreground/60">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
             <h3 className="text-base font-semibold tracking-tight">
               {step.title}
             </h3>
@@ -134,4 +152,9 @@ export function ProcessSteps({ steps }: { steps: ProcessStep[] }) {
       })}
     </motion.ol>
   );
+}
+
+function StepIcon({ index }: { index: number }) {
+  const Icon = STEP_ICONS[index % STEP_ICONS.length];
+  return <Icon className="h-5 w-5" aria-hidden="true" />;
 }

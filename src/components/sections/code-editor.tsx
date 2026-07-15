@@ -138,12 +138,16 @@ export function CodeEditor({ className }: { className?: string }) {
     (n, i) => n < lineText(LINES[i]).length
   );
 
+  // Tam yazılmış satır sayısı — çıktı önizlemesi buna göre kendini kurar.
+  const completed = typed.filter((n, i) => n >= lineText(LINES[i]).length).length;
+
   return (
     <div
       ref={rootRef}
       className={className}
       aria-hidden="true"
     >
+      <div className="grid items-stretch gap-4 lg:grid-cols-[1.15fr_1fr]">
       <div className="overflow-hidden rounded-xl border border-black/40 bg-[#12141b] shadow-lifted">
         {/* Pencere çubuğu */}
         <div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-2.5">
@@ -198,6 +202,109 @@ export function CodeEditor({ className }: { className?: string }) {
             </span>
           </motion.div>
         </div>
+      </div>
+
+      {/* --- Canlı çıktı: kod yazıldıkça kendini kuran QR menü --- */}
+      <OutputPreview completed={completed} done={done} />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Kod editörünün "çıktısı" — kod yazıldıkça (completed arttıkça) kendini
+ * kuran bir QR menü önizlemesi. Girdi→çıktı bağı: her config satırı bittiğinde
+ * karşılığı çıktıda belirir. "Böyle inşa ediyoruz"un görsel karşılığı.
+ */
+function OutputPreview({ completed, done }: { completed: number; done: boolean }) {
+  const reduced = useReducedMotion();
+  const reveal = (n: number) => ({
+    initial: reduced ? false : { opacity: 0, y: 8 },
+    animate: completed >= n ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 },
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+  });
+
+  return (
+    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-soft">
+      {/* Tarayıcı çubuğu */}
+      <div className="flex items-center gap-2 border-b border-border bg-background px-4 py-2.5">
+        <span className="h-2 w-2 rounded-full bg-black/15" />
+        <span className="flex-1 truncate rounded-md bg-muted px-2.5 py-1 text-[9px] text-muted-foreground">
+          fincankahve.hizir.app
+        </span>
+        {/* Yayında rozeti — yayinla() bitince */}
+        <motion.span
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={done ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+          transition={{ type: "spring", stiffness: 380, damping: 22 }}
+          className="flex items-center gap-1 rounded-full bg-emerald-500/12 px-2 py-0.5 text-[8px] font-semibold text-emerald-600"
+        >
+          <span className="h-1 w-1 rounded-full bg-emerald-500" /> Yayında
+        </motion.span>
+      </div>
+
+      {/* İçerik */}
+      <div className="flex-1 p-4">
+        {/* Başlık — qrMenu: true bitince (completed>=2) */}
+        <motion.div {...reveal(2)} className="flex items-center gap-2">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-[11px] font-bold text-accent">
+            F
+          </span>
+          <div className="leading-tight">
+            <p className="text-[11px] font-semibold tracking-tight">Fincan Kahve</p>
+            <p className="text-[7px] uppercase tracking-widest text-muted-foreground">
+              Dijital Menü
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Dil sekmeleri — diller bitince (completed>=3) */}
+        <motion.div {...reveal(3)} className="mt-3 flex gap-1.5">
+          {["TR", "EN"].map((l, i) => (
+            <span
+              key={l}
+              className={
+                i === 0
+                  ? "rounded-full bg-accent px-2 py-0.5 text-[8px] font-semibold text-white"
+                  : "rounded-full bg-muted px-2 py-0.5 text-[8px] text-muted-foreground"
+              }
+            >
+              {l}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* Ürünler — siparisler bitince (completed>=4) */}
+        <motion.div {...reveal(4)} className="mt-3 space-y-1.5">
+          {[
+            ["Karamel Latte", "₺95", "#b08a5f"],
+            ["San Sebastian", "₺140", "#c07f3f"],
+          ].map(([name, price, color]) => (
+            <div
+              key={name}
+              className="flex items-center gap-2 rounded-lg border border-border bg-background p-1.5"
+            >
+              <span
+                className="h-6 w-6 shrink-0 rounded-md"
+                style={{ background: `radial-gradient(circle at 40% 30%, ${color}bb, ${color})` }}
+              />
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-[8.5px] font-semibold">{name}</p>
+                <div className="mt-0.5 h-1 w-8 rounded bg-black/10" />
+              </div>
+              <span className="text-[8.5px] font-bold text-accent">{price}</span>
+            </div>
+          ))}
+          {/* Canlı sipariş göstergesi */}
+          <div className="flex items-center gap-1.5 pt-0.5 text-[7.5px] text-emerald-600">
+            <motion.span
+              className="h-1 w-1 rounded-full bg-emerald-500"
+              animate={done && !reduced ? { opacity: [1, 0.3, 1] } : undefined}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            canlı sipariş alımı açık
+          </div>
+        </motion.div>
       </div>
     </div>
   );

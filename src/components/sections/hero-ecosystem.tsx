@@ -170,7 +170,7 @@ export function HeroEcosystem() {
   return (
     <div
       ref={sceneRef}
-      className="relative mx-auto aspect-[5/5.6] w-full max-w-[36rem] sm:aspect-[5/5]"
+      className="relative mx-auto aspect-[5/4.7] w-full max-w-[36rem] sm:aspect-[5/4.2]"
       aria-hidden="true"
     >
       {/* Yüzeyleri birbirine bağlayan yumuşak accent halesi (bütünlük) */}
@@ -394,7 +394,7 @@ export function HeroEcosystem() {
       </div>
 
       {/* ============ Yüzey 3 — Ciro ============ */}
-      <div ref={revRef} className="absolute bottom-0 left-[8%] z-10 w-[50%] sm:w-[46%]">
+      <div ref={revRef} className="absolute bottom-0 left-[14%] z-10 w-[52%] sm:w-[48%]">
         <SurfaceCard delay={0.25}>
           <div className="p-3">
             <p className="flex items-center gap-1 text-[7.5px] font-medium text-muted-foreground">
