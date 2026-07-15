@@ -8,7 +8,7 @@ import { PricingGrid } from "@/components/sections/pricing-grid";
 import { ShowcaseGallery, type ShowcaseItem } from "@/components/sections/showcase-gallery";
 import { Faq, type FaqItem } from "@/components/sections/faq";
 import { ProcessSteps, type ProcessStep } from "@/components/sections/process-steps";
-import { CtaSection } from "@/components/sections/cta-section";
+import { FinalScene } from "@/components/sections/final-scene";
 import { CodeEditor } from "@/components/sections/code-editor";
 import { getSiteContact } from "@/lib/site-contact";
 import { getStoredPricing } from "@/features/admin/pricing/data";
@@ -38,18 +38,38 @@ export default async function HomePage({
   const showcaseItems =
     storedShowcase?.items ??
     ((home.works as Record<string, unknown>).items as ShowcaseItem[]);
+  // Final sahnesi client bileşeni — çeviri metinlerini prop olarak geçiriyoruz.
+  const cta = home.cta as {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    primaryCta: string;
+  };
+  const {
+    eyebrow: ctaEyebrow,
+    title: ctaTitle,
+    subtitle: ctaSubtitle,
+    primaryCta: ctaPrimary,
+  } = cta;
 
   return (
     <>
-      {/* "Hakkımızda" ön izlemesi bilinçli olarak kaldırıldı (rafa kaldırma
-          kararı) — kurumsal bilgi isteyen ziyaretçi WhatsApp hattını kullanır. */}
+      {/* Hikaye-önde akış (V3): önce ürünü yaşat, sonra fiyat. Atmosfer yayı:
+          Hero (açık şafak) → Çalışmalar (koyu zirve) → Hizmetler/Süreç (açık
+          atölye) → Fiyat (en parlak, güven) → SSS (nefes) → Final (koyu doruk).
+          Bölümler uzun gradyanlarla birbirine erir; sert çizgi yok. */}
       <Hero />
-      <Pricing content={pricing} whatsappNumber={contact.whatsappNumber} />
       <Works items={showcaseItems} />
       <ServicesPreview />
       <Process />
+      <Pricing content={pricing} whatsappNumber={contact.whatsappNumber} />
       <HomeFaq />
-      <FinalCta />
+      <FinalScene
+        eyebrow={ctaEyebrow}
+        title={ctaTitle}
+        subtitle={ctaSubtitle}
+        primaryCta={ctaPrimary}
+      />
     </>
   );
 }
@@ -62,11 +82,11 @@ function Pricing({
   whatsappNumber: string;
 }) {
   return (
-    // Bölümler sert çizgiyle değil, eriyen gradyanlarla birbirine akar —
-    // sayfa tek bir hikâye gibi ilerler (bkz. motion güncellemesi).
+    // En parlak/en sade bölüm (V3: güven = netlik). Süreç'in surface'inden
+    // aydınlığa erir; altta SSS'e devreder.
     <section
       id="fiyatlandirma"
-      className="bg-gradient-to-b from-background via-background to-surface"
+      className="bg-gradient-to-b from-surface via-background to-background"
     >
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
@@ -109,17 +129,41 @@ function Pricing({
 function Works({ items }: { items: ShowcaseItem[] }) {
   const t = useTranslations("home.works");
 
-  // Koyu atmosfer, blok DEĞİL: üstte surface'ten koyuya, altta koyudan
-  // background'a UZUN gradyanlarla erir — kullanıcı "farklı dünyaya
-  // süzüldüğünü" hisseder, renk duvarına çarpmaz (masterplan Sahne 2).
+  // Sinematik koyu zirve (V3 Sahne 2): sayfanın "vay be" tepesi. Açık
+  // Hero'dan uzun gradyanla koyuya süzülür, altta yine açığa döner — blok
+  // değil erime. Arkada ölçülü bir accent ışıması sahneyi "kontrol odası"
+  // atmosferine sokar.
   return (
     <section
+      className="relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(180deg, var(--color-surface) 0%, #10131c 22%, #10131c 78%, var(--color-background) 100%)",
+          "linear-gradient(180deg, var(--color-background) 0%, #0a0c14 20%, #0a0c14 80%, var(--color-background) 100%)",
       }}
     >
-      <div className="mx-auto max-w-6xl px-6 py-32">
+      {/* Ambient accent ışıması + ince yıldız dokusu */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, color-mix(in srgb, var(--color-accent) 18%, transparent) 0%, transparent 60%)",
+          filter: "blur(70px)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+          maskImage: "radial-gradient(ellipse 75% 55% at 50% 50%, black 5%, transparent 72%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 75% 55% at 50% 50%, black 5%, transparent 72%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl px-6 py-36">
         <SectionHeading
           eyebrow={t("eyebrow")}
           title={t("title")}
@@ -128,7 +172,7 @@ function Works({ items }: { items: ShowcaseItem[] }) {
           className="mb-12"
         />
         <ShowcaseGallery items={items} demoBadge={t("demoBadge")} tone="inverted" />
-        <div className="mt-10 text-center">
+        <div className="mt-12 text-center">
           <ButtonLink
             href="/calismalar"
             variant="outline"
@@ -203,7 +247,7 @@ function Process() {
   const steps = t.raw("steps") as ProcessStep[];
 
   return (
-    <section className="bg-background">
+    <section className="bg-gradient-to-b from-background to-surface">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -217,21 +261,3 @@ function Process() {
   );
 }
 
-function FinalCta() {
-  const t = useTranslations("home.cta");
-
-  // Fiyat vitrini asıl odak olduğundan bu bölüm bilinçli olarak kompakt.
-  return (
-    <section className="bg-gradient-to-b from-surface to-background">
-      <div className="mx-auto max-w-6xl px-6 py-16">
-        <CtaSection
-          compact
-          title={t("title")}
-          subtitle={t("subtitle")}
-          primaryCta={t("primaryCta")}
-          primaryHref="/iletisim"
-        />
-      </div>
-    </section>
-  );
-}

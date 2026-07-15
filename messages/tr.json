@@ -194,7 +194,8 @@
       "title": "Projenizi konuşmaya hazır mısınız?",
       "subtitle": "Fikrinizi paylaşın, birlikte doğru kapsamı ve yol haritasını çıkaralım.",
       "primaryCta": "İletişime geç",
-      "secondaryCta": "Hizmetleri incele"
+      "secondaryCta": "Hizmetleri incele",
+      "eyebrow": "Başlayalım"
     }
   },
   "services": {

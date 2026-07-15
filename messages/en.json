@@ -194,7 +194,8 @@
       "title": "Ready to talk about your project?",
       "subtitle": "Share your idea and let's map out the right scope and roadmap together.",
       "primaryCta": "Get in touch",
-      "secondaryCta": "Explore services"
+      "secondaryCta": "Explore services",
+      "eyebrow": "Let's start"
     }
   },
   "services": {
