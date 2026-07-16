@@ -14,6 +14,8 @@ import { getSiteContact } from "@/lib/site-contact";
 import { getStoredPricing } from "@/features/admin/pricing/data";
 import type { PricingContent } from "@/features/admin/pricing/schema";
 import { getStoredShowcase } from "@/features/admin/showcase/data";
+import { getStoredHome } from "@/features/admin/home/data";
+import type { HomeContent } from "@/features/admin/home/schema";
 
 export default async function HomePage({
   params,
@@ -27,30 +29,35 @@ export default async function HomePage({
 
   // Fiyatlandırma + vitrin: panelde kaydedilmişse DB'den, yoksa koddaki
   // (messages) içerik.
-  const [storedPricing, storedShowcase, messages, contact] = await Promise.all([
-    getStoredPricing(locale),
-    getStoredShowcase(locale),
-    getMessages({ locale }),
-    getSiteContact(),
-  ]);
+  const [storedPricing, storedShowcase, storedHome, messages, contact] =
+    await Promise.all([
+      getStoredPricing(locale),
+      getStoredShowcase(locale),
+      getStoredHome(locale),
+      getMessages({ locale }),
+      getSiteContact(),
+    ]);
   const home = messages.home as Record<string, unknown>;
+  const messagesProcess = messages.process as Record<string, unknown>;
   const pricing = storedPricing ?? (home.pricing as PricingContent);
   const showcaseItems =
     storedShowcase?.items ??
     ((home.works as Record<string, unknown>).items as ShowcaseItem[]);
-  // Final sahnesi client bileşeni — çeviri metinlerini prop olarak geçiriyoruz.
-  const cta = home.cta as {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    primaryCta: string;
-  };
-  const {
-    eyebrow: ctaEyebrow,
-    title: ctaTitle,
-    subtitle: ctaSubtitle,
-    primaryCta: ctaPrimary,
-  } = cta;
+
+  // Ana sayfa editoryal içeriği: panelde kaydedilmişse DB'den (blok blok),
+  // yoksa koddaki (messages) içerik — regresyon yok.
+  const heroContent = storedHome?.hero ?? (home.hero as HomeContent["hero"]);
+  const processContent =
+    storedHome?.process ??
+    ({
+      eyebrow: messagesProcess.eyebrow,
+      title: messagesProcess.title,
+      subtitle: messagesProcess.subtitle,
+      steps: messagesProcess.steps,
+    } as HomeContent["process"]);
+  const faqContent =
+    storedHome?.faq ?? (home.faq as HomeContent["faq"]);
+  const ctaContent = storedHome?.cta ?? (home.cta as HomeContent["cta"]);
 
   return (
     <>
@@ -58,17 +65,17 @@ export default async function HomePage({
           Hero (açık şafak) → Çalışmalar (koyu zirve) → Hizmetler/Süreç (açık
           atölye) → Fiyat (en parlak, güven) → SSS (nefes) → Final (koyu doruk).
           Bölümler uzun gradyanlarla birbirine erir; sert çizgi yok. */}
-      <Hero />
+      <Hero content={heroContent} />
       <Works items={showcaseItems} />
       <ServicesPreview />
-      <Process />
+      <Process content={processContent} />
       <Pricing content={pricing} whatsappNumber={contact.whatsappNumber} />
-      <HomeFaq />
+      <HomeFaq content={faqContent} />
       <FinalScene
-        eyebrow={ctaEyebrow}
-        title={ctaTitle}
-        subtitle={ctaSubtitle}
-        primaryCta={ctaPrimary}
+        eyebrow={ctaContent.eyebrow}
+        title={ctaContent.title}
+        subtitle={ctaContent.subtitle}
+        primaryCta={ctaContent.primaryCta}
       />
     </>
   );
@@ -186,20 +193,17 @@ function Works({ items }: { items: ShowcaseItem[] }) {
   );
 }
 
-function HomeFaq() {
-  const t = useTranslations("home.faq");
-  const items = t.raw("items") as FaqItem[];
-
+function HomeFaq({ content }: { content: HomeContent["faq"] }) {
   return (
     <section className="bg-gradient-to-b from-background via-surface to-surface">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
-          eyebrow={t("eyebrow")}
-          title={t("title")}
-          subtitle={t("subtitle")}
+          eyebrow={content.eyebrow}
+          title={content.title}
+          subtitle={content.subtitle}
           className="mb-12"
         />
-        <Faq items={items} />
+        <Faq items={content.items as FaqItem[]} />
       </div>
     </section>
   );
@@ -239,20 +243,17 @@ function ServicesPreview() {
   );
 }
 
-function Process() {
-  const t = useTranslations("process");
-  const steps = t.raw("steps") as ProcessStep[];
-
+function Process({ content }: { content: HomeContent["process"] }) {
   return (
     <section className="bg-gradient-to-b from-background to-surface">
       <div className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
-          eyebrow={t("eyebrow")}
-          title={t("title")}
-          subtitle={t("subtitle")}
+          eyebrow={content.eyebrow}
+          title={content.title}
+          subtitle={content.subtitle}
           className="mb-16"
         />
-        <ProcessSteps steps={steps} />
+        <ProcessSteps steps={content.steps as ProcessStep[]} />
       </div>
     </section>
   );

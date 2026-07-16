@@ -68,13 +68,24 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-[background-color,box-shadow,border-color] duration-base ease-out-soft",
+        "sticky top-0 z-50 w-full transition-[box-shadow,border-color] duration-base ease-out-soft",
         scrolled
-          ? "border-b border-border bg-background/70 shadow-soft backdrop-blur-xl"
-          : "border-b border-transparent bg-background/0"
+          ? "border-b border-border shadow-soft"
+          : "border-b border-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      {/* Blur zemini AYRI katmanda: backdrop-filter doğrudan header'da olursa
+          fixed konumlu mobil menü header'a kilitlenip kırpılıyor (CSS
+          containing block kuralı). Katmana taşıyınca menü viewport'a göre
+          konumlanır ve tam açılır. */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-0 bg-background/70 backdrop-blur-xl transition-opacity duration-base ease-out-soft",
+          scrolled ? "opacity-100" : "opacity-0"
+        )}
+      />
+      <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
           className="rounded-sm text-lg font-semibold tracking-tight transition-opacity duration-fast hover:opacity-80"

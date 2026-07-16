@@ -8,11 +8,11 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { HeroEcosystem } from "@/components/sections/hero-ecosystem";
 import { HeroStarfield } from "@/components/sections/hero-starfield";
+import type { HeroContent } from "@/features/admin/home/schema";
 
 /**
  * Ana sayfa Hero'su — "Sipariş Yolculuğu".
@@ -27,8 +27,7 @@ import { HeroStarfield } from "@/components/sections/hero-starfield";
  * başlangıcı gibi doğal akar. Zemin katmanları imleçle çok hafif parallax
  * yapar (derinlik); yüzeyler eğilmez. Azaltılmış harekette durağan.
  */
-export function Hero() {
-  const t = useTranslations("home.hero");
+export function Hero({ content }: { content: HeroContent }) {
   const sectionRef = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
 
@@ -137,36 +136,36 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
               </span>
-              {t("eyebrow")}
+              {content.eyebrow}
             </motion.p>
             <motion.h1
               variants={fadeInUp}
               className="text-balance text-4xl font-semibold leading-[1.06] tracking-tight sm:text-5xl lg:text-[3.4rem]"
             >
-              {t("title")}
+              {content.title}
             </motion.h1>
             <motion.p
               variants={fadeInUp}
               className="mx-auto mt-6 max-w-lg text-balance text-base text-muted-foreground sm:text-lg lg:mx-0"
             >
-              {t("subtitle")}
+              {content.subtitle}
             </motion.p>
             <motion.div
               variants={fadeInUp}
               className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
             >
               <ButtonLink href="/iletisim" size="lg">
-                {t("primaryCta")}
+                {content.primaryCta}
               </ButtonLink>
               <ButtonLink href="#fiyatlandirma" size="lg" variant="outline">
-                {t("secondaryCta")}
+                {content.secondaryCta}
               </ButtonLink>
             </motion.div>
             <motion.p
               variants={fadeInUp}
               className="mt-6 text-xs text-muted-foreground/80"
             >
-              {t("caption")}
+              {content.caption}
             </motion.p>
           </motion.div>
         </motion.div>

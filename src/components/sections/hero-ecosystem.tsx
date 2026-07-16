@@ -357,15 +357,18 @@ export function HeroEcosystem() {
               CANLI
             </span>
           </div>
+          {/* popLayout: çıkan satır ANINDA akıştan çıkar (absolute süzülür),
+              yükseklik animasyonu yok → kart hep tam 3 satır boyunda kalır.
+              Böylece yeni sipariş düşerken sahne/sayfa OYNAMAZ. */}
           <ul className="space-y-1.5 p-2.5">
-            <AnimatePresence initial={false}>
+            <AnimatePresence initial={false} mode="popLayout">
               {feed.map((o) => (
                 <motion.li
                   key={o.id}
                   layout
                   initial={{ opacity: 0, y: -12, scale: 0.97 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, height: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 340, damping: 28 }}
                   className="rounded-lg bg-white/[0.05] px-2 py-1.5"
                 >
