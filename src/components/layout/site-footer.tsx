@@ -29,15 +29,17 @@ export function SiteFooter({ contact }: { contact: SiteContact }) {
   );
   const instagramHandle = instagramLink?.href.split("/").filter(Boolean).pop();
 
+  // Koyu kapanış: ana sayfadaki final sahnesiyle aynı zemin (#0a0c14) —
+  // sayfa "end credits" gibi koyu biter, aydınlığa geri dönmez.
   return (
-    <footer className="border-t border-border bg-surface">
+    <footer className="bg-[#0a0c14] text-white">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Link href="/" className="text-lg font-semibold tracking-tight">
+            <Link href="/" className="text-lg font-semibold tracking-tight text-white">
               {t("site.name")}
             </Link>
-            <p className="mt-3 max-w-xs text-sm text-muted-foreground">
+            <p className="mt-3 max-w-xs text-sm text-white/50">
               {t("site.tagline")}
             </p>
           </div>
@@ -94,8 +96,8 @@ export function SiteFooter({ contact }: { contact: SiteContact }) {
           </FooterLinkGroup>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
+          <p className="text-sm text-white/45">
             © {year} {t("site.name")}. {t("footer.rights")}
           </p>
           {contact.socialLinks.length > 0 ? (
@@ -111,7 +113,7 @@ export function SiteFooter({ contact }: { contact: SiteContact }) {
                     aria-label={social.name}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.94 }}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-fast hover:border-accent/40 hover:text-accent"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors duration-fast hover:border-accent/60 hover:text-[#8fb0ff]"
                   >
                     <Icon className="h-4 w-4" aria-hidden="true" />
                   </motion.a>
@@ -134,7 +136,7 @@ function FooterLinkGroup({
 }) {
   return (
     <div>
-      <h3 className="text-sm font-semibold tracking-tight text-foreground">
+      <h3 className="text-sm font-semibold tracking-tight text-white">
         {title}
       </h3>
       <ul className="mt-4 flex flex-col gap-3">{children}</ul>
@@ -150,7 +152,7 @@ function FooterLink({
   children: React.ReactNode;
 }) {
   const className =
-    "group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-fast hover:text-accent";
+    "group inline-flex items-center gap-2 text-sm text-white/55 transition-colors duration-fast hover:text-white";
   const content = (
     <motion.span
       className="inline-flex items-center gap-2"

@@ -32,8 +32,10 @@ export function FinalScene({
     <section
       className="relative overflow-hidden"
       style={{
+        // Alt uçta aydınlığa DÖNMEZ: koyu footer'a kesintisiz akar
+        // (sayfa "end credits" gibi koyu kapanır).
         background:
-          "linear-gradient(180deg, var(--color-surface) 0%, #0a0c14 26%, #0a0c14 82%, var(--color-surface) 100%)",
+          "linear-gradient(180deg, var(--color-surface) 0%, #0a0c14 26%, #0a0c14 100%)",
       }}
     >
       {/* Aurora sürüklenmesi — yavaş, ölçülü */}
